@@ -20,7 +20,7 @@ export const signup = ({ username, email, password }) => {
 export const login = ({ email, password }) => {
   return service
     .post("/user/login", { email, password })
-    .then((response) => (console.log("i am in the then"), response.data))
+    .then((response) => response.data)
     .catch((err) => {
       console.log(err);
     });

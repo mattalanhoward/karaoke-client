@@ -11,8 +11,7 @@ import Signup from "./views/Signup";
 class App extends React.Component {
   state = {
     authenticated: false,
-    user: {},
-    errorMessage: ""
+    user: {}
   };
   componentDidMount = () => {
     const accessToken = localStorage.getItem("accessToken");
