@@ -11,7 +11,7 @@ import Signup from "./views/Signup";
 class App extends React.Component {
   state = {
     authenticated: false,
-    user: {}
+    user: {},
   };
   componentDidMount = () => {
     const accessToken = localStorage.getItem("accessToken");
@@ -24,7 +24,7 @@ class App extends React.Component {
         .catch((err) => console.log(err));
     }
   };
- 
+
   authenticate = (user) => {
     this.setState({
       authenticated: true,
@@ -40,10 +40,9 @@ class App extends React.Component {
     });
   };
   render() {
-    const { authenticated, errorMessage } = this.state;
+    const { authenticated } = this.state;
     return (
       <div className="App">
-          
         <BrowserRouter>
           <nav>
             {authenticated && <Link to="/"> Home </Link>}
