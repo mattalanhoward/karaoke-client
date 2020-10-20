@@ -13,6 +13,7 @@ class App extends React.Component {
     authenticated: false,
     user: {},
   };
+  
   componentDidMount = () => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
@@ -39,6 +40,7 @@ class App extends React.Component {
       user: {},
     });
   };
+
   render() {
     const { authenticated } = this.state;
     return (
