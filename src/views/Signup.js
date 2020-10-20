@@ -3,7 +3,7 @@ import { signup } from "../services/userService";
 
 class Signup extends React.Component {
   state = {
-    username: "",
+    stageName: "",
     email: "",
     password: "",
     errorMessage: "",
@@ -18,7 +18,7 @@ class Signup extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     signup({
-      username: this.state.username,
+      stageName: this.state.stageName,
       email: this.state.email,
       password: this.state.password,
     })
@@ -35,15 +35,15 @@ class Signup extends React.Component {
   };
 
   render() {
-    const { username, email, password, errorMessage } = this.state;
+    const { stageName, email, password, errorMessage } = this.state;
     return (
       <div>
         {errorMessage !== "" && errorMessage}
         <form onSubmit={this.handleSubmit}>
-          <label>username: </label>
+          <label>Stage Name: </label>
           <input
-            name="username"
-            value={username}
+            name="stageName"
+            value={stageName}
             onChange={this.handleChange}
             required={true}
             type="text"
