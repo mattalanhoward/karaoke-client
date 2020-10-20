@@ -54,14 +54,21 @@ class App extends React.Component {
               </Link>
             )}
           </nav>
-          <Switch>
-            <PrivateRoute
+          <AnonRoute
               exact
               path="/"
               user={this.state.user}
               authenticated={authenticated}
               component={Home}
             />
+          <Switch>
+            {/* <PrivateRoute
+              exact
+              path="/"
+              user={this.state.user}
+              authenticated={authenticated}
+              component={Home}
+            /> */}
             <AnonRoute
               exact
               path="/login"
