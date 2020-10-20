@@ -1,10 +1,10 @@
-# Legend of Iron
+# Noda 101 Singer Signup
 
 <br>
 
 ## Problem Statement
 
-Karaoke Singers at Noda 101 need a more efficient manner of signing up to sing songs because the current system is outdated / inefficient and not sanitary.
+Karaoke Singers at Noda 101 need a more efficient manner of signing up to sing songs because the current system is outdated / inefficient and not COVID compliant.
 
 ## Description
 
@@ -28,7 +28,7 @@ This is an app to allow users to search through a list of songs and then sign up
 
 **_ BASIC USER _**
 
-- **Search:** As a user, I would like to see a full list of songs and be able to search through them.
+- **Search:** As a user, I would like be able to search through a songlist by keyword.
 - **Create:** As a user, I can create my profile (stageName, email, photoUrl).
 - **Edit:** As a user, I can edit my profile (stageName, email, photoUrl).
 - **Add Songs to the Signup List:** As a user I can add songs to the signup list.
@@ -68,6 +68,7 @@ This is an app to allow users to search through a list of songs and then sign up
 
 | Path            | Component   | Permissions                | Behavior                                                      |
 | --------------- | ----------- | -------------------------- | ------------------------------------------------------------- |
+| `/404`          | 404.js      | public `<Route>`           | Oh No! Something really bad happened!                         |
 | `/`             | Home.js     | public `<Route>`           | Home page (Noda 101 logo and links to login or signup)        |
 | `/signup`       | Signup.js   | anon only `<AnonRoute>`    | Signup form, link to login, navigate to homepage after signup |
 | `/login`        | Login.js    | anon only `<AnonRoute>`    | Login form, link to signup, navigate to homepage after login  |
@@ -94,15 +95,25 @@ This is an app to allow users to search through a list of songs and then sign up
 ## Services
 
 ```javascript
-export const getAllSongs = async () => {
+export const getUserProfile = async () => {
   try {
     const response = await axios.get("serverUrl");
-    const allSongsResponse = response.data;
-    return allSongsResponse;
+    const userProfile = response.data;
+    return userProfile;
   } catch (error) {
     return error;
   }
 };
+
+// export const getUserProfile = async () => {
+//   try {
+//     const response = await axios.get("serverUrl");
+//     const userProfile = response.data;
+//     return userProfile;
+//   } catch (error) {
+//     return error;
+//   }
+// };
 ```
 
 <br>
@@ -118,6 +129,10 @@ export const getAllSongs = async () => {
 [Server Repository](https://github.com/mattalanhoward/karaoke-server)
 
 [Client Repository](https://github.com/mattalanhoward/karaoke-client)
+
+### WireFrame
+
+https://www.figma.com/file/uPA4tlHQv7dk7qAwGkK35w/Noda-101?node-id=0%3A1
 
 [Deployed App Link](
 
