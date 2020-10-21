@@ -9,6 +9,7 @@ class Profile extends React.Component {
     stageName: "",
     email: "",
     password: "",
+    photoUrl: "",
     errorMessage: "",
   };
 
