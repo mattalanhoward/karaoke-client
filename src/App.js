@@ -7,7 +7,9 @@ import { validateSession } from "./services/userService";
 import Home from "./views/Home";
 import Login from "./views/Login";
 import Signup from "./views/Signup";
+import EditProfile from "./views/EditProfile"
 import Profile from "./views/Profile"
+
 
 class App extends React.Component {
   state = {
@@ -49,6 +51,7 @@ class App extends React.Component {
         <BrowserRouter>
           <nav>
             {authenticated && <Link to="/"> Home </Link>}
+            {authenticated && <Link to="/editprofile"> Edit Profile </Link>}
             {authenticated && <Link to="/profile"> Profile </Link>}
             {!authenticated && <Link to="/login"> Login </Link>}
             {!authenticated && <Link to="/signup"> Signup </Link>}
@@ -73,6 +76,14 @@ class App extends React.Component {
               user={this.state.user}
               authenticated={authenticated}
               component={Profile}
+              // render={props => <Profile {...props} user={this.state.user} />} 
+            />
+            <PrivateRoute
+              exact
+              path="/editprofile"
+              user={this.state.user}
+              authenticated={authenticated}
+              component={EditProfile}
             />
             <AnonRoute
               exact
