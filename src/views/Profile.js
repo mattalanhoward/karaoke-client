@@ -1,7 +1,7 @@
 import React from "react";
-import { signup } from "../services/userService";
+import { editProfile } from "../services/profileService";
 
-class Signup extends React.Component {
+class Profile extends React.Component {
   state = {
     stageName: "",
     email: "",
@@ -18,26 +18,19 @@ class Signup extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    signup({
+    editProfile({
       stageName: this.state.stageName,
       email: this.state.email,
       password: this.state.password,
+      userId: this.props.user._id
     })
-      .then((response) =>
-        response.accessToken
-          ? (localStorage.setItem("accessToken", response.accessToken),
-            this.props.authenticate(response.user),
-            this.props.history.push("/"))
-          : this.setState({
-              errorMessage: response.errorMessage,
-            })
-      )
       .catch((err) => console.log(err));
   };
 
+
   render() {
     const { stageName, email, password, errorMessage } = this.state;
-    
+    // console.log(`USER`, this.props.user._id)
     return (
       <div>
         {errorMessage !== "" && errorMessage}
@@ -66,11 +59,11 @@ class Signup extends React.Component {
             onChange={this.handleChange}
             required={true}
           />
-          <button type="submit"> Sign up </button>
+          <button type="submit"> Update </button>
         </form>
       </div>
     );
   }
 }
 
-export default Signup;
+export default Profile;

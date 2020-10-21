@@ -7,6 +7,7 @@ import { validateSession } from "./services/userService";
 import Home from "./views/Home";
 import Login from "./views/Login";
 import Signup from "./views/Signup";
+import Profile from "./views/Profile"
 
 class App extends React.Component {
   state = {
@@ -48,8 +49,10 @@ class App extends React.Component {
         <BrowserRouter>
           <nav>
             {authenticated && <Link to="/"> Home </Link>}
+            {authenticated && <Link to="/profile"> Profile </Link>}
             {!authenticated && <Link to="/login"> Login </Link>}
             {!authenticated && <Link to="/signup"> Signup </Link>}
+            
             {authenticated && (
               <Link to={"/"} onClick={this.handleLogout}>
                 Logout
@@ -64,13 +67,13 @@ class App extends React.Component {
               component={Home}
             />
           <Switch>
-            {/* <PrivateRoute
+            <PrivateRoute
               exact
-              path="/"
+              path="/profile"
               user={this.state.user}
               authenticated={authenticated}
-              component={Home}
-            /> */}
+              component={Profile}
+            />
             <AnonRoute
               exact
               path="/login"

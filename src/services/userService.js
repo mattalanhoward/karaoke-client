@@ -10,12 +10,15 @@ export const validateSession = (accessToken) => {
     .then((response) => response.data)
     .catch((err) => err);
 };
+
+
 export const signup = ({ stageName, email, password }) => {
   return service
     .post("/user/signup", { stageName, email, password })
     .then((response) => response.data)
     .catch((err) => err);
 };
+
 
 export const login = ({ email, password }) => {
   return service
@@ -25,3 +28,5 @@ export const login = ({ email, password }) => {
       console.log(err);
     });
 };
+
+
