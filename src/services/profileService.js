@@ -27,9 +27,3 @@ export const updateProfile = ({ firstName, lastName, stageName, email, password,
       .catch((err) => err);
   };
 
-  export const saveNewThing = (newThing) => {
-    console.log('new thing is: ', newThing)
-    return service.post('/things/create', newThing)
-      .then(res => res.data)
-      .catch((err) => err);
-  }

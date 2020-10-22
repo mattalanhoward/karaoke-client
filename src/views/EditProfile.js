@@ -13,6 +13,7 @@ class EditProfile extends React.Component {
     errorMessage: "",
   };
 
+  // THIS METHOD HANDLES THE INPUT CHANGE
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -20,8 +21,8 @@ class EditProfile extends React.Component {
     });
   };
 
-    // this method handles just the file upload
-    handleFileUpload = e => {
+  // THIS METHOD HANDLES THE PROFILE PHOTO UPLOAD
+  handleFileUpload = e => {
       console.log("The file to be uploaded is: ", e.target.files[0]);
 
       const uploadData = new FormData();
@@ -41,8 +42,9 @@ class EditProfile extends React.Component {
   }
 
 
+  //
   handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     updateProfile({
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -51,9 +53,16 @@ class EditProfile extends React.Component {
       password: this.state.password,
       userId: this.props.user._id,
       photoUrl: this.state.photoUrl
-      
     })
-      .catch((err) => console.log(err));
+      this.setState({
+        firstName: "",
+        lastName: "",
+        stageName: "",
+        email: "",
+        password: "",
+        photoUrl: ""
+      })
+    // .catch((err) => console.log(err));
   };
 
 

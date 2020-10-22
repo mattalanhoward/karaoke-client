@@ -1,6 +1,6 @@
 import React from "react";
 import './Profile.css'
-import { getProfile } from "../services/profileService";
+import { getProfile, updateProfile } from "../services/profileService";
 
 class Profile extends React.Component {
   state = {
@@ -13,18 +13,44 @@ class Profile extends React.Component {
     errorMessage: "",
   };
 
-  componentDidMount = () => {
+
+  componentDidMount() {
     const user = this.props.user
-  console.log(`USER`, user)
-  getProfile({
-    userId: this.props.user._id
-  })
-    .catch((err) => console.log(err));
-  };
+    this.setState({
+      firstName: user.firstName,
+    })
+    console.log("I am in the mount")
+    this.fetchData();
+  }
+
+  // componentDidUpdate(previousProps, previousState) {
+  //   const userChanged =
+  //     previousState.stageName !== this.state.stageName;
+  //   if (userChanged) {
+  //     this.fetchData();
+  //   }
+  // }
+
+  async fetchData () {
+    const user = this.props.user
+    console.log(`FETCH DATA (USER)`, user)
+    const updatedUser = await getProfile({
+      userId: this.props.user._id
+    })
+    this.setState({
+      firstName: updatedUser.firstName,
+      lastName: updatedUser.lastName,
+      stageName: updatedUser.stageName,
+      email: updatedUser.email,
+      password: updatedUser.password,
+      photoUrl: updatedUser.photoUrl,
+      errorMessage: "",
+    }, () => console.log("CURRENT STATE", this.state))
+  }
 
   render() {
     // console.log(`USER`, this.props.user._id)
-    const user = this.props.user
+    const user = this.state
     return (
       <div>
         <table className="profileInfo">
