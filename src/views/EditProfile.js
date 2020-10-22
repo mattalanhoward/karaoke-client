@@ -8,7 +8,6 @@ class EditProfile extends React.Component {
     lastName: "",
     stageName: "",
     email: "",
-    password: "",
     photoUrl: "",
     errorMessage: "",
   };
@@ -45,21 +44,21 @@ class EditProfile extends React.Component {
   //
   handleSubmit = (event) => {
     event.preventDefault();
+    console.log(this.state)
     updateProfile({
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       stageName: this.state.stageName,
       email: this.state.email,
-      password: this.state.password,
       userId: this.props.user._id,
       photoUrl: this.state.photoUrl
+      
     })
       this.setState({
         firstName: "",
         lastName: "",
         stageName: "",
         email: "",
-        password: "",
         photoUrl: ""
       })
     // .catch((err) => console.log(err));
@@ -67,8 +66,9 @@ class EditProfile extends React.Component {
 
 
   render() {
-    const { firstName, lastName, stageName, email, photoUrl, password, errorMessage } = this.state;
-    // console.log(`USER`, this.props.user._id)
+    //THESE PLACEHOLDERS ARE BEING SET TO THE USER WHO LOGS IN.  
+    const { firstName, lastName, stageName, email, photoUrl, errorMessage } = this.props.user;
+    console.log(`USER In EDIT PROFILE`, this.props.user._id)
     return (
       <div>
         {errorMessage !== "" && errorMessage}
@@ -76,42 +76,30 @@ class EditProfile extends React.Component {
         <label>First Name: </label>
           <input
             name="firstName"
-            value={firstName}
+            placeholder={firstName}
             onChange={this.handleChange}
-            required={true}
             type="text"
           />
           <label>Last Name: </label>
           <input
             name="lastName"
-            value={lastName}
+            placeholder={lastName}
             onChange={this.handleChange}
-            required={true}
             type="text"
           />
           <label>Stage Name: </label>
           <input
             name="stageName"
-            value={stageName}
+            placeholder={stageName}
             onChange={this.handleChange}
-            required={true}
             type="text"
           />
           <label>Email: </label>
           <input
             name="email"
-            value={email}
+            placeholder={email}
             onChange={this.handleChange}
-            required={true}
             type="email"
-          />
-          <label>Password: </label>
-          <input
-            name="password"
-            type="password"
-            value={password}
-            onChange={this.handleChange}
-            required={true}
           />
           <input 
             type="file" 

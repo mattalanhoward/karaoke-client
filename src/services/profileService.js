@@ -15,7 +15,7 @@ export const getProfile = ({ userId }) => {
 export const updateProfile = ({ firstName, lastName, stageName, email, password, userId, photoUrl }) => {
     return service
       .post("/profile/editProfile", { firstName, lastName, stageName, email, password, userId, photoUrl })
-      .then((response) => response.data)
+      .then((res) => res.data)
       .catch((err) => err);
   };
 
