@@ -25,7 +25,7 @@ class Login extends React.Component {
         response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
             this.props.authenticate(response.user),
-            this.props.history.push("/"))
+            this.props.history.push("/search"))
           : this.setState({
               errorMessage: response.errorMessage,
             })

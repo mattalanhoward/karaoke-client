@@ -9,7 +9,7 @@ import Login from "./views/Login";
 import Signup from "./views/Signup";
 import EditProfile from "./views/EditProfile"
 import Profile from "./views/Profile"
-
+import Search from "./views/Search"
 
 class App extends React.Component {
   state = {
@@ -50,12 +50,13 @@ class App extends React.Component {
       <div className="App">
         <BrowserRouter>
           <nav>
-            {authenticated && <Link to="/"> Home </Link>}
-            {authenticated && <Link to="/editprofile"> Edit Profile </Link>}
+            {/* {!authenticated && <Link to="/"> Home </Link>} */}
             {authenticated && <Link to="/profile"> Profile </Link>}
+            {authenticated && <Link to="/editprofile"> Edit Profile </Link>}
+            {authenticated && <Link to="/search"> Search </Link>}
+
             {!authenticated && <Link to="/login"> Login </Link>}
             {!authenticated && <Link to="/signup"> Signup </Link>}
-            
             {authenticated && (
               <Link to={"/"} onClick={this.handleLogout}>
                 Logout
@@ -70,13 +71,26 @@ class App extends React.Component {
               component={Home}
             />
           <Switch>
+          <AnonRoute
+              exact
+              path="/signup"
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              component={Signup}
+            />
+          <AnonRoute
+              exact
+              path="/login"
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              component={Login}
+            />
             <PrivateRoute
               exact
               path="/profile"
               user={this.state.user}
               authenticated={authenticated}
               component={Profile}
-              // render={props => <Profile {...props} user={this.state.user} />} 
             />
             <PrivateRoute
               exact
@@ -85,19 +99,12 @@ class App extends React.Component {
               authenticated={authenticated}
               component={EditProfile}
             />
-            <AnonRoute
+            <PrivateRoute
               exact
-              path="/login"
+              path="/search"
+              user={this.state.user}
               authenticated={authenticated}
-              authenticate={this.authenticate}
-              component={Login}
-            />
-            <AnonRoute
-              exact
-              path="/signup"
-              authenticated={authenticated}
-              authenticate={this.authenticate}
-              component={Signup}
+              component={Search}
             />
           </Switch>
         </BrowserRouter>

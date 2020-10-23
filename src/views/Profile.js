@@ -15,10 +15,7 @@ class Profile extends React.Component {
 
 
   componentDidMount() {
-    const user = this.props.user
-    this.setState({
-      firstName: user.firstName,
-    })
+
     console.log("I am in the mount")
     this.fetchData();
   }
@@ -70,6 +67,10 @@ class Profile extends React.Component {
             <tr>
                 <td>Email:</td>
                 <td>{user.email}</td>
+            </tr>
+            <tr>
+                <td>Photo:</td>
+                <td><img className="profile-image" src={user.photoUrl} alt="profile" /></td>   
             </tr>
             </tbody>
         </table>

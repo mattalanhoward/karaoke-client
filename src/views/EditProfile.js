@@ -17,34 +17,37 @@ class EditProfile extends React.Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
-    });
+    }, ()=> console.log(`Handle Change STATE`, this.state));
   };
 
-  // THIS METHOD HANDLES THE PROFILE PHOTO UPLOAD
-  handleFileUpload = e => {
-      console.log("The file to be uploaded is: ", e.target.files[0]);
 
-      const uploadData = new FormData();
-      // photoUrl => this name has to be the same as in the model since we pass
-      // req.body to .create() method when creating a new thing in '/api/things/create' POST route
-      uploadData.append("photoUrl", e.target.files[0]);
-      
-      handleUpload(uploadData)
-      .then(response => {
-          console.log('response is: ', response);
-          // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
-          this.setState({ imageUrl: response.secure_url });
-        })
-        .catch(err => {
-          console.log("Error while uploading the file: ", err);
-        });
-  }
+  
+    // THIS METHOD HANDLES THE PROFILE PHOTO UPLOAD
+    handleFileUpload = (event) => {
+        console.log("The file to be uploaded is: ", event.target.files[0]);
+  
+        const uploadData = new FormData();
+        // photoUrl => this name has to be the same as in the model since we pass
+        uploadData.append("photoUrl", event.target.files[0]);
+        
+        handleUpload(uploadData)
+        .then(response => {
+            console.log('response is: ', response);
+            // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
+            this.setState({ 
+              photoUrl: response 
+            }, ()=> console.log(`WHERES MY PHOTO AT YO?`, this.state));
+          })
+          .catch(err => {
+            console.log("Error while uploading the file: ", err);
+          });
+    }
 
 
-  //
+
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state)
+    console.log(`HANDLE SUBMIT STATE`, this.state)
     updateProfile({
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -60,7 +63,7 @@ class EditProfile extends React.Component {
         stageName: "",
         email: "",
         photoUrl: ""
-      })
+      }, ()=> console.log(`CURRENT EDIT PROFILE STATE`, this.state))
     // .catch((err) => console.log(err));
   };
 
@@ -68,7 +71,8 @@ class EditProfile extends React.Component {
   render() {
     //THESE PLACEHOLDERS ARE BEING SET TO THE USER WHO LOGS IN.  
     const { firstName, lastName, stageName, email, photoUrl, errorMessage } = this.props.user;
-    console.log(`USER In EDIT PROFILE`, this.props.user._id)
+    // console.log(`USER In EDIT PROFILE`, this.props.user._id)
+    console.log(`IMAGE STATE`, this.state.photoUrl)
     return (
       <div>
         {errorMessage !== "" && errorMessage}
@@ -103,6 +107,7 @@ class EditProfile extends React.Component {
           />
           <input 
             type="file" 
+
             onChange={(e) => this.handleFileUpload(e)}  
             /> 
 

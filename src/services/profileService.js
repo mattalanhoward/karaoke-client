@@ -15,15 +15,16 @@ export const getProfile = ({ userId }) => {
 export const updateProfile = ({ firstName, lastName, stageName, email, password, userId, photoUrl }) => {
     return service
       .post("/profile/editProfile", { firstName, lastName, stageName, email, password, userId, photoUrl })
-      .then((res) => res.data)
+      .then((response) => response.data)
       .catch((err) => err);
   };
 
  
   export const handleUpload = (theFile) => {
     // console.log('file in service: ', theFile)
-    return service.post('/profile/upload', theFile)
-      .then(res => res.data)
+    return service
+      .post('/profile/upload', theFile)
+      .then(response => response.data)
       .catch((err) => err);
   };
 
