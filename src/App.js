@@ -11,12 +11,16 @@ import EditProfile from "./views/EditProfile";
 import Profile from "./views/Profile";
 import Search from "./views/Search";
 import Queue from "./views/Queue";
+import { singerSong } from "./services/searchService";
 
 class App extends React.Component {
   state = {
     authenticated: false,
     user: {},
+    newSignup: {},
+    signups: [],
   };
+  handleSignup = this.handleSignup.bind(this);
 
   componentDidMount = () => {
     const accessToken = localStorage.getItem("accessToken");
@@ -29,6 +33,25 @@ class App extends React.Component {
         .catch((err) => console.log(err));
     }
   };
+
+  async handleSignup(songId) {
+    console.log(`LETS GO TO THE QUEUEUEUEUEU`);
+    console.log(`SONG ID`, songId);
+    const userId = "5f900af3a0d02106ef89ce8d";
+    console.log(`USER ID`, userId);
+
+    const response = await singerSong(userId, songId);
+    const signUpArr = [...this.state.signups];
+    signUpArr.push(response);
+    console.log(`SINGER SONG RESPONSE`, response);
+    this.setState(
+      {
+        newSignup: response,
+        signups: signUpArr,
+      },
+      () => console.log(`CURRENT SIGNUPS STATE`, this.state.signups)
+    );
+  }
 
   authenticate = (user) => {
     this.setState({
@@ -107,6 +130,9 @@ class App extends React.Component {
               user={this.state.user}
               authenticated={authenticated}
               component={Search}
+              signups={this.state.signups}
+              newSignup={this.state.newSignup}
+              signUp={this.handleSignup}
             />
             <PrivateRoute
               exact
@@ -114,6 +140,9 @@ class App extends React.Component {
               user={this.state.user}
               authenticated={authenticated}
               component={Queue}
+              signups={this.state.signups}
+              newSignup={this.state.newSignup}
+              signUp={this.handleSignup}
             />
           </Switch>
         </BrowserRouter>
