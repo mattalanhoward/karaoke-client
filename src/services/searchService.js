@@ -11,3 +11,9 @@ export const searchArtistSongs = (searchParams) => {
     .catch((err) => err);
 };
 
+export const singerSong = (userId, songId) => {
+  return service
+    .post(`/singerSong`, { songId, userId })
+    .then((response) => response.data)
+    .catch((err) => err);
+};

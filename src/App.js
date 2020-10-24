@@ -7,16 +7,17 @@ import { validateSession } from "./services/userService";
 import Home from "./views/Home";
 import Login from "./views/Login";
 import Signup from "./views/Signup";
-import EditProfile from "./views/EditProfile"
-import Profile from "./views/Profile"
-import Search from "./views/Search"
+import EditProfile from "./views/EditProfile";
+import Profile from "./views/Profile";
+import Search from "./views/Search";
+import Queue from "./views/Queue";
 
 class App extends React.Component {
   state = {
     authenticated: false,
     user: {},
   };
-  
+
   componentDidMount = () => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
@@ -54,6 +55,7 @@ class App extends React.Component {
             {authenticated && <Link to="/profile"> Profile </Link>}
             {authenticated && <Link to="/editprofile"> Edit Profile </Link>}
             {authenticated && <Link to="/search"> Search </Link>}
+            {authenticated && <Link to="/queue"> Queue </Link>}
 
             {!authenticated && <Link to="/login"> Login </Link>}
             {!authenticated && <Link to="/signup"> Signup </Link>}
@@ -64,21 +66,21 @@ class App extends React.Component {
             )}
           </nav>
           <AnonRoute
-              exact
-              path="/"
-              user={this.state.user}
-              authenticated={authenticated}
-              component={Home}
-            />
+            exact
+            path="/"
+            user={this.state.user}
+            authenticated={authenticated}
+            component={Home}
+          />
           <Switch>
-          <AnonRoute
+            <AnonRoute
               exact
               path="/signup"
               authenticated={authenticated}
               authenticate={this.authenticate}
               component={Signup}
             />
-          <AnonRoute
+            <AnonRoute
               exact
               path="/login"
               authenticated={authenticated}
@@ -105,6 +107,13 @@ class App extends React.Component {
               user={this.state.user}
               authenticated={authenticated}
               component={Search}
+            />
+            <PrivateRoute
+              exact
+              path="/queue"
+              user={this.state.user}
+              authenticated={authenticated}
+              component={Queue}
             />
           </Switch>
         </BrowserRouter>
