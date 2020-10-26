@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { searchArtistSongs, singerSong } from "../services/searchService";
 import { BrowserRouter, Link, Switch } from "react-router-dom";
 import PrivateRoute from "../components/auth/PrivateRoute";
-import Queue from "../views/Queue";
 
 export default class Search extends Component {
   state = {

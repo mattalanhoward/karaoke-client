@@ -17,3 +17,10 @@ export const singerSong = (userId, songId) => {
     .then((response) => response.data)
     .catch((err) => err);
 };
+
+export const addSongToQueue = (newSignUp) => {
+  return service
+    .post(`/queue/addSong`, { newSignUp })
+    .then((response) => response.data)
+    .catch((error) => console.log(`Error updating song queue `, error));
+};

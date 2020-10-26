@@ -11,7 +11,7 @@ import EditProfile from "./views/EditProfile";
 import Profile from "./views/Profile";
 import Search from "./views/Search";
 import Queue from "./views/Queue";
-import { singerSong } from "./services/searchService";
+import { singerSong, addSongToQueue } from "./services/searchService";
 
 class App extends React.Component {
   state = {
@@ -34,20 +34,25 @@ class App extends React.Component {
     }
   };
 
+  //when SIGNUP button is CLicked....
   async handleSignup(songId) {
     console.log(`LETS GO TO THE QUEUEUEUEUEU`);
     console.log(`SONG ID`, songId);
-    const userId = "5f900af3a0d02106ef89ce8d";
+
+    const userId = this.state.user._id;
     console.log(`USER ID`, userId);
 
-    const response = await singerSong(userId, songId);
-    const signUpArr = [...this.state.signups];
-    signUpArr.push(response);
-    console.log(`SINGER SONG RESPONSE`, response);
+    const singerSongResponse = await singerSong(userId, songId);
+    const queueResponse = await addSongToQueue(singerSongResponse);
+    // const signUpArr = [...this.state.signups];
+    // signUpArr.push(response);
+    console.log(`SINGER SONG RESPONSE`, singerSongResponse);
+    console.log(`QUEUE RESPONSE`, queueResponse);
+
     this.setState(
       {
-        newSignup: response,
-        signups: signUpArr,
+        newSignup: singerSongResponse,
+        signups: queueResponse,
       },
       () => console.log(`CURRENT SIGNUPS STATE`, this.state.signups)
     );
