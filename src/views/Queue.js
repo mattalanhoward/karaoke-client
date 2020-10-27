@@ -1,41 +1,41 @@
 import React, { Component } from "react";
-import { addSongToQueue } from "../services/queueService";
+import { getQueueDetails } from "../services/queueService";
 class Queue extends Component {
   state = {
-    singerQueue: [],
+    //this will be the item to iterate though and post name / song.
+    queueDetails: [],
   };
 
-  //FETCH UPDATED QUEUE
+  componentDidMount() {
+    this.handleQueueDetails();
+  }
 
-  // componentDidUpdate() {
-  //   console.log("THE QUEUE COMPONENENT UPDATED");
-  //   this.handleAddToQueue();
-  // }
-
-  // async handleAddToQueue() {
-  //   const response = await addSongToQueue(this.props.newSignup);
-
-  //   this.setState(
-  //     {
-  //       singerQueue: response,
-  //     },
-  //     () => console.log(`CURRENT STATE OF SINGER QUEUE`, this.state)
-  //   );
-  // }
+  async handleQueueDetails() {
+    //this is a list of singerSong ids
+    console.log(`QUEUE this.props.signups: `, this.props.signups._id);
+    const response = await getQueueDetails(this.props.signups._id);
+    this.setState(
+      {
+        queueDetails: response.song,
+      },
+      () => {
+        console.log(`QUEUE details response`, this.state.queueDetails);
+      }
+    );
+  }
 
   render() {
-    const singerQueue = this.state.singerQueue;
-    const signups = this.props.newSignup;
-    console.log(`NEW SIGNUP`, signups);
+    const songQueue = this.state.queueDetails;
     return (
       <div>
-        This is the Queue Yo!
-        {singerQueue.length > 0 ? (
-          singerQueue.map((signupQueue) => (
-            <div key={signupQueue._id} className="song-container">
+        This is the Queue Yo! Total Signups{songQueue.length}
+        {songQueue.length > 0 ? (
+          songQueue.map((signupItem) => (
+            <div key={signupItem._id} className="song-container">
               <div>
-                <h3>{signupQueue.singer.stageName}</h3>
-                <p>{signupQueue.song.Title}</p>
+                <h3>{signupItem.singer.stageName}</h3>
+                <h3>{signupItem.song.Title}</h3>
+                <p>{signupItem.song.Artist}</p>
               </div>
             </div>
           ))

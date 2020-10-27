@@ -36,23 +36,15 @@ class App extends React.Component {
 
   //when SIGNUP button is CLicked....
   async handleSignup(songId) {
-    console.log(`LETS GO TO THE QUEUEUEUEUEU`);
-    console.log(`SONG ID`, songId);
-
     const userId = this.state.user._id;
-    console.log(`USER ID`, userId);
 
     const singerSongResponse = await singerSong(userId, songId);
     const queueResponse = await addSongToQueue(singerSongResponse);
-    // const signUpArr = [...this.state.signups];
-    // signUpArr.push(response);
-    console.log(`SINGER SONG RESPONSE`, singerSongResponse);
-    console.log(`QUEUE RESPONSE`, queueResponse);
 
     this.setState(
       {
         newSignup: singerSongResponse,
-        signups: queueResponse,
+        signups: queueResponse.updatedQueue,
       },
       () => console.log(`CURRENT SIGNUPS STATE`, this.state.signups)
     );
