@@ -21,3 +21,11 @@ form {
   width: 90%;
   height: auto;
 }
+
+.complete {
+  background-color: gray;
+}
+
+.not-complete {
+  background-color: green;
+}

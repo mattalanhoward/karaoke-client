@@ -4,13 +4,17 @@ import {
   getQueue,
   markSongComplete,
 } from "../services/queueService";
+import "../App.css";
 class Queue extends Component {
   state = {
     //this will be the item to iterate through and post name / song.
     queueId: "",
     queueDetails: [],
     errorMessage: "",
+    songSung: false,
+    toggleBackground: false,
   };
+  handleSongComplete = this.handleSongComplete.bind(this);
 
   async componentDidMount() {
     try {
@@ -22,6 +26,13 @@ class Queue extends Component {
       this.setState({
         errorMessage: error,
       });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.songSung !== this.state.songSung) {
+      console.log("The Pokemons are after us!");
+      this.handleQueueDetails();
     }
   }
 
@@ -69,14 +80,15 @@ class Queue extends Component {
       console.log(`QUEUE this.state.queueDetails._id: `, singerSongId);
       const response = await markSongComplete(singerSongId);
       console.log(`handleSongComplete: `, response);
-      // this.setState(
-      //   {
-      //     queueDetails: response.song,
-      //   },
-      //   () => {
-      //     console.log(`QUEUE details response`, this.state.queueDetails);
-      //   }
-      // );
+      this.setState(
+        {
+          songSung: response,
+          // [event.target.name]: event.target.value,
+        },
+        () => {
+          console.log(`QUEUE Song Sung`, this.state);
+        }
+      );
     } catch (error) {
       console.log(`Error getting queue details`, error);
       this.setState({
@@ -89,11 +101,14 @@ class Queue extends Component {
     const { queueDetails, errorMessage } = this.state;
     const user = this.props.user;
     console.log(user.isAdmin);
+
+    const toggleBackground = this.state.songSung ? "Complete" : "not-complete";
     return (
       <div>
         {errorMessage !== "" && errorMessage}
         Queue <br></br>Total Signups: {queueDetails.length} <br></br>{" "}
         {user.stageName}
+        <img className="profile-image" src={user.photoUrl} alt="profile" />
         {queueDetails.length > 0 ? (
           <table>
             <thead>
@@ -107,7 +122,9 @@ class Queue extends Component {
 
             {queueDetails.map((signupItem, index) => (
               <tbody key={signupItem._id} className="song-container">
-                <tr>
+                <tr
+                  className={signupItem.wasSung ? `complete` : `not-complete`}
+                >
                   <td>{index + 1}</td>
                   <td>
                     <h3>{signupItem.singer.stageName}</h3>
@@ -117,6 +134,9 @@ class Queue extends Component {
                   </td>
                   <td>
                     <p>{signupItem.song.Artist}</p>
+                  </td>
+                  <td>
+                    <h3>{console.log(signupItem.wasSung)}</h3>
                   </td>
                 </tr>
                 <tr>
@@ -136,7 +156,9 @@ class Queue extends Component {
                             }
                           }}
                         >
-                          Complete
+                          {signupItem.wasSung
+                            ? "Song Complete"
+                            : "Mark As Sung"}
                         </button>
                       )}
                     </div>
