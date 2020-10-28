@@ -40,25 +40,6 @@ export default class Search extends Component {
     );
   }
 
-  //   async handleSignup(songId) {
-  //     console.log(`LETS GO TO THE QUEUEUEUEUEU`);
-  //     console.log(`SONG ID`, songId);
-  //     const userId = this.props.user._id;
-  //     console.log(`USER ID`, userId);
-
-  //     const response = await singerSong(userId, songId);
-  //     const signUpArr = [...this.state.signups];
-  //     signUpArr.push(response);
-  //     // console.log(`SINGER SONG RESPONSE`, response);
-  //     this.setState(
-  //       {
-  //         newSignup: response,
-  //         signups: signUpArr,
-  //       },
-  //       () => console.log(`CURRENT SIGNUPS STATE`, this.state.signups)
-  //     );
-  //   }
-
   render() {
     const { errorMessage } = this.props.user;
     //    const { results } = this.state.searchResults
