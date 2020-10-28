@@ -17,3 +17,10 @@ export const getQueueDetails = (queueId) => {
     .then((response) => response.data)
     .catch((error) => console.log(`Error getting queue details `, error));
 };
+
+export const markSongComplete = (singerSongId) => {
+  return service
+    .post(`/singerSong/complete`, { singerSongId })
+    .then((response) => response.data)
+    .catch((err) => err);
+};

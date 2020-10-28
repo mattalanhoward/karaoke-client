@@ -1,10 +1,15 @@
 import React, { Component } from "react";
-import { getQueueDetails, getQueue } from "../services/queueService";
+import {
+  getQueueDetails,
+  getQueue,
+  markSongComplete,
+} from "../services/queueService";
 class Queue extends Component {
   state = {
     //this will be the item to iterate through and post name / song.
     queueId: "",
     queueDetails: [],
+    errorMessage: "",
   };
 
   async componentDidMount() {
@@ -14,6 +19,9 @@ class Queue extends Component {
       await this.handleQueueDetails();
     } catch (error) {
       console.log(`Error when Queue component mounted`, error);
+      this.setState({
+        errorMessage: error,
+      });
     }
   }
 
@@ -25,11 +33,14 @@ class Queue extends Component {
           queueId: response.queueFromDb[0]._id,
         },
         () => {
-          console.log(`QUEUE  response`, this.state.queueId);
+          console.log(`QUEUE  response`, this.state);
         }
       );
     } catch (error) {
-      console.log(`Error while getting the Queue`, error);
+      console.log(`Error getting queue`, error);
+      this.setState({
+        errorMessage: error,
+      });
     }
   }
 
@@ -46,16 +57,44 @@ class Queue extends Component {
         }
       );
     } catch (error) {
-      console.log(`Error getting queue details `, error);
+      console.log(`Error getting queue details`, error);
+      this.setState({
+        errorMessage: error,
+      });
+    }
+  }
+
+  async handleSongComplete(singerSongId) {
+    try {
+      console.log(`QUEUE this.state.queueDetails._id: `, singerSongId);
+      const response = await markSongComplete(singerSongId);
+      console.log(`handleSongComplete: `, response);
+      // this.setState(
+      //   {
+      //     queueDetails: response.song,
+      //   },
+      //   () => {
+      //     console.log(`QUEUE details response`, this.state.queueDetails);
+      //   }
+      // );
+    } catch (error) {
+      console.log(`Error getting queue details`, error);
+      this.setState({
+        errorMessage: error,
+      });
     }
   }
 
   render() {
-    const songQueue = this.state.queueDetails;
+    const { queueDetails, errorMessage } = this.state;
+    const user = this.props.user;
+    console.log(user.isAdmin);
     return (
       <div>
-        {/* Queue <br></br>Total Signups: {songQueue.length} */}
-        {songQueue.length > 0 ? (
+        {errorMessage !== "" && errorMessage}
+        Queue <br></br>Total Signups: {queueDetails.length} <br></br>{" "}
+        {user.stageName}
+        {queueDetails.length > 0 ? (
           <table>
             <thead>
               <tr>
@@ -66,7 +105,7 @@ class Queue extends Component {
               </tr>
             </thead>
 
-            {songQueue.map((signupItem, index) => (
+            {queueDetails.map((signupItem, index) => (
               <tbody key={signupItem._id} className="song-container">
                 <tr>
                   <td>{index + 1}</td>
@@ -80,11 +119,34 @@ class Queue extends Component {
                     <p>{signupItem.song.Artist}</p>
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    <div>
+                      {user.isAdmin && (
+                        <button
+                          onClick={() => {
+                            if (
+                              window.confirm(
+                                `Are you sure you want to mark ${signupItem.song.Title}, by ${signupItem.song.Artist} as Sung?`
+                              )
+                            ) {
+                              {
+                                this.handleSongComplete(signupItem._id);
+                              }
+                            }
+                          }}
+                        >
+                          Complete
+                        </button>
+                      )}
+                    </div>
+                  </td>
+                </tr>
               </tbody>
             ))}
           </table>
         ) : (
-          <h1>There are currently no signups!</h1>
+          <h3>There are currently no signups!</h3>
         )}
       </div>
     );

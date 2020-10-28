@@ -43,15 +43,18 @@ class Profile extends React.Component {
           photoUrl: updatedUser.photoUrl,
           errorMessage: "",
         },
-        () => console.log("CURRENT STATE", this.state)
+        () => console.log("CURRENT PROFILE STATE", this.state)
       );
     } catch (error) {
-      console.log(`Error fetching data`, error);
+      console.log(`Error fetching data in profile`, error);
+      this.setState({
+        errorMessage: error,
+      });
     }
   }
 
   render() {
-    // console.log(`USER`, this.props.user._id)
+    console.log(`USER`, this.props.user._id);
     const user = this.state;
     return (
       <div>
@@ -76,11 +79,13 @@ class Profile extends React.Component {
             <tr>
               <td>Photo:</td>
               <td>
-                <img
-                  className="profile-image"
-                  src={user.photoUrl}
-                  alt="profile"
-                />
+                {user.photoUrl !== undefined && (
+                  <img
+                    className="profile-image"
+                    src={user.photoUrl}
+                    alt="profile"
+                  />
+                )}
               </td>
             </tr>
           </tbody>
