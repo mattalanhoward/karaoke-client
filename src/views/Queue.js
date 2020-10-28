@@ -3,6 +3,7 @@ import {
   getQueueDetails,
   getQueue,
   markSongComplete,
+  deleteSignup,
 } from "../services/queueService";
 import "../App.css";
 class Queue extends Component {
@@ -13,6 +14,7 @@ class Queue extends Component {
     errorMessage: "",
     songSung: false,
     toggleBackground: false,
+    deletedSignup: {},
   };
   handleSongComplete = this.handleSongComplete.bind(this);
 
@@ -32,6 +34,12 @@ class Queue extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.songSung !== this.state.songSung) {
       console.log("The Pokemons are after us!");
+      this.handleQueueDetails();
+    }
+
+    //why no rerender?
+    if (prevState.deleteSignup !== this.state.deleteSignup) {
+      console.log("The Pokemons got us!");
       this.handleQueueDetails();
     }
   }
@@ -97,10 +105,31 @@ class Queue extends Component {
     }
   }
 
+  async handleDeleteSignup(singerSongId) {
+    try {
+      console.log(`QUEUE handleDeleteSignup ID: `, singerSongId);
+      const response = await deleteSignup(singerSongId);
+      console.log(`handleDeleteSignup: `, response);
+      this.setState(
+        {
+          deletedSignup: response.deletedSignup,
+        },
+        () => {
+          console.log(`QUEUE Deleted Signup`, this.state);
+        }
+      );
+    } catch (error) {
+      console.log(`Error deleting signup`, error);
+      this.setState({
+        errorMessage: error,
+      });
+    }
+  }
+
   render() {
     const { queueDetails, errorMessage } = this.state;
     const user = this.props.user;
-    console.log(user.isAdmin);
+    console.log(user._id);
 
     const toggleBackground = this.state.songSung ? "Complete" : "not-complete";
     return (
@@ -136,7 +165,25 @@ class Queue extends Component {
                     <p>{signupItem.song.Artist}</p>
                   </td>
                   <td>
-                    <h3>{console.log(signupItem.wasSung)}</h3>
+                    <div>
+                      {signupItem.singer._id === user._id && (
+                        <button
+                          onClick={() => {
+                            if (
+                              window.confirm(
+                                `Are you sure you want to delete your signup ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
+                              )
+                            ) {
+                              {
+                                this.handleDeleteSignup(signupItem._id);
+                              }
+                            }
+                          }}
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -147,7 +194,7 @@ class Queue extends Component {
                           onClick={() => {
                             if (
                               window.confirm(
-                                `Are you sure you want to mark ${signupItem.song.Title}, by ${signupItem.song.Artist} as Sung?`
+                                `Are you sure you want to change the status of ${signupItem.singer.stageName}, ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
                               )
                             ) {
                               {

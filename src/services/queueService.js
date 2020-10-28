@@ -24,3 +24,10 @@ export const markSongComplete = (singerSongId) => {
     .then((response) => response.data)
     .catch((err) => err);
 };
+
+export const deleteSignup = (singerSongId) => {
+  return service
+    .post(`/singerSong/deleteSignup`, { singerSongId })
+    .then((response) => response.data)
+    .catch((err) => err);
+};
