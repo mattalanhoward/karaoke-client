@@ -130,8 +130,62 @@ class Queue extends Component {
     const { queueDetails, errorMessage } = this.state;
     const user = this.props.user;
     console.log(user._id);
-
+    console.log(`Queue Details`, queueDetails);
     const toggleBackground = this.state.songSung ? "Complete" : "not-complete";
+
+    //     index < array.length - 2 && array[index].wasSung
+    //     ? `complete`
+    //     : `not-complete`
+    // // {/* && array[index + 1]`up-next` */}
+
+    const nextUp = (array, index) => {
+      if (index < array.length) {
+        if (array[index].wasSung === true) {
+          return "complete";
+        }
+      }
+      if (index > 0 && index < array.length) {
+        if (
+          array[index].wasSung === false &&
+          array[index - 1].wasSung === true
+        ) {
+          return "current";
+        }
+      }
+      if (index > 1 && index < array.length) {
+        if (
+          array[index].wasSung === false &&
+          array[index - 2].wasSung === true
+        ) {
+          return "up-next";
+        }
+      }
+    };
+
+    // const markSung = (array, index) => {
+    //   if (index < array.length) {
+    //     if (array[index].wasSung === true) {
+    //       return "complete";
+    //     }
+    //   }
+    //   if (index > 0 && index < array.length) {
+    //     if (
+    //       array[index].wasSung === false &&
+    //       array[index - 1].wasSung === true
+    //     ) {
+    //       return "current";
+    //     }
+    //   }
+    //   if (index > 1 && index < array.length) {
+    //     if (
+    //       array[index].wasSung === false &&
+    //       array[index - 2].wasSung === true
+    //     ) {
+    //       return "up-next";
+    //     }
+    //   }
+    // };
+
     return (
       <div>
         {errorMessage !== "" && errorMessage}
@@ -149,11 +203,9 @@ class Queue extends Component {
               </tr>
             </thead>
 
-            {queueDetails.map((signupItem, index) => (
+            {queueDetails.map((signupItem, index, array) => (
               <tbody key={signupItem._id} className="song-container">
-                <tr
-                  className={signupItem.wasSung ? `complete` : `not-complete`}
-                >
+                <tr className={nextUp(array, index)}>
                   <td>{index + 1}</td>
                   <td>
                     <h3>{signupItem.singer.stageName}</h3>
@@ -168,6 +220,10 @@ class Queue extends Component {
                     <div>
                       {signupItem.singer._id === user._id && (
                         <button
+                          // type="button"
+                          // style={{
+                          //   display: "none",
+                          // }}
                           onClick={() => {
                             if (
                               window.confirm(

@@ -12,6 +12,11 @@ export default class Search extends Component {
     signups: [],
   };
 
+  //Redirect after Signup
+  redirectToTarget = () => {
+    this.props.history.push(`/queue`);
+  };
+
   // THIS METHOD HANDLES THE INPUT CHANGE
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -76,6 +81,7 @@ export default class Search extends Component {
                     ) {
                       {
                         this.props.signUp(song._id);
+                        this.redirectToTarget();
                       }
                     }
                   }}

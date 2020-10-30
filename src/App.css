@@ -26,6 +26,10 @@ form {
   background-color: gray;
 }
 
-.not-complete {
+.current {
   background-color: green;
+}
+
+.up-next {
+  background-color: yellow;
 }
