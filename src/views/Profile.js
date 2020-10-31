@@ -18,13 +18,12 @@ class Profile extends React.Component {
     this.fetchData();
   }
 
-  // componentDidUpdate(previousProps, previousState) {
-  //   const userChanged =
-  //     previousState.stageName !== this.state.stageName;
-  //   if (userChanged) {
-  //     this.fetchData();
-  //   }
-  // }
+  componentDidUpdate(previousProps, previousState) {
+    const userChanged = previousState.stageName !== this.state.stageName;
+    if (userChanged) {
+      this.fetchData();
+    }
+  }
 
   async fetchData() {
     try {
