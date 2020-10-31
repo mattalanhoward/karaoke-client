@@ -12,18 +12,15 @@ class EditProfile extends React.Component {
     errorMessage: "",
   };
 
-  // THIS METHOD HANDLES THE INPUT CHANGE
+  // Handles input change and changes the state.
   handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState(
-      {
-        [name]: value,
-      },
-      () => console.log(`Handle Change STATE`, this.state)
-    );
+    this.setState({
+      [name]: value,
+    });
   };
 
-  // THIS METHOD HANDLES THE PROFILE PHOTO UPLOAD
+  // Profile photo upload
   handleFileUpload = (event) => {
     console.log("The file to be uploaded is: ", event.target.files[0]);
 
@@ -33,14 +30,9 @@ class EditProfile extends React.Component {
 
     handleUpload(uploadData)
       .then((response) => {
-        console.log("response is: ", response);
-        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
-        this.setState(
-          {
-            photoUrl: response,
-          },
-          () => console.log(`WHERES MY PHOTO AT YO?`, this.state)
-        );
+        this.setState({
+          photoUrl: response,
+        });
       })
       .catch((err) => {
         console.log("Error while uploading the file: ", err);
@@ -49,7 +41,7 @@ class EditProfile extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`HANDLE SUBMIT STATE`, this.state);
+    this.redirectToTarget("profile");
     updateProfile({
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -58,21 +50,22 @@ class EditProfile extends React.Component {
       userId: this.props.user._id,
       photoUrl: this.state.photoUrl,
     });
-    this.setState(
-      {
-        firstName: "",
-        lastName: "",
-        stageName: "",
-        email: "",
-        photoUrl: "",
-      },
-      () => console.log(`CURRENT EDIT PROFILE STATE`, this.state)
-    );
-    // .catch((err) => console.log(err));
+    this.setState({
+      firstName: "",
+      lastName: "",
+      stageName: "",
+      email: "",
+      photoUrl: "",
+    });
+  };
+
+  //Redirect after song signup
+  redirectToTarget = (page) => {
+    this.props.history.push(`/${page}`);
   };
 
   render() {
-    //THESE PLACEHOLDERS ARE BEING SET TO THE USER WHO LOGS IN.
+    //These placeholders are being set to the user who logs in.
     const {
       firstName,
       lastName,
@@ -81,8 +74,7 @@ class EditProfile extends React.Component {
       photoUrl,
       errorMessage,
     } = this.props.user;
-    // console.log(`USER In EDIT PROFILE`, this.props.user._id)
-    console.log(`IMAGE STATE`, this.state.photoUrl);
+
     return (
       <div>
         {errorMessage !== "" && errorMessage}

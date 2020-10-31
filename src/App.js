@@ -20,7 +20,6 @@ class App extends React.Component {
     newSignup: {},
     signups: [],
   };
-  handleSignup = this.handleSignup.bind(this);
 
   componentDidMount = () => {
     const accessToken = localStorage.getItem("accessToken");
@@ -35,7 +34,7 @@ class App extends React.Component {
   };
 
   //when SIGNUP button is CLicked....
-  async handleSignup(songId) {
+  handleSignup = async (songId) => {
     const userId = this.state.user._id;
 
     const singerSongResponse = await singerSong(userId, songId);
@@ -48,7 +47,7 @@ class App extends React.Component {
       },
       () => console.log(`CURRENT SIGNUPS STATE`, this.state.signups)
     );
-  }
+  };
 
   authenticate = (user) => {
     this.setState({

@@ -6,6 +6,7 @@ import {
   deleteSignup,
 } from "../services/queueService";
 import "../App.css";
+
 class Queue extends Component {
   state = {
     //this will be the item to iterate through and post name / song.
@@ -16,128 +17,101 @@ class Queue extends Component {
     toggleBackground: false,
     deletedSignup: {},
   };
-  handleSongComplete = this.handleSongComplete.bind(this);
 
-  async componentDidMount() {
+  //get queue then get queuedetails
+  componentDidMount = async () => {
     try {
-      //get queue then get queuedetails
       await this.handleGetQueue();
       await this.handleQueueDetails();
     } catch (error) {
-      console.log(`Error when Queue component mounted`, error);
       this.setState({
         errorMessage: error,
       });
     }
-  }
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.songSung !== this.state.songSung) {
-      console.log("The Pokemons are after us!");
-      this.handleQueueDetails();
-    }
-
-    //why no rerender?
-    if (prevState.deleteSignup !== this.state.deleteSignup) {
-      console.log("The Pokemons got us!");
       this.handleQueueDetails();
     }
   }
 
-  async handleGetQueue() {
+  //Get today's Queue from Db
+  handleGetQueue = async () => {
     try {
       const response = await getQueue();
       this.setState(
         {
           queueId: response.queueFromDb[0]._id,
         },
-        () => {
-          console.log(`QUEUE  response`, this.state);
-        }
+        () => {}
       );
     } catch (error) {
-      console.log(`Error getting queue`, error);
       this.setState({
         errorMessage: error,
       });
     }
-  }
+  };
 
-  async handleQueueDetails() {
+  //Get Queue details
+  handleQueueDetails = async () => {
     try {
-      console.log(`QUEUE this.props.signups: `, this.state.queueId);
       const response = await getQueueDetails(this.state.queueId);
       this.setState(
         {
           queueDetails: response.song,
         },
-        () => {
-          console.log(`QUEUE details response`, this.state.queueDetails);
-        }
+        () => {}
       );
     } catch (error) {
-      console.log(`Error getting queue details`, error);
       this.setState({
         errorMessage: error,
       });
     }
-  }
+  };
 
-  async handleSongComplete(singerSongId) {
+  //Mark song in db as sung
+  handleSongComplete = async (singerSongId) => {
     try {
-      console.log(`QUEUE this.state.queueDetails._id: `, singerSongId);
       const response = await markSongComplete(singerSongId);
-      console.log(`handleSongComplete: `, response);
       this.setState(
         {
           songSung: response,
-          // [event.target.name]: event.target.value,
         },
-        () => {
-          console.log(`QUEUE Song Sung`, this.state);
-        }
+        () => {}
       );
     } catch (error) {
-      console.log(`Error getting queue details`, error);
       this.setState({
         errorMessage: error,
       });
     }
-  }
+  };
 
-  async handleDeleteSignup(singerSongId) {
+  //User deletes their song from queue
+  handleDeleteSignup = async (singerSongId) => {
     try {
-      console.log(`QUEUE handleDeleteSignup ID: `, singerSongId);
       const response = await deleteSignup(singerSongId);
-      console.log(`handleDeleteSignup: `, response);
       this.setState(
         {
-          deletedSignup: response.deletedSignup,
+          queueDetails: this.state.queueDetails.filter(
+            (song) => song._id !== response.deletedSignup._id
+          ),
         },
-        () => {
-          console.log(`QUEUE Deleted Signup`, this.state);
-        }
+        () => {}
       );
     } catch (error) {
-      console.log(`Error deleting signup`, error);
       this.setState({
         errorMessage: error,
       });
     }
-  }
+  };
 
   render() {
     const { queueDetails, errorMessage } = this.state;
     const user = this.props.user;
-    console.log(user._id);
-    console.log(`Queue Details`, queueDetails);
     const toggleBackground = this.state.songSung ? "Complete" : "not-complete";
 
-    //     index < array.length - 2 && array[index].wasSung
-    //     ? `complete`
-    //     : `not-complete`
-    // // {/* && array[index + 1]`up-next` */}
-
+    // Changes background color of songs to indicate who is up
     const nextUp = (array, index) => {
       if (index < array.length) {
         if (array[index].wasSung === true) {
@@ -161,30 +135,6 @@ class Queue extends Component {
         }
       }
     };
-
-    // const markSung = (array, index) => {
-    //   if (index < array.length) {
-    //     if (array[index].wasSung === true) {
-    //       return "complete";
-    //     }
-    //   }
-    //   if (index > 0 && index < array.length) {
-    //     if (
-    //       array[index].wasSung === false &&
-    //       array[index - 1].wasSung === true
-    //     ) {
-    //       return "current";
-    //     }
-    //   }
-    //   if (index > 1 && index < array.length) {
-    //     if (
-    //       array[index].wasSung === false &&
-    //       array[index - 2].wasSung === true
-    //     ) {
-    //       return "up-next";
-    //     }
-    //   }
-    // };
 
     return (
       <div>

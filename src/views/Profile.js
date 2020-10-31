@@ -14,46 +14,38 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
-    console.log("I am in the mount");
     this.fetchData();
   }
 
   componentDidUpdate(previousProps, previousState) {
-    const userChanged = previousState.stageName !== this.state.stageName;
+    const userChanged = previousState !== this.state;
     if (userChanged) {
       this.fetchData();
     }
   }
 
-  async fetchData() {
+  fetchData = async () => {
     try {
-      const user = this.props.user;
-      console.log(`FETCH DATA (USER)`, user);
       const updatedUser = await getProfile({
         userId: this.props.user._id,
       });
-      this.setState(
-        {
-          firstName: updatedUser.firstName,
-          lastName: updatedUser.lastName,
-          stageName: updatedUser.stageName,
-          email: updatedUser.email,
-          password: updatedUser.password,
-          photoUrl: updatedUser.photoUrl,
-          errorMessage: "",
-        },
-        () => console.log("CURRENT PROFILE STATE", this.state)
-      );
+      this.setState({
+        firstName: updatedUser.firstName,
+        lastName: updatedUser.lastName,
+        stageName: updatedUser.stageName,
+        email: updatedUser.email,
+        password: updatedUser.password,
+        photoUrl: updatedUser.photoUrl,
+        errorMessage: "",
+      });
     } catch (error) {
-      console.log(`Error fetching data in profile`, error);
       this.setState({
         errorMessage: error,
       });
     }
-  }
+  };
 
   render() {
-    console.log(`USER`, this.props.user._id);
     const user = this.state;
     return (
       <div>

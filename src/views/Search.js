@@ -12,20 +12,12 @@ export default class Search extends Component {
     signups: [],
   };
 
-  //Redirect after Signup
-  redirectToTarget = () => {
-    this.props.history.push(`/queue`);
-  };
-
   // THIS METHOD HANDLES THE INPUT CHANGE
   handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState(
-      {
-        [name]: value,
-      },
-      () => console.log(`Handle Change STATE`, this.state)
-    );
+    this.setState({
+      [name]: value,
+    });
   };
 
   handleSubmit = (event) => {
@@ -33,21 +25,20 @@ export default class Search extends Component {
     this.fetchSongs();
   };
 
-  async fetchSongs() {
-    console.log(`HANDLE SUBMIT SEARCH`, this.state.searchParams);
+  fetchSongs = async () => {
     const response = await searchArtistSongs(this.state.searchParams);
-    console.log(`RESPONSE SEARCH`, response);
-    this.setState(
-      {
-        searchResults: response,
-      },
-      () => console.log(`CURRENT SEARCH STATE`, this.state)
-    );
-  }
+    this.setState({
+      searchResults: response,
+    });
+  };
+
+  //Redirect after song signup
+  redirectToTarget = () => {
+    this.props.history.push(`/queue`);
+  };
 
   render() {
     const { errorMessage } = this.props.user;
-    //    const { results } = this.state.searchResults
 
     return (
       <div>
@@ -73,14 +64,14 @@ export default class Search extends Component {
                 <p>{song.Artist}</p>
 
                 <button
-                  onClick={() => {
+                  onClick={async () => {
                     if (
                       window.confirm(
                         `Are you sure you want to sing ${song.Title}, by ${song.Artist}?`
                       )
                     ) {
                       {
-                        this.props.signUp(song._id);
+                        await this.props.signUp(song._id);
                         this.redirectToTarget();
                       }
                     }
