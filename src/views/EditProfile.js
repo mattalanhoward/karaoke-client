@@ -30,9 +30,12 @@ class EditProfile extends React.Component {
 
     handleUpload(uploadData)
       .then((response) => {
-        this.setState({
-          photoUrl: response,
-        });
+        this.setState(
+          {
+            photoUrl: response,
+          },
+          () => console.log(`photo response `, response)
+        );
       })
       .catch((err) => {
         console.log("Error while uploading the file: ", err);
