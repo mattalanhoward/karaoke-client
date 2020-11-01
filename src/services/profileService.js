@@ -35,10 +35,9 @@ export const updateProfile = ({
     .catch((err) => err);
 };
 
-export const handleUpload = (theFile) => {
-  // console.log('file in service: ', theFile)
+export const handleUpload = (theFile, { userId }) => {
   return service
-    .post("/profile/upload", theFile)
+    .post("/profile/upload", theFile, userId)
     .then((response) => response.data)
     .catch((err) => err);
 };

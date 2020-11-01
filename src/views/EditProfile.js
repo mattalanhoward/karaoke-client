@@ -54,14 +54,14 @@ class EditProfile extends React.Component {
   };
 
   // Profile photo upload
-  handleFileUpload = (event) => {
+  handleFileUpload = (event, userId) => {
     console.log("The file to be uploaded is: ", event.target.files[0]);
 
     const uploadData = new FormData();
     // photoUrl => this name has to be the same as in the model since we pass
     uploadData.append("photoUrl", event.target.files[0]);
 
-    handleUpload(uploadData)
+    handleUpload(uploadData, this.props.user._id)
       .then((response) => {
         this.setState(
           {
@@ -116,7 +116,10 @@ class EditProfile extends React.Component {
         {errorMessage !== "" && errorMessage}
         <form onSubmit={this.handleSubmit}>
           <label>Profile Image</label>
-          <input type="file" onChange={(e) => this.handleFileUpload(e)} />
+          <input
+            type="file"
+            onChange={(e) => this.handleFileUpload(e, this.props.user._id)}
+          />
           <label>First Name: </label>
           <input
             name="firstName"

@@ -76,7 +76,7 @@ class Queue extends Component {
         {
           queueId: response.queueFromDb[0]._id,
         },
-        () => {}
+        () => console.log(this.state.queueId)
       );
     } catch (error) {
       this.setState({
