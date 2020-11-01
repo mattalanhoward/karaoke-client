@@ -6,6 +6,7 @@ import {
   deleteSignup,
 } from "../services/queueService";
 import "../App.css";
+import { getProfile } from "../services/profileService";
 
 class Queue extends Component {
   state = {
@@ -16,11 +17,19 @@ class Queue extends Component {
     songSung: false,
     toggleBackground: false,
     deletedSignup: {},
+    firstName: "",
+    lastName: "",
+    stageName: "",
+    email: "",
+    password: "",
+    photoUrl: "",
+    errorMessage: "",
   };
 
   //get queue then get queuedetails
   componentDidMount = async () => {
     try {
+      await this.fetchData();
       await this.handleGetQueue();
       await this.handleQueueDetails();
     } catch (error) {
@@ -32,9 +41,32 @@ class Queue extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.songSung !== this.state.songSung) {
+      this.fetchData();
       this.handleQueueDetails();
     }
   }
+
+  //Get current users info
+  fetchData = async () => {
+    try {
+      const updatedUser = await getProfile({
+        userId: this.props.user._id,
+      });
+      this.setState({
+        firstName: updatedUser.firstName,
+        lastName: updatedUser.lastName,
+        stageName: updatedUser.stageName,
+        email: updatedUser.email,
+        password: updatedUser.password,
+        photoUrl: updatedUser.photoUrl,
+        errorMessage: "",
+      });
+    } catch (error) {
+      this.setState({
+        errorMessage: error,
+      });
+    }
+  };
 
   //Get today's Queue from Db
   handleGetQueue = async () => {
@@ -140,8 +172,12 @@ class Queue extends Component {
       <div>
         {errorMessage !== "" && errorMessage}
         Queue <br></br>Total Signups: {queueDetails.length} <br></br>{" "}
-        {user.stageName}
-        <img className="profile-image" src={user.photoUrl} alt="profile" />
+        {this.state.stageName}
+        <img
+          className="profile-image"
+          src={this.state.photoUrl}
+          alt="profile"
+        />
         {queueDetails.length > 0 ? (
           <table>
             <thead>

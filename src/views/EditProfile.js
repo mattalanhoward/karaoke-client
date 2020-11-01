@@ -1,7 +1,7 @@
 import React from "react";
 import { updateProfile, handleUpload } from "../services/profileService";
 // import { Redirect } from "react-router-dom"
-
+import { getProfile } from "../services/profileService";
 class EditProfile extends React.Component {
   state = {
     firstName: "",
@@ -12,12 +12,45 @@ class EditProfile extends React.Component {
     errorMessage: "",
   };
 
+  //get queue then get queuedetails
+  componentDidMount = async () => {
+    try {
+      await this.fetchData();
+    } catch (error) {
+      this.setState({
+        errorMessage: error,
+      });
+    }
+  };
+
   // Handles input change and changes the state.
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
+  };
+
+  //Get current users info
+  fetchData = async () => {
+    try {
+      const updatedUser = await getProfile({
+        userId: this.props.user._id,
+      });
+      this.setState({
+        firstName: updatedUser.firstName,
+        lastName: updatedUser.lastName,
+        stageName: updatedUser.stageName,
+        email: updatedUser.email,
+        password: updatedUser.password,
+        photoUrl: updatedUser.photoUrl,
+        errorMessage: "",
+      });
+    } catch (error) {
+      this.setState({
+        errorMessage: error,
+      });
+    }
   };
 
   // Profile photo upload
@@ -76,7 +109,7 @@ class EditProfile extends React.Component {
       email,
       photoUrl,
       errorMessage,
-    } = this.props.user;
+    } = this.state;
 
     return (
       <div>
