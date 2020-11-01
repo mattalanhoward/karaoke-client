@@ -18,7 +18,7 @@ class Profile extends React.Component {
   }
 
   componentDidUpdate(previousProps, previousState) {
-    const userChanged = previousState !== this.state;
+    const userChanged = previousState.stageName !== this.state.stageName;
     if (userChanged) {
       this.fetchData();
     }

@@ -82,6 +82,8 @@ class EditProfile extends React.Component {
       <div>
         {errorMessage !== "" && errorMessage}
         <form onSubmit={this.handleSubmit}>
+          <label>Profile Image</label>
+          <input type="file" onChange={(e) => this.handleFileUpload(e)} />
           <label>First Name: </label>
           <input
             name="firstName"
@@ -110,7 +112,6 @@ class EditProfile extends React.Component {
             onChange={this.handleChange}
             type="email"
           />
-          <input type="file" onChange={(e) => this.handleFileUpload(e)} />
 
           <button type="submit"> Update </button>
         </form>
