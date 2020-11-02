@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Link, Switch } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import "./App.css";
 import AnonRoute from "./components/auth/AnonRoute";
 import PrivateRoute from "./components/auth/PrivateRoute";
@@ -12,6 +12,7 @@ import Profile from "./views/Profile";
 import Search from "./views/Search";
 import Queue from "./views/Queue";
 import { singerSong, addSongToQueue } from "./services/searchService";
+import BottomNav from "./views/BottomNav";
 
 class App extends React.Component {
   state = {
@@ -66,32 +67,37 @@ class App extends React.Component {
 
   render() {
     const { authenticated } = this.state;
+
     return (
       <div className="App">
         <BrowserRouter>
-          <nav>
-            {/* {!authenticated && <Link to="/"> Home </Link>} */}
+          {/* <nav>
             {authenticated && <Link to="/profile"> Profile </Link>}
             {authenticated && <Link to="/editprofile"> Edit Profile </Link>}
             {authenticated && <Link to="/search"> Search </Link>}
             {authenticated && <Link to="/queue"> Queue </Link>}
-
-            {!authenticated && <Link to="/login"> Login </Link>}
-            {!authenticated && <Link to="/signup"> Signup </Link>}
-            {authenticated && (
-              <Link to={"/"} onClick={this.handleLogout}>
-                Logout
-              </Link>
+          </nav> */}
+          {/* <div className="login-buttons">
+            {!authenticated && (
+              <button className="nav-btns green-btn">
+                <Link to="/login"> Login </Link>
+              </button>
             )}
-          </nav>
-          <AnonRoute
-            exact
-            path="/"
-            user={this.state.user}
-            authenticated={authenticated}
-            component={Home}
-          />
+            {!authenticated && (
+              <button className="nav-btns wht-btn">
+                <Link to="/signup"> Signup </Link>
+              </button>
+            )}
+          </div> */}
+
           <Switch>
+            <AnonRoute
+              exact
+              path="/"
+              user={this.state.user}
+              authenticated={authenticated}
+              component={Home}
+            />
             <AnonRoute
               exact
               path="/signup"
@@ -111,6 +117,7 @@ class App extends React.Component {
               path="/profile"
               user={this.state.user}
               authenticated={authenticated}
+              logout={() => this.handleLogout}
               component={Profile}
             />
             <PrivateRoute
@@ -129,6 +136,7 @@ class App extends React.Component {
               signups={this.state.signups}
               newSignup={this.state.newSignup}
               signUp={this.handleSignup}
+              logout={() => this.handleLogout}
             />
             <PrivateRoute
               exact
@@ -139,6 +147,12 @@ class App extends React.Component {
               signups={this.state.signups}
               newSignup={this.state.newSignup}
               signUp={this.handleSignup}
+              logout={() => this.handleLogout}
+            />
+            <PrivateRoute
+              user={this.state.user}
+              authenticated={authenticated}
+              component={BottomNav}
             />
           </Switch>
         </BrowserRouter>

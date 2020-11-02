@@ -1,0 +1,20 @@
+/* 
+green: #AEEDBF  
+light-grey: #f6f6f6
+medium-grey: #e8e8e8
+font-size: large; input boxes
+font-size: x-large; buttons
+*/
+
+.bottom-nav {
+  /* border: 2px solid red; */
+  background-color: #e8e8e8;
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: large;
+  position: fixed;
+  bottom: 0;
+}

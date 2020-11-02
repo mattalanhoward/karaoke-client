@@ -1,0 +1,140 @@
+/* 
+green: #AEEDBF  
+light-grey: #f6f6f6
+medium-grey: #e8e8e8
+red: #EB5757
+font-size: large; input boxes
+font-size: x-large; buttons
+*/
+
+.complete {
+  background-color: #e8e8e8;
+}
+
+.current {
+  background-color: #aeedbf;
+}
+
+.up-next {
+  background-color: rgb(252, 252, 159);
+}
+
+.heading {
+  /* border: 2px solid red; */
+  background-color: white;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+  position: fixed;
+  top: 0;
+}
+
+.heading img {
+  border: 3px solid #e8e8e8;
+  height: 8vh;
+  width: 8vh;
+  border-radius: 50%;
+}
+
+.logout {
+  margin: auto 8vw;
+}
+
+.logout-duplicate {
+  border: 1px solid red;
+  visibility: hidden;
+  margin: 0 8vw;
+}
+
+.queue {
+  margin: 23vh 0px 10vh 0px;
+}
+
+.queue-header {
+  /* border: 1px solid blue; */
+  background-color: white;
+  /* margin-top: 10vh; */
+  width: 100vw;
+  position: fixed;
+  top: 10vh;
+}
+
+.queue-container {
+  /* border: 2px solid black; */
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.queue-song-container {
+  /* border: 1px solid purple; */
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.signup-info {
+  /* border: 2px solid green; */
+}
+
+.queue-item {
+  /* border: 1px solid green; */
+  border-bottom: 1px solid black;
+  width: 100vw;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.cancel-song-btn {
+  /* border: 1px solid blue; */
+  background-color: #eb5757;
+  height: 30%;
+  width: 30%;
+  padding: 3px;
+  border-radius: 30px;
+}
+
+.stage-name {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5vw;
+}
+
+.song-details {
+  /* border: 2px solid blue; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5vw;
+}
+
+.mark-container {
+  /* border: 2px solid pink; */
+  display: flex;
+  justify-content: center;
+}
+
+.mark-complete {
+  /* border: 1px solid blue; */
+  background-color: #eb5757;
+
+  margin: 5px;
+  padding: 5px;
+  border-radius: 30px;
+}
+/* .signup-btn {
+  border: 1px solid blue;
+  background-color: #aeedbf;
+  height: 30%;
+  width: 30%;
+  padding: 3px;
+  border-radius: 30px;
+} */

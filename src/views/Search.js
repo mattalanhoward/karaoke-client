@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import { searchArtistSongs, singerSong } from "../services/searchService";
-import { BrowserRouter, Link, Switch } from "react-router-dom";
-import PrivateRoute from "../components/auth/PrivateRoute";
+import { searchArtistSongs } from "../services/searchService";
+import { Link } from "react-router-dom";
+import BottomNav from "./BottomNav";
+import "./Search.css";
+import "../App.css";
+import { getProfile } from "../services/profileService";
 
 export default class Search extends Component {
   state = {
@@ -10,9 +13,48 @@ export default class Search extends Component {
     errorMessage: "",
     newSignup: {},
     signups: [],
+    firstName: "",
+    lastName: "",
+    stageName: "",
+    email: "",
+    password: "",
+    photoUrl: "",
   };
 
-  // THIS METHOD HANDLES THE INPUT CHANGE
+  //get updated user info
+  componentDidMount = async () => {
+    try {
+      await this.fetchData();
+    } catch (error) {
+      this.setState({
+        errorMessage: error,
+      });
+    }
+  };
+
+  //Get current users info
+  fetchData = async () => {
+    try {
+      const updatedUser = await getProfile({
+        userId: this.props.user._id,
+      });
+      this.setState({
+        firstName: updatedUser.firstName,
+        lastName: updatedUser.lastName,
+        stageName: updatedUser.stageName,
+        email: updatedUser.email,
+        password: updatedUser.password,
+        photoUrl: updatedUser.photoUrl,
+        errorMessage: "",
+      });
+    } catch (error) {
+      this.setState({
+        errorMessage: error,
+      });
+    }
+  };
+
+  //Handles input change
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -20,11 +62,13 @@ export default class Search extends Component {
     });
   };
 
+  //Get songs when user clicks submit
   handleSubmit = (event) => {
     event.preventDefault();
     this.fetchSongs();
   };
 
+  //Call db with searchParams and set state to results
   fetchSongs = async () => {
     const response = await searchArtistSongs(this.state.searchParams);
     this.setState({
@@ -41,50 +85,67 @@ export default class Search extends Component {
     const { errorMessage } = this.props.user;
 
     return (
-      <div>
-        <h1>Noda 101 Song List</h1>
+      <div className="search-container">
         {errorMessage !== "" && errorMessage}
-        <form onSubmit={this.handleSubmit}>
-          <input
-            name="searchParams"
-            placeholder="Search by Song/Artist"
-            onChange={this.handleChange}
-            type="text"
-          />
-          <button type="submit"> Search </button>
-        </form>
-
-        <h2>RESULTS</h2>
-        <h3># Songs: {this.state.searchResults.length}</h3>
-        {this.state.searchResults.length > 0 ? (
-          this.state.searchResults.map((song) => (
-            <div key={song._id} className="song-container">
-              <div>
-                <h3>{song.Title}</h3>
-                <p>{song.Artist}</p>
-
-                <button
-                  onClick={async () => {
-                    if (
-                      window.confirm(
-                        `Are you sure you want to sing ${song.Title}, by ${song.Artist}?`
-                      )
-                    ) {
-                      {
+        <section className="heading">
+          <div className="logout-duplicate">Logout</div>
+          <img src={this.state.photoUrl} alt="profile" />
+          <div className="logout">
+            <Link to={"/"} onClick={this.props.logout()}>
+              Logout
+            </Link>
+          </div>
+        </section>
+        <section className="search">
+          <div className="search-bar">
+            <h3>Noda 101 Song List</h3>
+            <form onSubmit={this.handleSubmit}>
+              <input
+                name="searchParams"
+                placeholder="Search by Song/Artist"
+                onChange={this.handleChange}
+                type="text"
+              />
+              <button className="search-btn" type="submit">
+                {" "}
+                Search{" "}
+              </button>
+            </form>
+            <h3>Search Results: {this.state.searchResults.length}</h3>
+          </div>
+          {/* {this.state.searchResults.length > 0 ? ( */}
+          <section className="results-container">
+            {
+              this.state.searchResults.map((song) => (
+                <div key={song._id} className="song-container">
+                  <div className="results">
+                    <h3>{song.Title}</h3>
+                    <p>{song.Artist}</p>
+                  </div>
+                  <button
+                    className="signup-btn"
+                    onClick={async () => {
+                      if (
+                        window.confirm(
+                          `Are you sure you want to sing ${song.Title}, by ${song.Artist}?`
+                        )
+                      ) {
                         await this.props.signUp(song._id);
                         this.redirectToTarget();
                       }
-                    }
-                  }}
-                >
-                  Sign Up!
-                </button>
-              </div>
-            </div>
-          ))
-        ) : (
-          <div>No Results</div>
-        )}
+                    }}
+                  >
+                    Sign Up!
+                  </button>
+                </div>
+              ))
+              /* ) : (
+            <div>No Results</div>
+          ) */
+            }
+          </section>
+        </section>
+        <BottomNav />
       </div>
     );
   }

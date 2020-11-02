@@ -1,6 +1,8 @@
 import React from "react";
 import "./Profile.css";
-import { getProfile, updateProfile } from "../services/profileService";
+import { getProfile } from "../services/profileService";
+import BottomNav from "./BottomNav";
+import { Link } from "react-router-dom";
 
 class Profile extends React.Component {
   state = {
@@ -48,39 +50,65 @@ class Profile extends React.Component {
   render() {
     const user = this.state;
     return (
-      <div>
+      <div className="profile">
+        <section className="profile-heading">
+          <div className="logout-duplicate">Logout</div>
+          <h1>Profile</h1>
+          <div className="logout">
+            <Link to={"/"} onClick={this.props.logout()}>
+              Logout
+            </Link>
+          </div>
+        </section>
+        <div className="profile-image-container">
+          {user.photoUrl !== undefined && (
+            <img className="profile-image" src={user.photoUrl} alt="profile" />
+          )}
+        </div>
         <table className="profileInfo">
           <tbody>
             <tr>
-              <td>Stage Name:</td>
-              <td>{user.stageName}</td>
+              <h4>
+                <Link to={"/editprofile"}>Edit Profile</Link>
+              </h4>
             </tr>
-            <tr>
-              <td>First Name:</td>
-              <td>{user.firstName}</td>
-            </tr>
-            <tr>
-              <td>Last Name:</td>
-              <td>{user.lastName}</td>
-            </tr>
-            <tr>
-              <td>Email:</td>
-              <td>{user.email}</td>
-            </tr>
-            <tr>
-              <td>Photo:</td>
+            <tr className="name">
               <td>
-                {user.photoUrl !== undefined && (
-                  <img
-                    className="profile-image"
-                    src={user.photoUrl}
-                    alt="profile"
-                  />
-                )}
+                <h1>
+                  {user.firstName}
+                  {` ${user.lastName}`}
+                </h1>
               </td>
+            </tr>
+            <tr>
+              <td className="name">
+                <h1>{user.stageName}</h1>
+              </td>
+            </tr>
+            {/* <tr>
+              <td>
+                <h3>Favorite Artist</h3>
+              </td>
+              <td>{user.email}</td>
+            </tr> */}
+            <tr>
+              <td>
+                <h3>Number of Songs Sang</h3>
+              </td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>
+                <h3>Rank</h3>
+              </td>
+              <td>4 of 304</td>
+            </tr>
+            <tr>
+              <td>{user.email}</td>
             </tr>
           </tbody>
         </table>
+        <BottomNav />
       </div>
     );
   }

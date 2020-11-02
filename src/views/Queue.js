@@ -1,12 +1,16 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   getQueueDetails,
   getQueue,
   markSongComplete,
   deleteSignup,
 } from "../services/queueService";
-import "../App.css";
+// import "../App.css";
 import { getProfile } from "../services/profileService";
+import "./Search.css";
+import "./Queue.css";
+import BottomNav from "./BottomNav";
 
 class Queue extends Component {
   state = {
@@ -15,7 +19,6 @@ class Queue extends Component {
     queueDetails: [],
     errorMessage: "",
     songSung: false,
-    toggleBackground: false,
     deletedSignup: {},
     firstName: "",
     lastName: "",
@@ -39,6 +42,7 @@ class Queue extends Component {
     }
   };
 
+  //Update details when song sung is clicked
   componentDidUpdate(prevProps, prevState) {
     if (prevState.songSung !== this.state.songSung) {
       this.fetchData();
@@ -75,8 +79,8 @@ class Queue extends Component {
       this.setState(
         {
           queueId: response.queueFromDb[0]._id,
-        },
-        () => console.log(this.state.queueId)
+        }
+        // () => console.log(this.state.queueId)
       );
     } catch (error) {
       this.setState({
@@ -141,7 +145,6 @@ class Queue extends Component {
   render() {
     const { queueDetails, errorMessage } = this.state;
     const user = this.props.user;
-    const toggleBackground = this.state.songSung ? "Complete" : "not-complete";
 
     // Changes background color of songs to indicate who is up
     const nextUp = (array, index) => {
@@ -169,96 +172,88 @@ class Queue extends Component {
     };
 
     return (
-      <div>
+      <div className="queue-container">
         {errorMessage !== "" && errorMessage}
-        Queue <br></br>Total Signups: {queueDetails.length} <br></br>{" "}
-        {this.state.stageName}
-        <img
-          className="profile-image"
-          src={this.state.photoUrl}
-          alt="profile"
-        />
-        {queueDetails.length > 0 ? (
-          <table>
-            <thead>
-              <tr>
-                <td></td>
-                <td>Singer</td>
-                <td>Artist</td>
-                <td>Song</td>
-              </tr>
-            </thead>
-
-            {queueDetails.map((signupItem, index, array) => (
-              <tbody key={signupItem._id} className="song-container">
-                <tr className={nextUp(array, index)}>
-                  <td>{index + 1}</td>
-                  <td>
-                    <h3>{signupItem.singer.stageName}</h3>
-                  </td>
-                  <td>
-                    <h3>{signupItem.song.Title}</h3>
-                  </td>
-                  <td>
-                    <p>{signupItem.song.Artist}</p>
-                  </td>
-                  <td>
-                    <div>
-                      {signupItem.singer._id === user._id && (
-                        <button
-                          // type="button"
-                          // style={{
-                          //   display: "none",
-                          // }}
-                          onClick={() => {
-                            if (
-                              window.confirm(
-                                `Are you sure you want to delete your signup ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
-                              )
-                            ) {
-                              {
-                                this.handleDeleteSignup(signupItem._id);
-                              }
-                            }
-                          }}
-                        >
-                          Delete
-                        </button>
-                      )}
+        <section className="heading">
+          <div className="logout-duplicate">Logout</div>
+          <img src={this.state.photoUrl} alt="profile" />
+          <div className="logout">
+            <Link to={"/"} onClick={this.props.logout()}>
+              Logout
+            </Link>
+          </div>
+        </section>
+        <div className="queue-header">
+          <h3>Queue</h3>
+          <h4>Total Signups: {queueDetails.length}</h4>
+        </div>
+        <section className="queue">
+          {queueDetails.length > 0 ? (
+            <div>
+              {queueDetails.map((signupItem, index, array) => (
+                <div key={signupItem._id} className="queue-song-container">
+                  <div className="signup-info">
+                    <div className={nextUp(array, index)}>
+                      <div className="queue-item">
+                        {/* <div>{index + 1}</div> */}
+                        <div className="stage-name">
+                          <h4>{signupItem.singer.stageName}</h4>
+                          {signupItem.singer._id === user._id && (
+                            <button
+                              className="cancel-song-btn"
+                              // type="button"
+                              // style={{
+                              //   display: "none",
+                              // }}
+                              onClick={() => {
+                                if (
+                                  window.confirm(
+                                    `Are you sure you want to delete your signup ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
+                                  )
+                                ) {
+                                  this.handleDeleteSignup(signupItem._id);
+                                }
+                              }}
+                            >
+                              Cancel
+                            </button>
+                          )}
+                        </div>
+                        <div className="song-details">
+                          <h4>{signupItem.song.Title}</h4> -
+                          <h4>{signupItem.song.Artist}</h4>
+                        </div>
+                        <div className="mark-container">
+                          {user.isAdmin && (
+                            <button
+                              className="mark-complete"
+                              onClick={() => {
+                                if (
+                                  window.confirm(
+                                    `Are you sure you want to change the status of ${signupItem.singer.stageName}, ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
+                                  )
+                                ) {
+                                  this.handleSongComplete(signupItem._id);
+                                }
+                              }}
+                            >
+                              {signupItem.wasSung
+                                ? "Song Complete"
+                                : "Mark As Sung"}
+                            </button>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div>
-                      {user.isAdmin && (
-                        <button
-                          onClick={() => {
-                            if (
-                              window.confirm(
-                                `Are you sure you want to change the status of ${signupItem.singer.stageName}, ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
-                              )
-                            ) {
-                              {
-                                this.handleSongComplete(signupItem._id);
-                              }
-                            }
-                          }}
-                        >
-                          {signupItem.wasSung
-                            ? "Song Complete"
-                            : "Mark As Sung"}
-                        </button>
-                      )}
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            ))}
-          </table>
-        ) : (
-          <h3>There are currently no signups!</h3>
-        )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <h3>There are currently no signups!</h3>
+          )}
+        </section>
+        <BottomNav />
       </div>
     );
   }

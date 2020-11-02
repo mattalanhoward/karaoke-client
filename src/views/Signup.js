@@ -1,5 +1,7 @@
 import React from "react";
 import { signup } from "../services/userService";
+import { Link } from "react-router-dom";
+import "./Signup.css";
 
 class Signup extends React.Component {
   state = {
@@ -27,7 +29,7 @@ class Signup extends React.Component {
         response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
             this.props.authenticate(response.user),
-            this.props.history.push("/"))
+            this.props.history.push("/search"))
           : this.setState({
               errorMessage: response.errorMessage,
             })
@@ -37,37 +39,60 @@ class Signup extends React.Component {
 
   render() {
     const { stageName, email, password, errorMessage } = this.state;
-    
+
     return (
-      <div>
+      <div className="signup-container">
         {errorMessage !== "" && errorMessage}
+        <img
+          className="logo"
+          src={
+            "https://res.cloudinary.com/dcod1zxnl/image/upload/v1603130425/Noda_101_Logo_l72snm.png"
+          }
+          alt="Noda 101 Logo"
+        />
         <form onSubmit={this.handleSubmit}>
-          <label>Stage Name: </label>
+          {/* <label>Stage Name: </label> */}
           <input
             name="stageName"
             value={stageName}
             onChange={this.handleChange}
             required={true}
             type="text"
+            placeholder="Stage Name"
           />
-          <label>Email: </label>
+          {/* <label>Email: </label> */}
           <input
             name="email"
             value={email}
             onChange={this.handleChange}
             required={true}
             type="email"
+            placeholder="Email"
           />
-          <label>Password: </label>
+          {/* <label>Password: </label> */}
           <input
             name="password"
             type="password"
             value={password}
             onChange={this.handleChange}
             required={true}
+            placeholder="Password"
           />
-          <button type="submit"> Sign up </button>
+          {/* <input
+            name="password"
+            type="password"
+            value={password}
+            onChange={this.handleChange}
+            required={true}
+            placeholder="Confirm Password"
+          /> */}
+          <button className="nav-btns green-btn" type="submit">
+            {" "}
+            Sign up{" "}
+          </button>
         </form>
+
+        <Link to={"/login"}>Already Registered? Login</Link>
       </div>
     );
   }

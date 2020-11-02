@@ -2,6 +2,8 @@ import React from "react";
 import { updateProfile, handleUpload } from "../services/profileService";
 // import { Redirect } from "react-router-dom"
 import { getProfile } from "../services/profileService";
+import BottomNav from "./BottomNav";
+
 class EditProfile extends React.Component {
   state = {
     firstName: "",
@@ -102,14 +104,7 @@ class EditProfile extends React.Component {
 
   render() {
     //These placeholders are being set to the user who logs in.
-    const {
-      firstName,
-      lastName,
-      stageName,
-      email,
-      photoUrl,
-      errorMessage,
-    } = this.state;
+    const { firstName, lastName, stageName, email, errorMessage } = this.state;
 
     return (
       <div>
@@ -151,6 +146,7 @@ class EditProfile extends React.Component {
 
           <button type="submit"> Update </button>
         </form>
+        <BottomNav />
       </div>
     );
   }

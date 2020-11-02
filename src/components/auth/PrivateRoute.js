@@ -6,6 +6,7 @@ const PrivateRoute = ({
   signups,
   newSignup,
   signUp,
+  logout,
   authenticated,
   user,
   ...rest
@@ -20,6 +21,7 @@ const PrivateRoute = ({
             signups={signups}
             newSignup={newSignup}
             signUp={signUp}
+            logout={logout}
           />
         ) : (
           <Redirect to="/login" />

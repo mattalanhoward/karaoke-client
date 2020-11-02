@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import Home from "../../views/Home";
 const AnonRoute = ({
   component: Component,
   authenticated,
@@ -10,9 +11,9 @@ const AnonRoute = ({
     <Route
       render={(props) =>
         authenticated === false ? (
-          <Component {...props} authenticate={authenticate} />
+          ((<Home />), (<Component {...props} authenticate={authenticate} />))
         ) : (
-          <Redirect to="/" />
+          <Redirect to="/search" />
         )
       }
       {...rest}

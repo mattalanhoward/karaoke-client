@@ -1,8 +1,18 @@
+/* 
+green: #AEEDBF  
+light-grey: #f6f6f6
+medium-grey: #e8e8e8
+font-size: large; input boxes
+font-size: x-large; buttons
+*/
+
 .App {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 form {
   display: flex;
@@ -11,14 +21,54 @@ form {
 
 /* HOME */
 .home-container {
-  height: 90vh;
+  /* border: 2px solid green; */
+  height: 50vh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+.login-buttons {
+  /* border: 3px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100vw;
+  height: 20vh;
+  margin: 0 auto;
+}
+
+/* remove all style from links */
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.nav-btns {
+  /* border: 1px solid orange; */
+  height: 6vh;
+  border-radius: 30px;
+  width: 80vw;
+  margin: 0 auto;
+  text-decoration: none;
+  font-size: x-large;
+  border-style: none;
+  padding: 0px 10px;
+}
+
+.green-btn {
+  background-color: #aeedbf;
+  color: white;
+}
+
+.wht-btn {
+  background-color: white;
+  color: #aeedbf;
+}
+
 .logo {
-  width: 90%;
+  width: 100vw;
   height: auto;
 }
 
@@ -32,4 +82,17 @@ form {
 
 .up-next {
   background-color: yellow;
+}
+
+input {
+  border: 2px solid #e8e8e8;
+  height: 5vh;
+  border-radius: 10px;
+  width: 80vw;
+  margin: 10px auto;
+  text-decoration: none;
+  font-size: large;
+  padding: 0px 10px;
+  background-color: #f6f6f6;
+  /* border-style: none; */
 }
