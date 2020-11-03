@@ -19,8 +19,8 @@ font-size: x-large; buttons
   background-color: rgb(252, 252, 159);
 }
 
-.heading {
-  /* border: 2px solid red; */
+/* .heading {
+  border: 2px solid red;
   background-color: white;
   width: 100vw;
   height: 10vh;
@@ -30,25 +30,25 @@ font-size: x-large; buttons
   border-bottom: 1px solid #e8e8e8;
   position: fixed;
   top: 0;
-}
+} */
 
-.heading img {
+/* .heading img {
   border: 3px solid #e8e8e8;
   object-fit: cover;
   height: 8vh;
   width: 8vh;
   border-radius: 50%;
-}
+} */
 
-.logout {
+/* .logout {
   margin: auto 8vw;
-}
+} */
 
-.logout-duplicate {
+/* .logout-duplicate {
   border: 1px solid red;
   visibility: hidden;
   margin: 0 8vw;
-}
+} */
 
 .queue {
   margin: 23vh 0px 10vh 0px;
@@ -61,6 +61,11 @@ font-size: x-large; buttons
   width: 100vw;
   position: fixed;
   top: 10vh;
+}
+
+h3,
+h4 {
+  margin: 10px auto;
 }
 
 .queue-container {

@@ -26,7 +26,6 @@ class Queue extends Component {
     email: "",
     password: "",
     photoUrl: "",
-    errorMessage: "",
   };
 
   //get queue then get queuedetails

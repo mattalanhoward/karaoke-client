@@ -5,10 +5,11 @@ import BottomNav from "./BottomNav";
 import "./Search.css";
 import "../App.css";
 import { getProfile } from "../services/profileService";
+import signupImage from "../images/signup.png";
 
 export default class Search extends Component {
   state = {
-    searchParams: "",
+    searchParams: "Led Zeppelin - Stairway to Heaven",
     searchResults: [],
     errorMessage: "",
     newSignup: {},
@@ -111,7 +112,7 @@ export default class Search extends Component {
                 Search{" "}
               </button>
             </form>
-            <h3>Search Results: {this.state.searchResults.length}</h3>
+            <h5>Search Results: {this.state.searchResults.length}</h5>
           </div>
           {/* {this.state.searchResults.length > 0 ? ( */}
           <section className="results-container">
@@ -119,7 +120,7 @@ export default class Search extends Component {
               this.state.searchResults.map((song) => (
                 <div key={song._id} className="song-container">
                   <div className="results">
-                    <h3>{song.Title}</h3>
+                    <h4>{song.Title}</h4>
                     <p>{song.Artist}</p>
                   </div>
                   <button
@@ -135,7 +136,11 @@ export default class Search extends Component {
                       }
                     }}
                   >
-                    Sign Up!
+                    <img
+                      className="signup-icon"
+                      src={signupImage}
+                      alt="signup icon"
+                    />
                   </button>
                 </div>
               ))

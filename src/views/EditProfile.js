@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { updateProfile, handleUpload } from "../services/profileService";
 // import { Redirect } from "react-router-dom"
 import { getProfile } from "../services/profileService";
@@ -104,39 +105,54 @@ class EditProfile extends React.Component {
 
   render() {
     //These placeholders are being set to the user who logs in.
-    const { firstName, lastName, stageName, email, errorMessage } = this.state;
+    const { email, errorMessage } = this.state;
+    const user = this.state;
 
     return (
-      <div>
+      <div className="profile">
         {errorMessage !== "" && errorMessage}
+        <section className="profile-heading">
+          <div className="logout-duplicate">Logout</div>
+          <h1>Edit Profile</h1>
+          <div className="logout">
+            <Link to={"/"} onClick={this.props.logout()}>
+              Logout
+            </Link>
+          </div>
+        </section>
+        <section className="profile-image-container">
+          {user.photoUrl !== undefined && (
+            <img className="profile-image" src={user.photoUrl} alt="profile" />
+          )}
+        </section>
         <form onSubmit={this.handleSubmit}>
-          <label>Profile Image</label>
+          <label>Change Image</label>
           <input
             type="file"
             onChange={(e) => this.handleFileUpload(e, this.props.user._id)}
           />
-          <label>First Name: </label>
+          {/* <label>First Name: </label> */}
           <input
             name="firstName"
-            placeholder={firstName}
+            placeholder="First Name"
             onChange={this.handleChange}
             type="text"
           />
-          <label>Last Name: </label>
+          {/* <label>Last Name: </label> */}
           <input
             name="lastName"
-            placeholder={lastName}
+            placeholder="Last Name"
             onChange={this.handleChange}
             type="text"
           />
-          <label>Stage Name: </label>
+          {/* <label>Stage Name: </label> */}
           <input
             name="stageName"
-            placeholder={stageName}
+            placeholder="Stage Name"
             onChange={this.handleChange}
             type="text"
           />
-          <label>Email: </label>
+          {/* <label>Email: </label> */}
           <input
             name="email"
             placeholder={email}
@@ -144,7 +160,10 @@ class EditProfile extends React.Component {
             type="email"
           />
 
-          <button type="submit"> Update </button>
+          <button className="search-btn" type="submit">
+            {" "}
+            Update{" "}
+          </button>
         </form>
         <BottomNav />
       </div>

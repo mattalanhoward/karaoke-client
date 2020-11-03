@@ -125,6 +125,7 @@ class App extends React.Component {
               path="/editprofile"
               user={this.state.user}
               authenticated={authenticated}
+              logout={() => this.handleLogout}
               component={EditProfile}
             />
             <PrivateRoute

@@ -15,23 +15,24 @@ font-size: x-large; buttons
 }
 
 .heading {
-  /* border: 2px solid red; */
+  /* border: 2px solid yellow; */
   background-color: white;
   width: 100vw;
-  height: 10vh;
+  height: 8vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e8e8e8;
   position: fixed;
+  padding-top: 1vh;
   top: 0;
 }
 
 .heading img {
   border: 3px solid #e8e8e8;
   object-fit: cover;
-  height: 8vh;
-  width: 8vh;
+  height: 5vh;
+  width: 5vh;
   border-radius: 50%;
 }
 
@@ -40,7 +41,7 @@ font-size: x-large; buttons
 }
 
 .logout-duplicate {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   visibility: hidden;
   margin: 0 8vw;
 }
@@ -60,8 +61,8 @@ font-size: x-large; buttons
 
 .search {
   /* border: 1px solid red; */
-  height: 80vh;
-  margin-top: 10vh;
+  height: 84vh;
+  margin-top: 6vh;
 }
 
 .search-bar {
@@ -70,7 +71,20 @@ font-size: x-large; buttons
   /* margin-top: 10vh; */
   width: 100vw;
   position: fixed;
-  top: 10vh;
+  top: 8vh;
+}
+
+h3,
+h5 {
+  margin: 10px auto;
+}
+
+h4 {
+  margin: 5px;
+}
+
+p {
+  margin: 5px auto;
 }
 
 .results-container {
@@ -78,7 +92,7 @@ font-size: x-large; buttons
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 27vh 20px 11vh 20px;
+  margin: 24vh 20px 11vh 20px;
   justify-content: space-between;
   border-bottom: 1px solid #e8e8e8;
 }
@@ -94,15 +108,20 @@ font-size: x-large; buttons
 
 .results {
   /* border: 1px solid green; */
-  width: 60vw;
+  width: 90vw;
   text-align: left;
 }
 
 .signup-btn {
   /* border: 1px solid blue; */
-  background-color: #aeedbf;
-  height: 30%;
-  width: 30%;
+  border: none;
+  background-color: white;
+  height: 50%;
+
   padding: 3px;
-  border-radius: 30px;
+}
+
+.signup-icon {
+  width: 20px;
+  height: 20px;
 }

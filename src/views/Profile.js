@@ -60,18 +60,16 @@ class Profile extends React.Component {
             </Link>
           </div>
         </section>
-        <div className="profile-image-container">
+        <section className="profile-image-container">
           {user.photoUrl !== undefined && (
             <img className="profile-image" src={user.photoUrl} alt="profile" />
           )}
-        </div>
+        </section>
+        <h4>
+          <Link to={"/editprofile"}>Edit Profile</Link>
+        </h4>
         <table className="profileInfo">
           <tbody>
-            <tr>
-              <h4>
-                <Link to={"/editprofile"}>Edit Profile</Link>
-              </h4>
-            </tr>
             <tr className="name">
               <td>
                 <h1>
@@ -90,7 +88,7 @@ class Profile extends React.Component {
                 <h3>Favorite Artist</h3>
               </td>
               <td>{user.email}</td>
-            </tr> */}
+            </tr>
             <tr>
               <td>
                 <h3>Number of Songs Sang</h3>
@@ -102,7 +100,7 @@ class Profile extends React.Component {
                 <h3>Rank</h3>
               </td>
               <td>4 of 304</td>
-            </tr>
+            </tr> */}
             <tr>
               <td>{user.email}</td>
             </tr>

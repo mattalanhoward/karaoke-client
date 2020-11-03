@@ -9,7 +9,7 @@ font-size: x-large; buttons
 .bottom-nav {
   /* border: 2px solid red; */
   background-color: #e8e8e8;
-  height: 10vh;
+  height: 7vh;
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
