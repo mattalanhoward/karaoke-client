@@ -4,11 +4,16 @@ light-grey: #f6f6f6
 medium-grey: #e8e8e8
 font-size: large; input boxes
 font-size: x-large; buttons
+hot pink: rgb(210,34,71);
+pink: rgb(177,85,157);
+teal: rgb(67,162,168);
+blue: rgb(5, 55, 159);
+yellow: rgb(245, 225, 92);
 */
 
 .bottom-nav {
   /* border: 2px solid red; */
-  background-color: #e8e8e8;
+  background-color: rgb(177, 85, 157);
   height: 7vh;
   width: 100vw;
   display: flex;

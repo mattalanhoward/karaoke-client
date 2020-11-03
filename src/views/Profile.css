@@ -4,11 +4,16 @@ light-grey: #f6f6f6
 medium-grey: #e8e8e8
 font-size: large; input boxes
 font-size: x-large; buttons
+hot pink: rgb(210,34,71);
+pink: rgb(177,85,157);
+teal: rgb(67,162,168);
+blue: rgb(5, 55, 159);
+yellow: rgb(245, 225, 92); 
 */
 
 .profile {
   /* border: 2px solid black; */
-  background: linear-gradient(180deg, #aeedbf 25vh, white 0%);
+  background: linear-gradient(180deg, rgb(177, 85, 157) 25vh, white 0%);
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -17,7 +22,7 @@ font-size: x-large; buttons
 
 .profile-heading {
   /* border: 2px solid red; */
-  background-color: #aeedbf;
+  background-color: rgb(177, 85, 157);
   width: 100vw;
   height: 10vh;
   display: flex;

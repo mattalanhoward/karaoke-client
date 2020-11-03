@@ -2,21 +2,38 @@
 green: #AEEDBF  
 light-grey: #f6f6f6
 medium-grey: #e8e8e8
-red: #EB5757
 font-size: large; input boxes
 font-size: x-large; buttons
+hot pink: rgb(210,34,71);
+pink: rgb(177,85,157);
+teal: rgb(67,162,168);
+blue: rgb(5, 55, 159);
+yellow: rgb(245, 225, 92); 
 */
 
 .complete {
-  background-color: #e8e8e8;
+  background-color: rgb(67, 162, 168);
+  opacity: 0.7;
+  color: gray;
+  border-radius: 5px;
+  margin: 3px 3vw;
 }
 
 .current {
-  background-color: #aeedbf;
+  background-color: rgb(5, 55, 159);
+  border-radius: 5px;
+  margin: 3px 3vw;
 }
 
 .up-next {
-  background-color: rgb(252, 252, 159);
+  background-color: rgb(245, 225, 92);
+  border-radius: 5px;
+  margin: 3px 3vw;
+}
+
+.stage-name-container h3,
+.stage-name-container h5 {
+  margin: 10px auto;
 }
 
 /* .heading {
@@ -81,37 +98,40 @@ h4 {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  border-bottom: 1px solid #e8e8e8;
-}
-
-.signup-info {
-  /* border: 2px solid green; */
+  /* border-bottom: 1px solid #e8e8e8; */
 }
 
 .queue-item {
   /* border: 1px solid green; */
-  border-bottom: 1px solid black;
-  width: 100vw;
+  /* border-bottom: 1px solid black; */
+  margin: 0 auto;
+  width: 90vw;
   text-align: left;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cancel-button {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
 }
 
 .cancel-song-btn {
   /* border: 1px solid blue; */
-  background-color: #eb5757;
-  height: 30%;
-  width: 30%;
+  /* background-color: #eb5757; */
+  width: 20px;
+  height: 20px;
   padding: 3px;
-  border-radius: 30px;
+  border: none;
+  background-color: none;
 }
 
 .stage-name {
   /* border: 2px solid red; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 5vw;
+  margin: 0;
+  text-align: left;
 }
 
 .song-details {
@@ -131,16 +151,7 @@ h4 {
 .mark-complete {
   /* border: 1px solid blue; */
   background-color: #eb5757;
-
   margin: 5px;
   padding: 5px;
-  border-radius: 30px;
+  border-radius: 10px;
 }
-/* .signup-btn {
-  border: 1px solid blue;
-  background-color: #aeedbf;
-  height: 30%;
-  width: 30%;
-  padding: 3px;
-  border-radius: 30px;
-} */

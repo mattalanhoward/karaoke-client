@@ -12,6 +12,7 @@ import "./Search.css";
 import "./Queue.css";
 import BottomNav from "./BottomNav";
 import logout from "../images/logout.png";
+import cancel from "../images/cancel.png";
 
 class Queue extends Component {
   state = {
@@ -192,38 +193,42 @@ class Queue extends Component {
             <div>
               {queueDetails.map((signupItem, index, array) => (
                 <div key={signupItem._id} className="queue-song-container">
-                  <div className="signup-info">
-                    <div className={nextUp(array, index)}>
-                      <div className="queue-item">
-                        {/* <div>{index + 1}</div> */}
-                        <div className="stage-name">
-                          <h4>{signupItem.singer.stageName}</h4>
-                          {signupItem.singer._id === user._id && (
-                            <button
-                              className="cancel-song-btn"
-                              // type="button"
-                              // style={{
-                              //   display: "none",
-                              // }}
-                              onClick={() => {
-                                if (
-                                  window.confirm(
-                                    `Are you sure you want to delete your signup ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
-                                  )
-                                ) {
-                                  this.handleDeleteSignup(signupItem._id);
-                                }
-                              }}
-                            >
-                              Cancel
-                            </button>
-                          )}
-                        </div>
-                        <div className="song-details">
-                          <h4>{signupItem.song.Title}</h4> -
-                          <h4>{signupItem.song.Artist}</h4>
-                        </div>
-                        <div className="mark-container">
+                  <div className={nextUp(array, index)}>
+                    <div className="queue-item">
+                      {/* <div>{index + 1}</div> */}
+                      <div className="stage-name-container">
+                        <h3>{signupItem.singer.stageName}</h3>
+                        <h4>{signupItem.song.Title}</h4>
+                        <h5>{signupItem.song.Artist}</h5>
+                      </div>
+                      {signupItem.singer._id === user._id && (
+                        <button
+                          className="cancel-button"
+                          // type="button"
+                          // style={{
+                          //   display: "none",
+                          // }}
+                          onClick={() => {
+                            if (
+                              window.confirm(
+                                `Are you sure you want to delete your signup ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
+                              )
+                            ) {
+                              this.handleDeleteSignup(signupItem._id);
+                            }
+                          }}
+                        >
+                          <img
+                            className="cancel-song-btn"
+                            src={cancel}
+                            alt="cancel"
+                          />
+                        </button>
+                      )}
+                    </div>
+
+                    {/* <div className="song-details"></div> */}
+                    {/* <div className="mark-container">
                           {user.isAdmin && (
                             <button
                               className="mark-complete"
@@ -242,9 +247,7 @@ class Queue extends Component {
                                 : "Mark As Sung"}
                             </button>
                           )}
-                        </div>
-                      </div>
-                    </div>
+                        </div> */}
                   </div>
                 </div>
               ))}
