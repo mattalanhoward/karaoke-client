@@ -29,6 +29,7 @@ font-size: x-large; buttons
 
 .heading img {
   border: 3px solid #e8e8e8;
+  object-fit: cover;
   height: 8vh;
   width: 8vh;
   border-radius: 50%;

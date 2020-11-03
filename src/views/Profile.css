@@ -80,8 +80,9 @@ tbody {
 }
 
 .profile-image {
-  /* border: 2px solid white; */
+  border: 3px solid white;
   margin-top: 10%;
+  object-fit: cover;
   width: 20vh;
   height: 20vh;
   border-radius: 50%;
