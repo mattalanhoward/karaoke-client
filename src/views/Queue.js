@@ -11,6 +11,7 @@ import { getProfile } from "../services/profileService";
 import "./Search.css";
 import "./Queue.css";
 import BottomNav from "./BottomNav";
+import logout from "../images/logout.png";
 
 class Queue extends Component {
   state = {
@@ -178,7 +179,7 @@ class Queue extends Component {
           <img src={this.state.photoUrl} alt="profile" />
           <div className="logout">
             <Link to={"/"} onClick={this.props.logout()}>
-              Logout
+              <img src={logout} alt="logout"></img>
             </Link>
           </div>
         </section>

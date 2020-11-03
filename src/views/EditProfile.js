@@ -114,11 +114,7 @@ class EditProfile extends React.Component {
         <section className="profile-heading">
           <div className="logout-duplicate">Logout</div>
           <h1>Edit Profile</h1>
-          <div className="logout">
-            <Link to={"/"} onClick={this.props.logout()}>
-              Logout
-            </Link>
-          </div>
+          <div className="logout"></div>
         </section>
         <section className="profile-image-container">
           {user.photoUrl !== undefined && (

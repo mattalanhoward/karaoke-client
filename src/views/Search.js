@@ -6,10 +6,10 @@ import "./Search.css";
 import "../App.css";
 import { getProfile } from "../services/profileService";
 import signupImage from "../images/signup.png";
-
+import logout from "../images/logout.png";
 export default class Search extends Component {
   state = {
-    searchParams: "Led Zeppelin - Stairway to Heaven",
+    searchParams: "johnny cash",
     searchResults: [],
     errorMessage: "",
     newSignup: {},
@@ -93,7 +93,7 @@ export default class Search extends Component {
           <img src={this.state.photoUrl} alt="profile" />
           <div className="logout">
             <Link to={"/"} onClick={this.props.logout()}>
-              Logout
+              <img className="icon" src={logout} alt="logout"></img>
             </Link>
           </div>
         </section>
@@ -136,11 +136,7 @@ export default class Search extends Component {
                       }
                     }}
                   >
-                    <img
-                      className="signup-icon"
-                      src={signupImage}
-                      alt="signup icon"
-                    />
+                    <img className="icon" src={signupImage} alt="signup icon" />
                   </button>
                 </div>
               ))

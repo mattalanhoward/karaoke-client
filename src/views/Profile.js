@@ -3,6 +3,7 @@ import "./Profile.css";
 import { getProfile } from "../services/profileService";
 import BottomNav from "./BottomNav";
 import { Link } from "react-router-dom";
+import logout from "../images/logout.png";
 
 class Profile extends React.Component {
   state = {
@@ -56,7 +57,7 @@ class Profile extends React.Component {
           <h1>Profile</h1>
           <div className="logout">
             <Link to={"/"} onClick={this.props.logout()}>
-              Logout
+              <img src={logout} alt="logout"></img>
             </Link>
           </div>
         </section>

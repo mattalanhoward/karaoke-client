@@ -18,3 +18,8 @@ font-size: x-large; buttons
   position: fixed;
   bottom: 0;
 }
+
+.bottom-nav img {
+  width: 25px;
+  height: 25px;
+}

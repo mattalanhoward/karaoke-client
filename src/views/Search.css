@@ -37,7 +37,15 @@ font-size: x-large; buttons
 }
 
 .logout {
-  margin: auto 8vw;
+  margin: 0 8vw;
+}
+
+.logout img {
+  border: none;
+  height: 3vh;
+  width: 3vh;
+  border-radius: 0;
+  margin-left: 7vw;
 }
 
 .logout-duplicate {
@@ -117,11 +125,10 @@ p {
   border: none;
   background-color: white;
   height: 50%;
-
   padding: 3px;
 }
 
-.signup-icon {
+.icon {
   width: 20px;
   height: 20px;
 }
