@@ -87,7 +87,7 @@ class Profile extends React.Component {
                 </h3>
               </td>
             </tr>
-            {/* <tr>
+            <tr>
               <td>
                 <h3>Favorite Artist</h3>
               </td>
@@ -104,7 +104,7 @@ class Profile extends React.Component {
                 <h3>Rank</h3>
               </td>
               <td>4 of 304</td>
-            </tr> */}
+            </tr>
             <tr>
               <td>{user.email}</td>
             </tr>
