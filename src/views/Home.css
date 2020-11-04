@@ -1,6 +1,6 @@
 .home-container {
   /* border: 3px solid red; */
-  height: 100vh;
+  height: 80vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
