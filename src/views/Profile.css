@@ -13,20 +13,19 @@ yellow: rgb(245, 225, 92);
 
 .profile {
   /* border: 2px solid black; */
-  background: linear-gradient(180deg, rgb(177, 85, 157) 25vh, white 0%);
+  background: linear-gradient(180deg, rgb(177, 85, 157) 11vh, white 0%);
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 0;
+  margin-top: 10vh;
 }
 
 .profile-heading {
   /* border: 2px solid red; */
   background-color: rgb(177, 85, 157);
   width: 100vw;
-  height: 10vh;
+  height: 11vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +38,7 @@ yellow: rgb(245, 225, 92);
 }
 
 .logout-duplicate {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   visibility: hidden;
   margin: 0 8vw;
 }
@@ -47,27 +46,11 @@ yellow: rgb(245, 225, 92);
 body {
   text-align: center;
 }
+
 h2 {
   /* border: 1px solid orange; */
   text-align: center;
   color: white;
-}
-
-tbody {
-  /* border: 2px solid red; */
-  width: 80vw;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin: 2vh 0;
-}
-
-.name {
-  /* border: 2px solid green; */
-  width: 80vw;
-  display: flex;
-  justify-content: space-evenly;
 }
 
 .profileInfo {
@@ -78,17 +61,31 @@ tbody {
   flex-direction: column;
 }
 
+tbody {
+  /* border: 2px solid red; */
+  width: 80vw;
+  height: 100%;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  margin: 2vh 0;
+}
+
+thead h4 {
+  margin: 2px auto;
+}
+
 .profile-image-container {
   /* border: 2px solid purple; */
+  margin: 1vh auto;
   width: 100%;
-  margin: 10vh auto 0 auto;
   display: flex;
   justify-content: center;
 }
 
 .profile-image {
   border: 3px solid white;
-  margin-top: 10%;
+  /* margin-top: 10%; */
   object-fit: cover;
   width: 20vh;
   height: 20vh;
@@ -103,4 +100,12 @@ tbody {
 
 tr {
   align-items: center;
+}
+
+.edit-profile-form {
+  /* border: 2px solid red; */
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

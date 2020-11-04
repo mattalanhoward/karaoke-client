@@ -4,6 +4,7 @@ import { updateProfile, handleUpload } from "../services/profileService";
 // import { Redirect } from "react-router-dom"
 import { getProfile } from "../services/profileService";
 import BottomNav from "./BottomNav";
+import logout from "../images/logout.png";
 
 class EditProfile extends React.Component {
   state = {
@@ -110,18 +111,22 @@ class EditProfile extends React.Component {
 
     return (
       <div className="profile">
-        {errorMessage !== "" && errorMessage}
         <section className="profile-heading">
           <div className="logout-duplicate">Logout</div>
-          <h1>Edit Profile</h1>
-          <div className="logout"></div>
+          <h1>Profile</h1>
+          <div className="logout">
+            <Link to={"/"} onClick={this.props.logout()}>
+              <img src={logout} alt="logout"></img>
+            </Link>
+          </div>
         </section>
         <section className="profile-image-container">
           {user.photoUrl !== undefined && (
             <img className="profile-image" src={user.photoUrl} alt="profile" />
           )}
         </section>
-        <form onSubmit={this.handleSubmit}>
+
+        <form className="edit-profile-form" onSubmit={this.handleSubmit}>
           <label>Change Image</label>
           <input
             type="file"

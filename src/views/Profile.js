@@ -66,22 +66,25 @@ class Profile extends React.Component {
             <img className="profile-image" src={user.photoUrl} alt="profile" />
           )}
         </section>
-        <h4>
-          <Link to={"/editprofile"}>Edit Profile</Link>
-        </h4>
+
         <table className="profileInfo">
+          <thead>
+            <h4>
+              <Link to={"/editprofile"}>Edit Profile</Link>
+            </h4>
+          </thead>
           <tbody>
-            <tr className="name">
+            <tr>
               <td>
-                <h1>
-                  {user.firstName}
-                  {` ${user.lastName}`}
-                </h1>
+                <h3>{user.stageName}</h3>
               </td>
             </tr>
             <tr>
-              <td className="name">
-                <h1>{user.stageName}</h1>
+              <td>
+                <h3>
+                  {user.firstName}
+                  {` ${user.lastName}`}
+                </h3>
               </td>
             </tr>
             {/* <tr>
@@ -107,6 +110,7 @@ class Profile extends React.Component {
             </tr>
           </tbody>
         </table>
+
         <BottomNav />
       </div>
     );

@@ -96,11 +96,11 @@ p {
 }
 
 .results-container {
-  /* border: 1px solid yellow; */
+  /* border: 3px solid yellow; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 24vh 20px 11vh 20px;
+  margin: 26vh 20px 11vh 20px;
   justify-content: space-between;
   border-bottom: 1px solid #e8e8e8;
 }
