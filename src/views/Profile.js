@@ -69,9 +69,11 @@ class Profile extends React.Component {
 
         <table className="profileInfo">
           <thead>
-            <h4>
-              <Link to={"/editprofile"}>Edit Profile</Link>
-            </h4>
+            <tr>
+              <td>
+                <Link to={"/editprofile"}>Edit Profile</Link>
+              </td>
+            </tr>
           </thead>
           <tbody>
             <tr>

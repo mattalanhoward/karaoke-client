@@ -75,6 +75,10 @@ thead h4 {
   margin: 2px auto;
 }
 
+thead {
+  margin: 0 auto;
+}
+
 .profile-image-container {
   /* border: 2px solid purple; */
   margin: 12vh auto 2vh auto;
@@ -84,7 +88,7 @@ thead h4 {
 }
 
 .profile-image {
-  border: 3px solid white;
+  border: 3px solid rgb(245, 225, 92);
   /* margin-top: 10%; */
   object-fit: cover;
   width: 20vh;

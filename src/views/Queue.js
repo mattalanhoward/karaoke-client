@@ -170,6 +170,7 @@ class Queue extends Component {
           return "up-next";
         }
       }
+      return "in-line";
     };
 
     return (

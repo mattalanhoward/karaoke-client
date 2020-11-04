@@ -11,24 +11,30 @@ blue: rgb(5, 55, 159);
 yellow: rgb(245, 225, 92); 
 */
 
+.complete,
+.current,
+.up-next,
+.in-line {
+  border-radius: 3px;
+  margin: 1px 1vw;
+}
+
 .complete {
   background-color: #e8e8e8;
   opacity: 0.5;
   color: black;
-  border-radius: 5px;
-  margin: 3px 3vw;
 }
 
 .current {
-  background-color: #aeedbf;
-  border-radius: 5px;
-  margin: 3px 3vw;
+  background-color: rgb(210, 34, 71);
 }
 
 .up-next {
-  background-color: rgb(245, 225, 92);
-  border-radius: 5px;
-  margin: 3px 3vw;
+  background-color: rgb(67, 162, 168);
+}
+
+.in-line {
+  background-color: #f6f6f6;
 }
 
 .stage-name-container h3,
@@ -36,39 +42,16 @@ yellow: rgb(245, 225, 92);
   margin: 5px auto;
 }
 
-/* .heading {
-  border: 2px solid red;
-  background-color: white;
-  width: 100vw;
-  height: 10vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #e8e8e8;
-  position: fixed;
-  top: 0;
-} */
+.heading-container {
+  background-color: blue;
+}
 
-/* .heading img {
-  border: 3px solid #e8e8e8;
-  object-fit: cover;
-  height: 8vh;
-  width: 8vh;
-  border-radius: 50%;
-} */
-
-/* .logout {
-  margin: auto 8vw;
-} */
-
-/* .logout-duplicate {
-  border: 1px solid red;
-  visibility: hidden;
-  margin: 0 8vw;
-} */
+.heading {
+  z-index: 1;
+}
 
 .queue {
-  margin: 23vh 0px 10vh 0px;
+  margin: 20vh 0px 10vh 0px;
 }
 
 .queue-header {
@@ -77,7 +60,8 @@ yellow: rgb(245, 225, 92);
   /* margin-top: 10vh; */
   width: 100vw;
   position: fixed;
-  top: 10vh;
+  top: 9vh;
+  z-index: 1;
 }
 
 h3,
