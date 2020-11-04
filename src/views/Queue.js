@@ -201,34 +201,30 @@ class Queue extends Component {
                         <h4>{signupItem.song.Title}</h4>
                         <h5>{signupItem.song.Artist}</h5>
                       </div>
-                      {signupItem.singer._id === user._id && (
-                        <button
-                          className="cancel-button"
-                          // type="button"
-                          // style={{
-                          //   display: "none",
-                          // }}
-                          onClick={() => {
-                            if (
-                              window.confirm(
-                                `Are you sure you want to delete your signup ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
-                              )
-                            ) {
-                              this.handleDeleteSignup(signupItem._id);
-                            }
-                          }}
-                        >
-                          <img
+                      <div className="btn-container">
+                        {signupItem.singer._id === user._id && (
+                          <button
                             className="cancel-song-btn"
-                            src={cancel}
-                            alt="cancel"
-                          />
-                        </button>
-                      )}
-                    </div>
+                            onClick={() => {
+                              if (
+                                window.confirm(
+                                  `Are you sure you want to delete your signup ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
+                                )
+                              ) {
+                                this.handleDeleteSignup(signupItem._id);
+                              }
+                            }}
+                          >
+                            Cancel
+                            {/* <img
+                              className="cancel-song-btn"
+                              src={cancel}
+                              alt="cancel"
+                            /> */}
+                          </button>
+                        )}
 
-                    {/* <div className="song-details"></div> */}
-                    {/* <div className="mark-container">
+                        <div className="mark-container">
                           {user.isAdmin && (
                             <button
                               className="mark-complete"
@@ -247,7 +243,9 @@ class Queue extends Component {
                                 : "Mark As Sung"}
                             </button>
                           )}
-                        </div> */}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}

@@ -106,6 +106,6 @@ tr {
   /* border: 2px solid red; */
   height: 60vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
 }

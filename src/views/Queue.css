@@ -12,15 +12,15 @@ yellow: rgb(245, 225, 92);
 */
 
 .complete {
-  background-color: rgb(67, 162, 168);
-  opacity: 0.7;
-  color: gray;
+  background-color: #e8e8e8;
+  opacity: 0.5;
+  color: black;
   border-radius: 5px;
   margin: 3px 3vw;
 }
 
 .current {
-  background-color: rgb(5, 55, 159);
+  background-color: #aeedbf;
   border-radius: 5px;
   margin: 3px 3vw;
 }
@@ -33,7 +33,7 @@ yellow: rgb(245, 225, 92);
 
 .stage-name-container h3,
 .stage-name-container h5 {
-  margin: 10px auto;
+  margin: 5px auto;
 }
 
 /* .heading {
@@ -82,7 +82,7 @@ yellow: rgb(245, 225, 92);
 
 h3,
 h4 {
-  margin: 10px auto;
+  margin: 5px auto;
 }
 
 .queue-container {
@@ -111,36 +111,29 @@ h4 {
   justify-content: space-between;
 }
 
-.cancel-button {
-  border: none;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-}
-
-.cancel-song-btn {
-  /* border: 1px solid blue; */
-  /* background-color: #eb5757; */
-  width: 20px;
-  height: 20px;
-  padding: 3px;
-  border: none;
-  background-color: none;
-}
-
-.stage-name {
+.stage-name-container {
   /* border: 2px solid red; */
   margin: 0;
   text-align: left;
 }
 
-.song-details {
-  /* border: 2px solid blue; */
+.btn-container {
+  /* border: 2px solid red; */
   display: flex;
-  /* justify-content: space-between; */
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  margin: 0 5vw;
 }
+
+/* .cancel-song-btn {
+  border: 1px solid blue;
+  background-color: #eb5757;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border: none;
+  background-color: none;
+} */
 
 .mark-container {
   /* border: 2px solid pink; */
@@ -150,8 +143,8 @@ h4 {
 
 .mark-complete {
   /* border: 1px solid blue; */
-  background-color: #eb5757;
-  margin: 5px;
-  padding: 5px;
-  border-radius: 10px;
+  /* background-color: #eb5757; */
+  /* margin: 5px; */
+  /* padding: 5px; */
+  /* border-radius: 10px; */
 }
