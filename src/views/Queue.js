@@ -13,6 +13,8 @@ import "./Queue.css";
 import BottomNav from "./BottomNav";
 import logout from "../images/logout.png";
 import cancel from "../images/cancel.png";
+import check from "../images/check-mark.png";
+import signal from "../images/signal.png";
 
 class Queue extends Component {
   state = {
@@ -175,7 +177,6 @@ class Queue extends Component {
 
     return (
       <div className="queue-container">
-        {errorMessage !== "" && errorMessage}
         <section className="heading">
           <div className="logout-duplicate">Logout</div>
           <img src={this.state.photoUrl} alt="profile" />
@@ -188,6 +189,7 @@ class Queue extends Component {
         <div className="queue-header">
           <h3>Queue</h3>
           <h4>Total Signups: {queueDetails.length}</h4>
+          {errorMessage !== "" && errorMessage}
         </div>
         <section className="queue">
           {queueDetails.length > 0 ? (
@@ -205,7 +207,7 @@ class Queue extends Component {
                       <div className="btn-container">
                         {signupItem.singer._id === user._id && (
                           <button
-                            className="cancel-song-btn"
+                            className="song-btn-container"
                             onClick={() => {
                               if (
                                 window.confirm(
@@ -216,19 +218,18 @@ class Queue extends Component {
                               }
                             }}
                           >
-                            Cancel
-                            {/* <img
+                            <img
                               className="cancel-song-btn"
-                              src={cancel}
-                              alt="cancel"
-                            /> */}
+                              src={signal}
+                              alt="signal"
+                            />
                           </button>
                         )}
 
                         <div className="mark-container">
                           {user.isAdmin && (
                             <button
-                              className="mark-complete"
+                              className="song-btn-container"
                               onClick={() => {
                                 if (
                                   window.confirm(
@@ -239,9 +240,19 @@ class Queue extends Component {
                                 }
                               }}
                             >
-                              {signupItem.wasSung
-                                ? "Song Complete"
-                                : "Mark As Sung"}
+                              {signupItem.wasSung ? (
+                                <img
+                                  className="cancel-song-btn"
+                                  src={cancel}
+                                  alt="cancel"
+                                />
+                              ) : (
+                                <img
+                                  className="cancel-song-btn"
+                                  src={check}
+                                  alt="check"
+                                />
+                              )}
                             </button>
                           )}
                         </div>

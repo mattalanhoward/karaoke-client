@@ -7,3 +7,12 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+.signup-errors {
+  background-color: tomato;
+  /* width: 90vw;
+  height: 10vh; */
+  margin: 0 6vw;
+  border-radius: 10px;
+  /* padding: 2px; */
+}

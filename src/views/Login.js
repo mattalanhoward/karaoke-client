@@ -42,7 +42,6 @@ class Login extends React.Component {
     const { email, password, errorMessage } = this.state;
     return (
       <div className="login-container">
-        {errorMessage !== "" && errorMessage}
         <img
           className="logo"
           src={
@@ -50,6 +49,9 @@ class Login extends React.Component {
           }
           alt="Noda 101 Logo"
         />
+        <span className="signup-errors">
+          {errorMessage !== "" && errorMessage}
+        </span>
         <form onSubmit={this.handleSubmit}>
           {/* <label>Email: </label> */}
           <input

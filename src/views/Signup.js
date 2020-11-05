@@ -42,7 +42,6 @@ class Signup extends React.Component {
 
     return (
       <div className="signup-container">
-        {errorMessage !== "" && errorMessage}
         <img
           className="logo"
           src={
@@ -50,6 +49,9 @@ class Signup extends React.Component {
           }
           alt="Noda 101 Logo"
         />
+        <span className="signup-errors">
+          {errorMessage !== "" && errorMessage}
+        </span>
         <form onSubmit={this.handleSubmit}>
           {/* <label>Stage Name: </label> */}
           <input
