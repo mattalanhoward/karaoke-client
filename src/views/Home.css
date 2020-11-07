@@ -1,9 +1,61 @@
+/* 
+green: #AEEDBF  
+light-grey: #f6f6f6
+medium-grey: #e8e8e8
+font-size: large; input boxes
+font-size: x-large; buttons
+hot pink: rgb(210,34,71);
+pink: rgb(177,85,157);
+teal: rgb(67,162,168);
+blue: rgb(5, 55, 159);
+yellow: rgb(245, 225, 92); 
+*/
+
 .home-container {
   /* border: 3px solid red; */
-  height: 80vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: white;
+}
+
+.login-buttons {
+  /* border: 3px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100vw;
+  height: 20vh;
+  margin: 0 auto;
+}
+
+.nav-btns {
+  border: 1px solid orange;
+  height: 6vh;
+  border-radius: 30px;
+  width: 80vw;
+  margin: 0 auto;
+  text-decoration: none;
+  font-size: x-large;
+  border-style: none;
+  padding: 0px 10px;
+}
+
+.green-btn {
+  background-color: rgb(67, 162, 168);
+  color: white;
+}
+
+.wht-btn {
+  background-color: white;
+  color: rgb(67, 162, 168);
+  border: 1px solid rgb(67, 162, 168);
+}
+
+.logo {
+  width: 100%;
+  height: auto;
 }

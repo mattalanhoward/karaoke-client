@@ -147,7 +147,7 @@ class Queue extends Component {
 
   render() {
     const { queueDetails, errorMessage } = this.state;
-    console.log(`Queue Details in Queue.js`, queueDetails);
+    // console.log(`Queue Details in Queue.js`, queueDetails);
     const user = this.props.user;
 
     // Changes background color of songs to indicate who is up

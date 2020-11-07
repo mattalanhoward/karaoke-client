@@ -35,7 +35,7 @@ class App extends React.Component {
     }
   };
 
-  //when SIGNUP button is CLicked....
+  //when SIGNUP button is Clicked....
   handleSignup = async (songId) => {
     const userId = this.state.user._id;
 
@@ -72,25 +72,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
-          {/* <nav>
-            {authenticated && <Link to="/profile"> Profile </Link>}
-            {authenticated && <Link to="/editprofile"> Edit Profile </Link>}
-            {authenticated && <Link to="/search"> Search </Link>}
-            {authenticated && <Link to="/queue"> Queue </Link>}
-          </nav> */}
-          {/* <div className="login-buttons">
-            {!authenticated && (
-              <button className="nav-btns green-btn">
-                <Link to="/login"> Login </Link>
-              </button>
-            )}
-            {!authenticated && (
-              <button className="nav-btns wht-btn">
-                <Link to="/signup"> Signup </Link>
-              </button>
-            )}
-          </div> */}
-
           <Switch>
             <AnonRoute
               exact

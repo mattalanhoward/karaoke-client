@@ -11,6 +11,7 @@ class EditProfile extends React.Component {
     firstName: "",
     lastName: "",
     stageName: "",
+    favoriteArtist: "",
     email: "",
     photoUrl: "",
     errorMessage: "",
@@ -45,6 +46,7 @@ class EditProfile extends React.Component {
         firstName: updatedUser.firstName,
         lastName: updatedUser.lastName,
         stageName: updatedUser.stageName,
+        favoriteArtist: updatedUser.favoriteArtist,
         email: updatedUser.email,
         password: updatedUser.password,
         photoUrl: updatedUser.photoUrl,
@@ -86,6 +88,7 @@ class EditProfile extends React.Component {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       stageName: this.state.stageName,
+      favoriteArtist: this.state.favoriteArtist,
       email: this.state.email,
       userId: this.props.user._id,
       photoUrl: this.state.photoUrl,
@@ -94,6 +97,7 @@ class EditProfile extends React.Component {
       firstName: "",
       lastName: "",
       stageName: "",
+      favoriteArtist: "",
       email: "",
       photoUrl: "",
     });
@@ -150,6 +154,12 @@ class EditProfile extends React.Component {
           <input
             name="stageName"
             placeholder="Stage Name"
+            onChange={this.handleChange}
+            type="text"
+          />
+          <input
+            name="favoriteArtist"
+            placeholder="Favorite Artist"
             onChange={this.handleChange}
             type="text"
           />

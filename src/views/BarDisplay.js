@@ -218,7 +218,7 @@ class BarDisplay extends Component {
           <div className="bar-right-item">
             {queueDetails.length > 0 ? (
               <div>
-                <h1>Get Ready, You're NEXT!</h1>
+                <h1>Get Ready, You're Next!</h1>
                 {queueDetails.map((signupItem, index, array) => (
                   <div key={signupItem._id} className="queue-song-container">
                     <div className="stage-name-container">

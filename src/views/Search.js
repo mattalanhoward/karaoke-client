@@ -97,7 +97,7 @@ export default class Search extends Component {
               <img className="icon" src={logout} alt="logout"></img>
             </Link>
           </div>
-          <Link to="/bardisplay">Bar Display</Link>
+          {/* <Link to="/bardisplay">Bar Display</Link> */}
         </section>
         <section className="search">
           <div className="search-bar">

@@ -20,69 +20,10 @@ form {
   flex-direction: column;
 }
 
-/* HOME */
-.home-container {
-  /* border: 2px solid green; */
-  height: 50vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-buttons {
-  /* border: 3px solid red; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 100vw;
-  height: 20vh;
-  margin: 0 auto;
-}
-
 /* remove all style from links */
 a {
   color: inherit;
   text-decoration: inherit;
-}
-
-.nav-btns {
-  /* border: 1px solid orange; */
-  height: 6vh;
-  border-radius: 30px;
-  width: 80vw;
-  margin: 0 auto;
-  text-decoration: none;
-  font-size: x-large;
-  border-style: none;
-  padding: 0px 10px;
-}
-
-.green-btn {
-  background-color: #aeedbf;
-  color: white;
-}
-
-.wht-btn {
-  background-color: white;
-  color: #aeedbf;
-}
-
-.logo {
-  width: 100vw;
-  height: auto;
-}
-
-.complete {
-  background-color: gray;
-}
-
-.current {
-  background-color: green;
-}
-
-.up-next {
-  background-color: yellow;
 }
 
 input {

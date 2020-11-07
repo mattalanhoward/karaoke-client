@@ -17,7 +17,7 @@ yellow: rgb(245, 225, 92);
   height: 7vh;
   width: 100vw;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   font-size: large;
   position: fixed;
@@ -25,6 +25,8 @@ yellow: rgb(245, 225, 92);
 }
 
 .bottom-nav img {
+  border: 3px solid red;
   width: 25px;
   height: 25px;
+  margin: 0 20px;
 }

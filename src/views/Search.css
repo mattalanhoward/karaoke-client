@@ -4,6 +4,11 @@ light-grey: #f6f6f6
 medium-grey: #e8e8e8
 font-size: large; input boxes
 font-size: x-large; buttons
+hot pink: rgb(210,34,71);
+pink: rgb(177,85,157);
+teal: rgb(67,162,168);
+blue: rgb(5, 55, 159);
+yellow: rgb(245, 225, 92); 
 */
 
 .search-container {
@@ -16,9 +21,9 @@ font-size: x-large; buttons
 
 .heading {
   /* border: 2px solid yellow; */
-  background-color: white;
-  width: 100vw;
-  height: 8vh;
+  background-color: rgb(177, 85, 157);
+  width: 100%;
+  height: 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,7 +34,7 @@ font-size: x-large; buttons
 }
 
 .heading img {
-  border: 3px solid #e8e8e8;
+  border: 2px solid rgb(67, 162, 168);
   object-fit: cover;
   height: 5vh;
   width: 5vh;
@@ -55,7 +60,7 @@ font-size: x-large; buttons
 }
 
 .search-btn {
-  /* border: 1px solid orange; */
+  /* border: 3px solid orange; */
   height: 4vh;
   border-radius: 30px;
   width: 40vw;
@@ -64,7 +69,7 @@ font-size: x-large; buttons
   font-size: large;
   border-style: none;
   padding: 0px 10px;
-  background-color: #aeedbf;
+  background-color: rgb(67, 162, 168);
 }
 
 .search {
@@ -79,12 +84,12 @@ font-size: x-large; buttons
   /* margin-top: 10vh; */
   width: 100vw;
   position: fixed;
-  top: 8vh;
+  top: 9vh;
 }
 
 h3,
 h5 {
-  margin: 10px auto;
+  margin: 15px auto;
 }
 
 h4 {
@@ -102,16 +107,16 @@ p {
   align-items: center;
   margin: 26vh 20px 11vh 20px;
   justify-content: space-between;
-  border-bottom: 1px solid #e8e8e8;
 }
 
 .song-container {
-  /* border: 1px solid purple; */
+  /* border-bottom: 1px solid rgb(67, 162, 168); */
   display: flex;
   align-items: center;
   width: 90vw;
   justify-content: space-between;
   border-bottom: 1px solid #e8e8e8;
+  padding: 6px 4px;
 }
 
 .results {

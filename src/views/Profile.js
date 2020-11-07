@@ -11,6 +11,7 @@ class Profile extends React.Component {
     lastName: "",
     stageName: "",
     email: "",
+    favoriteArtist: "",
     password: "",
     photoUrl: "",
     errorMessage: "",
@@ -36,6 +37,7 @@ class Profile extends React.Component {
         firstName: updatedUser.firstName,
         lastName: updatedUser.lastName,
         stageName: updatedUser.stageName,
+        favoriteArtist: updatedUser.favoriteArtist,
         email: updatedUser.email,
         password: updatedUser.password,
         photoUrl: updatedUser.photoUrl,
@@ -84,18 +86,24 @@ class Profile extends React.Component {
             <tr>
               <td>
                 <h3>
-                  {user.firstName}
-                  {` ${user.lastName}`}
+                  {user.firstName && user.lastName !== undefined && (
+                    <td>
+                      {user.firstName} {user.lastName}
+                    </td>
+                  )}
                 </h3>
               </td>
             </tr>
             <tr>
-              <td>
-                <h3>Favorite Artist</h3>
-              </td>
-              <td>{user.email}</td>
+              {user.favoriteArtist !== undefined && (
+                <td>
+                  <h3>Favorite Artist</h3>
+
+                  {user.favoriteArtist}
+                </td>
+              )}
             </tr>
-            <tr>
+            {/* <tr>
               <td>
                 <h3>Number of Songs Sang</h3>
               </td>
@@ -106,7 +114,7 @@ class Profile extends React.Component {
                 <h3>Rank</h3>
               </td>
               <td>4 of 304</td>
-            </tr>
+            </tr> */}
             <tr>
               <td>{user.email}</td>
             </tr>
