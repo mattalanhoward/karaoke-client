@@ -19,7 +19,8 @@ export default class Search extends Component {
     stageName: "",
     email: "",
     password: "",
-    photoUrl: "",
+    photoUrl:
+      "https://res.cloudinary.com/dcod1zxnl/image/upload/v1603130425/Noda_101_Logo_l72snm.png",
   };
 
   //get updated user info
@@ -96,6 +97,7 @@ export default class Search extends Component {
               <img className="icon" src={logout} alt="logout"></img>
             </Link>
           </div>
+          <Link to="/bardisplay">Bar Display</Link>
         </section>
         <section className="search">
           <div className="search-bar">

@@ -13,6 +13,7 @@ import Search from "./views/Search";
 import Queue from "./views/Queue";
 import { singerSong, addSongToQueue } from "./services/searchService";
 import BottomNav from "./views/BottomNav";
+import BarDisplay from "./views/BarDisplay";
 
 class App extends React.Component {
   state = {
@@ -137,6 +138,14 @@ class App extends React.Component {
               signups={this.state.signups}
               newSignup={this.state.newSignup}
               signUp={this.handleSignup}
+              logout={() => this.handleLogout}
+            />
+            <PrivateRoute
+              exact
+              path="/BarDisplay"
+              user={this.state.user}
+              authenticated={authenticated}
+              component={BarDisplay}
               logout={() => this.handleLogout}
             />
             <PrivateRoute

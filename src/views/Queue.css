@@ -16,7 +16,7 @@ yellow: rgb(245, 225, 92);
 .up-next,
 .in-line {
   border-radius: 3px;
-  margin: 1px 1vw;
+  margin: 1px 1%;
 }
 
 .complete {
@@ -58,9 +58,9 @@ yellow: rgb(245, 225, 92);
   /* border: 1px solid blue; */
   background-color: white;
   /* margin-top: 10vh; */
-  width: 100vw;
+  width: 100%;
   position: fixed;
-  top: 9vh;
+  top: 9%;
   z-index: 1;
 }
 
@@ -71,8 +71,8 @@ h4 {
 
 .queue-container {
   /* border: 2px solid black; */
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -81,7 +81,7 @@ h4 {
   /* border: 1px solid purple; */
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   /* border-bottom: 1px solid #e8e8e8; */
 }
 
@@ -89,7 +89,7 @@ h4 {
   /* border: 1px solid green; */
   /* border-bottom: 1px solid black; */
   margin: 0 auto;
-  width: 90vw;
+  width: 90%;
   text-align: left;
   display: flex;
   justify-content: space-between;

@@ -1,0 +1,36 @@
+.bar-display-container {
+  border: 3px solid yellow;
+  width: 100%;
+  max-height: 80%;
+  display: flex;
+}
+
+.bar-logo {
+  width: 50%;
+  height: 50%;
+}
+
+.bar-left {
+  border: 3px solid blue;
+  width: 50%;
+  /* overflow: hidden; */
+}
+
+.bar-right {
+  border: 3px solid red;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bar-right-item {
+  border: 2px solid black;
+  height: 25%;
+  width: 66%;
+  margin: 1% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

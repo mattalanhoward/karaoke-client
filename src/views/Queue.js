@@ -14,7 +14,7 @@ import BottomNav from "./BottomNav";
 import logout from "../images/logout.png";
 import cancel from "../images/cancel.png";
 import check from "../images/check-mark.png";
-import signal from "../images/signal.png";
+import undo from "../images/undo.png";
 
 class Queue extends Component {
   state = {
@@ -147,6 +147,7 @@ class Queue extends Component {
 
   render() {
     const { queueDetails, errorMessage } = this.state;
+    console.log(`Queue Details in Queue.js`, queueDetails);
     const user = this.props.user;
 
     // Changes background color of songs to indicate who is up
@@ -178,11 +179,15 @@ class Queue extends Component {
     return (
       <div className="queue-container">
         <section className="heading">
-          <div className="logout-duplicate">Logout</div>
+          <div className="logout-duplicate">
+            <Link to={"/"} onClick={this.props.logout()}>
+              <img className="icon" src={logout} alt="logout"></img>
+            </Link>
+          </div>
           <img src={this.state.photoUrl} alt="profile" />
           <div className="logout">
             <Link to={"/"} onClick={this.props.logout()}>
-              <img src={logout} alt="logout"></img>
+              <img className="icon" src={logout} alt="logout"></img>
             </Link>
           </div>
         </section>
@@ -220,8 +225,8 @@ class Queue extends Component {
                           >
                             <img
                               className="cancel-song-btn"
-                              src={signal}
-                              alt="signal"
+                              src={cancel}
+                              alt="cancel"
                             />
                           </button>
                         )}
@@ -243,8 +248,8 @@ class Queue extends Component {
                               {signupItem.wasSung ? (
                                 <img
                                   className="cancel-song-btn"
-                                  src={cancel}
-                                  alt="cancel"
+                                  src={undo}
+                                  alt="undo"
                                 />
                               ) : (
                                 <img
