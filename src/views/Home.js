@@ -12,7 +12,7 @@ const Home = (props) => {
         }
         alt="Noda 101 Logo"
       />
-      <h1>KARAOKE SIGN UP</h1>
+      {/* <h2>Karaoke Sign Up</h2> */}
       <div className="login-buttons">
         <button className="nav-btns green-btn">
           <Link to="/login"> Login </Link>

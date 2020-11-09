@@ -1,3 +1,17 @@
+/* 
+green: #AEEDBF  
+light-grey: #f6f6f6
+medium-grey: #e8e8e8
+font-size: large; input boxes
+font-size: x-large; buttons
+hot pink: rgb(239,68,98,34);
+teal: rgb(67,162,168);
+blue: rgb(5, 55, 159);
+pink: rgb(204,78,105);
+yellow: rgb(245, 218, 91)
+green: rgb(174,199,60)
+*/
+
 .signup-container {
   /* border: 2px solid red; */
   height: 80vh;
@@ -9,9 +23,11 @@
 }
 
 .signup-errors {
-  background-color: tomato;
-  width: 90%;
-  height: 50px;
+  background-color: #f6f6f6;
+  /* opacity: 0.7; */
+  border: 2px solid #e8e8e8;
+  width: 85%;
+  height: 40px;
   margin: 6px 0px;
   border-radius: 10px;
   display: flex;
