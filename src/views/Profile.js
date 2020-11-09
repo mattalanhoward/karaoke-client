@@ -79,6 +79,7 @@ class Profile extends React.Component {
         <ul className="profile-info">
           {user.firstName && user.lastName !== undefined && (
             <li>
+              <h4>Name</h4>
               <h3>
                 {user.firstName} {user.lastName}
               </h3>
@@ -98,6 +99,7 @@ class Profile extends React.Component {
           )}
 
           <li>
+            <h4>Email</h4>
             <h3>{user.email}</h3>
           </li>
         </ul>

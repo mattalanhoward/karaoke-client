@@ -49,9 +49,11 @@ class Login extends React.Component {
           }
           alt="Noda 101 Logo"
         />
-        <span className="signup-errors">
-          {errorMessage !== "" && errorMessage}
-        </span>
+
+        {errorMessage !== "" && (
+          <span className="signup-errors">{errorMessage}</span>
+        )}
+
         <form onSubmit={this.handleSubmit}>
           {/* <label>Email: </label> */}
           <input

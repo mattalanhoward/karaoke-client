@@ -135,7 +135,9 @@ class EditProfile extends React.Component {
             )}
           </div>
         </section>
-
+        {errorMessage !== "" && (
+          <span className="signup-errors">{errorMessage}</span>
+        )}
         <form className="edit-profile-form" onSubmit={this.handleSubmit}>
           <label className="image-upload">
             Change Profile Image
@@ -153,7 +155,7 @@ class EditProfile extends React.Component {
               type="text"
             />
           </div>
-          <div class="form-item">
+          <div className="form-item">
             <label>Last Name: </label>
             <input
               name="lastName"
@@ -162,7 +164,7 @@ class EditProfile extends React.Component {
               type="text"
             />
           </div>
-          <div class="form-item">
+          <div className="form-item">
             <label>Stage Name: </label>
             <input
               name="stageName"
@@ -171,7 +173,7 @@ class EditProfile extends React.Component {
               type="text"
             />
           </div>
-          <div class="form-item">
+          <div className="form-item">
             <label>Favorite Artist:</label>
             <input
               name="favoriteArtist"
@@ -180,7 +182,7 @@ class EditProfile extends React.Component {
               type="text"
             />
           </div>
-          <div class="form-item">
+          <div className="form-item">
             <label>Email: </label>
             <input
               name="email"
