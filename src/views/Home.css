@@ -13,7 +13,7 @@ yellow: rgb(245, 225, 92);
 
 .home-container {
   /* border: 3px solid red; */
-  height: 100%;
+  height: 80%;
   width: 100%;
   display: flex;
   flex-direction: column;
