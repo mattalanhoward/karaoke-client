@@ -75,7 +75,9 @@ class Profile extends React.Component {
           </div>
         </section>
 
-        <Link to={"/editprofile"}>Edit Profile</Link>
+        <Link className="profile-btn" to={"/editprofile"}>
+          Edit Profile
+        </Link>
         <ul className="profile-info">
           {user.firstName && user.lastName !== undefined && (
             <li>

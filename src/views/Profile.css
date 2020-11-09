@@ -93,10 +93,12 @@ h2 {
   justify-content: space-between;
 }
 
-.image-upload {
-  border: 3px solid rgb(67, 162, 168);
+.profile-btn {
+  border: 1px solid rgb(67, 162, 168);
   padding: 5px;
+  width: 50%;
   border-radius: 30px;
+  margin: 0 auto;
 }
 
 input[type="file"] {

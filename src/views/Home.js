@@ -7,8 +7,11 @@ const Home = (props) => {
     <div className="home-container">
       <img
         className="logo"
+        // src={
+        //   "https://res.cloudinary.com/dcod1zxnl/image/upload/v1603130425/Noda_101_Logo_l72snm.png"
+        // }
         src={
-          "https://res.cloudinary.com/dcod1zxnl/image/upload/v1603130425/Noda_101_Logo_l72snm.png"
+          "https://res.cloudinary.com/dcod1zxnl/image/upload/v1604931135/Noda_101_Logo_Cropped_aahox3.png"
         }
         alt="Noda 101 Logo"
       />

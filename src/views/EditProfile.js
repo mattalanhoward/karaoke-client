@@ -139,7 +139,7 @@ class EditProfile extends React.Component {
           <span className="signup-errors">{errorMessage}</span>
         )}
         <form className="edit-profile-form" onSubmit={this.handleSubmit}>
-          <label className="image-upload">
+          <label className="profile-btn">
             Change Profile Image
             <input
               type="file"
