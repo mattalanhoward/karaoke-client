@@ -54,72 +54,53 @@ class Profile extends React.Component {
     const user = this.state;
     return (
       <div className="profile">
-        <section className="profile-heading">
-          <div className="logout-duplicate">Logout</div>
-          <h1>Profile</h1>
-          <div className="logout">
-            <Link to={"/"} onClick={this.props.logout()}>
-              <img src={logout} alt="logout"></img>
-            </Link>
+        <section className="profile-heading-container">
+          <div className="profile-heading">
+            <div className="logout-duplicate">Logout</div>
+            <h1>Profile</h1>
+            <div className="logout">
+              <Link to={"/"} onClick={this.props.logout()}>
+                <img src={logout} alt="logout"></img>
+              </Link>
+            </div>
+          </div>
+          <div className="profile-image-container">
+            {user.photoUrl !== undefined && (
+              <img
+                className="profile-image"
+                src={user.photoUrl}
+                alt="profile"
+              />
+            )}
           </div>
         </section>
-        <section className="profile-image-container">
-          {user.photoUrl !== undefined && (
-            <img className="profile-image" src={user.photoUrl} alt="profile" />
+
+        <Link to={"/editprofile"}>Edit Profile</Link>
+        <ul className="profile-info">
+          {user.firstName && user.lastName !== undefined && (
+            <li>
+              <h3>
+                {user.firstName} {user.lastName}
+              </h3>
+            </li>
           )}
-        </section>
 
-        <table className="profileInfo">
-          <thead>
-            <tr>
-              <td>
-                <Link to={"/editprofile"}>Edit Profile</Link>
-              </td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <h3>{user.stageName}</h3>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h3>
-                  {user.firstName && user.lastName !== undefined && (
-                    <td>
-                      {user.firstName} {user.lastName}
-                    </td>
-                  )}
-                </h3>
-              </td>
-            </tr>
-            <tr>
-              {user.favoriteArtist !== undefined && (
-                <td>
-                  <h3>Favorite Artist</h3>
+          <li>
+            <h4>Stage Name</h4>
+            <h2>{user.stageName}</h2>
+          </li>
 
-                  {user.favoriteArtist}
-                </td>
-              )}
-            </tr>
-            {/* <tr>
-              <td>
-                <h3>Number of Songs Sang</h3>
-              </td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>
-                <h3>Rank</h3>
-              </td>
-              <td>4 of 304</td>
-            </tr> */}
-            <tr>
-              <td>{user.email}</td>
-            </tr>
-          </tbody>
-        </table>
+          {user.favoriteArtist !== undefined && (
+            <li>
+              <h4>Favorite Artist</h4>
+              <h2>{user.favoriteArtist}</h2>
+            </li>
+          )}
+
+          <li>
+            <h3>{user.email}</h3>
+          </li>
+        </ul>
 
         <BottomNav />
       </div>

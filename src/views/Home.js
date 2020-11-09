@@ -12,6 +12,7 @@ const Home = (props) => {
         }
         alt="Noda 101 Logo"
       />
+      <h1>KARAOKE SIGN UP</h1>
       <div className="login-buttons">
         <button className="nav-btns green-btn">
           <Link to="/login"> Login </Link>

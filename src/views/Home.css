@@ -58,4 +58,5 @@ yellow: rgb(245, 225, 92);
 .logo {
   width: 100%;
   height: auto;
+  filter: drop-shadow(3px 3px 3px rgb(177, 85, 157));
 }

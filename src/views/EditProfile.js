@@ -115,61 +115,80 @@ class EditProfile extends React.Component {
 
     return (
       <div className="profile">
-        <section className="profile-heading">
-          <div className="logout-duplicate">Logout</div>
-          <h1>Edit Profile</h1>
-          <div className="logout">
-            <Link to={"/"} onClick={this.props.logout()}>
-              <img src={logout} alt="logout"></img>
-            </Link>
+        <section className="profile-heading-container">
+          <div className="profile-heading">
+            <div className="logout-duplicate">Logout</div>
+            <h1>Edit Profile</h1>
+            <div className="logout">
+              <Link to={"/"} onClick={this.props.logout()}>
+                <img src={logout} alt="logout"></img>
+              </Link>
+            </div>
           </div>
-        </section>
-        <section className="profile-image-container">
-          {user.photoUrl !== undefined && (
-            <img className="profile-image" src={user.photoUrl} alt="profile" />
-          )}
+          <div className="profile-image-container">
+            {user.photoUrl !== undefined && (
+              <img
+                className="profile-image"
+                src={user.photoUrl}
+                alt="profile"
+              />
+            )}
+          </div>
         </section>
 
         <form className="edit-profile-form" onSubmit={this.handleSubmit}>
-          <label>Change Image</label>
-          <input
-            type="file"
-            onChange={(e) => this.handleFileUpload(e, this.props.user._id)}
-          />
-          {/* <label>First Name: </label> */}
-          <input
-            name="firstName"
-            placeholder="First Name"
-            onChange={this.handleChange}
-            type="text"
-          />
-          {/* <label>Last Name: </label> */}
-          <input
-            name="lastName"
-            placeholder="Last Name"
-            onChange={this.handleChange}
-            type="text"
-          />
-          {/* <label>Stage Name: </label> */}
-          <input
-            name="stageName"
-            placeholder="Stage Name"
-            onChange={this.handleChange}
-            type="text"
-          />
-          <input
-            name="favoriteArtist"
-            placeholder="Favorite Artist"
-            onChange={this.handleChange}
-            type="text"
-          />
-          {/* <label>Email: </label> */}
-          <input
-            name="email"
-            placeholder={email}
-            onChange={this.handleChange}
-            type="email"
-          />
+          <label className="image-upload">
+            Change Profile Image
+            <input
+              type="file"
+              onChange={(e) => this.handleFileUpload(e, this.props.user._id)}
+            />
+          </label>
+          <div className="form-item">
+            <label>First Name: </label>
+            <input
+              name="firstName"
+              placeholder={user.firstName}
+              onChange={this.handleChange}
+              type="text"
+            />
+          </div>
+          <div class="form-item">
+            <label>Last Name: </label>
+            <input
+              name="lastName"
+              placeholder={user.lastName}
+              onChange={this.handleChange}
+              type="text"
+            />
+          </div>
+          <div class="form-item">
+            <label>Stage Name: </label>
+            <input
+              name="stageName"
+              placeholder={user.stageName}
+              onChange={this.handleChange}
+              type="text"
+            />
+          </div>
+          <div class="form-item">
+            <label>Favorite Artist:</label>
+            <input
+              name="favoriteArtist"
+              placeholder={user.favoriteArtist}
+              onChange={this.handleChange}
+              type="text"
+            />
+          </div>
+          <div class="form-item">
+            <label>Email: </label>
+            <input
+              name="email"
+              placeholder={email}
+              onChange={this.handleChange}
+              type="email"
+            />
+          </div>
 
           <button className="search-btn" type="submit">
             {" "}
