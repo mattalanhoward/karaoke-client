@@ -30,7 +30,7 @@ yellow: rgb(245, 225, 92);
 }
 
 .up-next {
-  background-color: rgb(245, 225, 92);
+  background-color: #f6f6f6;
 }
 
 .in-line {
@@ -131,4 +131,12 @@ h4 {
   /* border: 2px solid pink; */
   display: flex;
   justify-content: center;
+}
+
+.logo-queue {
+  /* border: 3px solid red; */
+  margin-top: 50%;
+  width: 60%;
+  height: auto;
+  filter: drop-shadow(3px 3px 3px rgb(177, 85, 157));
 }

@@ -7,6 +7,8 @@ import "../App.css";
 import { getProfile } from "../services/profileService";
 import signupImage from "../images/signup.png";
 import logout from "../images/logout.png";
+import logo from "../images/Noda_101_Logo_Cropped.png";
+
 export default class Search extends Component {
   state = {
     searchParams: "johnny cash",
@@ -116,10 +118,9 @@ export default class Search extends Component {
             </form>
             <h5>Search Results: {this.state.searchResults.length}</h5>
           </div>
-          {/* {this.state.searchResults.length > 0 ? ( */}
-          <section className="results-container">
-            {
-              this.state.searchResults.map((song) => (
+          {this.state.searchResults.length > 0 ? (
+            <section className="results-container">
+              {this.state.searchResults.map((song) => (
                 <div key={song._id} className="song-container">
                   <div className="results">
                     <h4>{song.Title}</h4>
@@ -141,12 +142,13 @@ export default class Search extends Component {
                     <img className="icon" src={signupImage} alt="signup icon" />
                   </button>
                 </div>
-              ))
-              /* ) : (
-            <div>No Results</div>
-          ) */
-            }
-          </section>
+              ))}
+            </section>
+          ) : (
+            <div className="search-container">
+              <img className="logo-search" src={logo} alt="logo" />
+            </div>
+          )}
         </section>
         <BottomNav />
       </div>

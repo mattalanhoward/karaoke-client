@@ -15,6 +15,7 @@ import logout from "../images/logout.png";
 import cancel from "../images/cancel.png";
 import check from "../images/check-mark.png";
 import undo from "../images/undo.png";
+import logo from "../images/Noda_101_Logo_Cropped.png";
 
 class Queue extends Component {
   state = {
@@ -113,6 +114,7 @@ class Queue extends Component {
   handleSongComplete = async (singerSongId) => {
     try {
       const response = await markSongComplete(singerSongId);
+
       this.setState(
         {
           songSung: response,
@@ -268,7 +270,10 @@ class Queue extends Component {
               ))}
             </div>
           ) : (
-            <h3>There are currently no signups!</h3>
+            <div>
+              <h3>There are currently no signups!</h3>
+              <img src={logo} alt="logo" />
+            </div>
           )}
         </section>
         <BottomNav />

@@ -21,6 +21,9 @@ export const updateProfile = ({
   password,
   userId,
   photoUrl,
+  createdAt,
+  totalSongs,
+  errorMessage,
 }) => {
   return service
     .post("/profile/editProfile", {
@@ -32,6 +35,9 @@ export const updateProfile = ({
       password,
       userId,
       photoUrl,
+      createdAt,
+      totalSongs,
+      errorMessage,
     })
     .then((response) => response.data)
     .catch((err) => err);

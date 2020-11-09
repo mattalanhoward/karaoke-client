@@ -14,6 +14,8 @@ class Profile extends React.Component {
     favoriteArtist: "",
     password: "",
     photoUrl: "",
+    createdAt: "",
+    totalSongs: "",
     errorMessage: "",
   };
 
@@ -41,6 +43,8 @@ class Profile extends React.Component {
         email: updatedUser.email,
         password: updatedUser.password,
         photoUrl: updatedUser.photoUrl,
+        createdAt: updatedUser.createdAt,
+        totalSongs: updatedUser.totalSongs,
         errorMessage: "",
       });
     } catch (error) {
@@ -52,6 +56,27 @@ class Profile extends React.Component {
 
   render() {
     const user = this.state;
+
+    //Get written out date for users first signup.
+    const startDate = new Date(user.createdAt);
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const monthIndex = startDate.getMonth();
+    const monthName = months[monthIndex];
+    const year = startDate.getFullYear();
+
     return (
       <div className="profile">
         <section className="profile-heading-container">
@@ -78,33 +103,62 @@ class Profile extends React.Component {
         <Link className="profile-btn" to={"/editprofile"}>
           Edit Profile
         </Link>
-        <ul className="profile-info">
-          {user.firstName && user.lastName !== undefined && (
-            <li>
-              <p>Name</p>
-              <h3>
-                {user.firstName} {user.lastName}
-              </h3>
-            </li>
-          )}
 
-          <li>
-            <p>Stage Name</p>
-            <h3>{user.stageName}</h3>
-          </li>
-
-          {user.favoriteArtist !== undefined && (
-            <li>
-              <p>Favorite Artist</p>
-              <h3>{user.favoriteArtist}</h3>
-            </li>
-          )}
-
-          <li>
-            <p>Email</p>
-            <h3>{user.email}</h3>
-          </li>
-        </ul>
+        <table className="profile-info">
+          <tbody>
+            <tr>
+              <td>
+                <p>Stage Name: </p>
+              </td>
+              <td>
+                <h3>{user.stageName}</h3>
+              </td>
+            </tr>
+            {user.firstName !== undefined && user.lastName !== undefined && (
+              <tr>
+                <td>
+                  <p>Name: </p>
+                </td>
+                <td>
+                  <h3>
+                    {user.firstName} {user.lastName}
+                  </h3>
+                </td>
+              </tr>
+            )}
+            {user.favoriteArtist !== undefined && (
+              <tr>
+                <td>
+                  <p>Favorite Artist: </p>
+                </td>
+                <td>
+                  <h3>{user.favoriteArtist}</h3>
+                </td>
+              </tr>
+            )}
+            {user.totalSongs !== undefined && (
+              <tr>
+                <td>
+                  <p>Songs Sang: </p>
+                </td>
+                <td>
+                  <h3>{user.totalSongs}</h3>
+                </td>
+              </tr>
+            )}
+            <tr>
+              <td>
+                <p>Rockstar Since: </p>
+              </td>
+              <td>
+                <h3>
+                  {monthName}, {year}
+                </h3>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {user.email}
 
         <BottomNav />
       </div>

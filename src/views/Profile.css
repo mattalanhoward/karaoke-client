@@ -68,21 +68,34 @@ h2 {
   color: black;
 }
 
-.profile-info {
-  /* border: 2px solid blue; */
-  list-style-type: none;
-  margin: 0 auto;
+tbody {
+  width: 100%;
   display: flex;
-  height: 50%;
   flex-direction: column;
-  align-items: center;
-  padding: 0;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
-.profile-info h4 {
-  border-bottom: 1px solid rgb(67, 162, 168);
-  padding-bottom: 4px;
+tbody tr {
+  /* border: 2px solid green; */
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 5%;
+}
+
+tbody tr td {
+  /* border: 2px solid red; */
+  width: 50%;
+  text-align: left;
+}
+
+.profile-info {
+  /* border: 3px solid blue; */
+  height: 40%;
+  display: flex;
+}
+
+.profile-td h3 {
+  margin: 0;
 }
 
 .edit-profile-form {
