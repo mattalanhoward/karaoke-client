@@ -16,6 +16,7 @@ class Profile extends React.Component {
     photoUrl: "",
     createdAt: "",
     totalSongs: "",
+    rankings: { rank: "", totalUsers: "" },
     errorMessage: "",
   };
 
@@ -45,6 +46,7 @@ class Profile extends React.Component {
         photoUrl: updatedUser.photoUrl,
         createdAt: updatedUser.createdAt,
         totalSongs: updatedUser.totalSongs,
+        rankings: updatedUser.rankings,
         errorMessage: "",
       });
     } catch (error) {
@@ -56,7 +58,6 @@ class Profile extends React.Component {
 
   render() {
     const user = this.state;
-
     //Get written out date for users first signup.
     const startDate = new Date(user.createdAt);
     const months = [
@@ -143,6 +144,18 @@ class Profile extends React.Component {
                 </td>
                 <td>
                   <h3>{user.totalSongs}</h3>
+                </td>
+              </tr>
+            )}
+            {user.totalSongs !== undefined && (
+              <tr>
+                <td>
+                  <p>Noda 101 Street Cred: </p>
+                </td>
+                <td>
+                  <h3>
+                    {user.rankings.rank} of {user.rankings.totalUsers}
+                  </h3>
                 </td>
               </tr>
             )}

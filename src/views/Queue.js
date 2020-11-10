@@ -272,7 +272,7 @@ class Queue extends Component {
           ) : (
             <div>
               <h3>There are currently no signups!</h3>
-              <img src={logo} alt="logo" />
+              <img className="logo-queue" src={logo} alt="logo" />
             </div>
           )}
         </section>
