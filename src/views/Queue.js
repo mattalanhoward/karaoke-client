@@ -48,7 +48,7 @@ class Queue extends Component {
 
   //Update details when song sung is clicked
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.queueDetails !== this.state.queueDetails) {
+    if (prevState.songSung !== this.state.songSung) {
       this.fetchData();
       this.handleQueueDetails();
     }
