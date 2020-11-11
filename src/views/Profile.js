@@ -16,7 +16,8 @@ class Profile extends React.Component {
     photoUrl: "",
     createdAt: "",
     totalSongs: "",
-    rankings: { rank: "", totalUsers: "" },
+    rank: "",
+    totalUsers: "",
     errorMessage: "",
   };
 
@@ -46,7 +47,8 @@ class Profile extends React.Component {
         photoUrl: updatedUser.photoUrl,
         createdAt: updatedUser.createdAt,
         totalSongs: updatedUser.totalSongs,
-        rankings: updatedUser.rankings,
+        rank: updatedUser.rank,
+        totalUsers: updatedUser.totalUsers,
         errorMessage: "",
       });
     } catch (error) {
@@ -154,7 +156,8 @@ class Profile extends React.Component {
                 </td>
                 <td>
                   <h3>
-                    {user.rankings.rank} of {user.rankings.totalUsers}
+                    {`${user.rank} 
+                    of ${user.totalUsers}`}
                   </h3>
                 </td>
               </tr>

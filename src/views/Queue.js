@@ -178,6 +178,12 @@ class Queue extends Component {
       return "in-line";
     };
 
+    //Queue length of songs yet to be sung.
+    const filteredSung = queueDetails.filter((sung) => {
+      return !sung.wasSung;
+    });
+
+    console.log(filteredSung);
     return (
       <div className="queue-container">
         <section className="heading">
@@ -195,12 +201,20 @@ class Queue extends Component {
         </section>
         <div className="queue-header">
           <h3>Queue</h3>
-          <h4>Total Signups: {queueDetails.length}</h4>
+          <h4>Total Signups: {filteredSung.length}</h4>
           {errorMessage !== "" && errorMessage}
         </div>
         <section className="queue">
           {queueDetails.length > 0 ? (
             <div>
+              {console.log(queueDetails)}
+              {/* {
+                const filteredSung = 
+                queueDetails.filter((sung) => {
+                  sung.wasSung;
+                })
+              } */}
+
               {queueDetails.map((signupItem, index, array) => (
                 <div key={signupItem._id} className="queue-song-container">
                   <div className={nextUp(array, index)}>
@@ -212,26 +226,28 @@ class Queue extends Component {
                         <h5>{signupItem.song.Artist}</h5>
                       </div>
                       <div className="btn-container">
-                        {signupItem.singer._id === user._id && (
-                          <button
-                            className="song-btn-container"
-                            onClick={() => {
-                              if (
-                                window.confirm(
-                                  `Are you sure you want to delete your signup ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
-                                )
-                              ) {
-                                this.handleDeleteSignup(signupItem._id);
-                              }
-                            }}
-                          >
-                            <img
-                              className="cancel-song-btn"
-                              src={cancel}
-                              alt="cancel"
-                            />
-                          </button>
-                        )}
+                        {console.log(signupItem.wasSung)}
+                        {signupItem.singer._id === user._id &&
+                          !signupItem.wasSung && (
+                            <button
+                              className="song-btn-container"
+                              onClick={() => {
+                                if (
+                                  window.confirm(
+                                    `Are you sure you want to delete your signup ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
+                                  )
+                                ) {
+                                  this.handleDeleteSignup(signupItem._id);
+                                }
+                              }}
+                            >
+                              <img
+                                className="cancel-song-btn"
+                                src={cancel}
+                                alt="cancel"
+                              />
+                            </button>
+                          )}
 
                         <div className="mark-container">
                           {user.isAdmin && (

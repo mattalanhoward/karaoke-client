@@ -161,7 +161,7 @@ class BarDisplay extends Component {
     return (
       <div className="bar-display-container">
         <section className="bar-left">
-          {/* <Queue
+          <Queue
             user={this.props.user}
             authenticated={authenticated}
             component={Queue}
@@ -169,8 +169,8 @@ class BarDisplay extends Component {
             newSignup={this.state.newSignup}
             signUp={this.handleSignup}
             logout={() => this.handleLogout}
-          /> */}
-          <div className="queue-header">
+          />
+          {/* <div className="queue-header">
             <h3>Queue</h3>
             <h4>Total Signups: {queueDetails.length}</h4>
             {errorMessage !== "" && errorMessage}
@@ -195,7 +195,7 @@ class BarDisplay extends Component {
             ) : (
               <h3>There are currently no signups!</h3>
             )}
-          </section>
+          </section> */}
         </section>
         <section className="bar-right">
           <div className="bar-right-item">Dj Scribble</div>
