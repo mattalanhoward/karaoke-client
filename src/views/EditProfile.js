@@ -140,7 +140,7 @@ class EditProfile extends React.Component {
         )}
         <form className="edit-profile-form" onSubmit={this.handleSubmit}>
           <label className="profile-btn">
-            Change Profile Image
+            Change Image
             <input
               type="file"
               onChange={(e) => this.handleFileUpload(e, this.props.user._id)}

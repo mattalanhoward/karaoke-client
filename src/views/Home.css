@@ -1,14 +1,7 @@
-/* 
-green: #AEEDBF  
-light-grey: #f6f6f6
-medium-grey: #e8e8e8
-font-size: large; input boxes
-font-size: x-large; buttons
-hot pink: rgb(210,34,71);
-pink: rgb(177,85,157);
-teal: rgb(67,162,168);
-blue: rgb(5, 55, 159);
-yellow: rgb(245, 225, 92); 
+/* dark purple: #1e1e1e
+light red 2: #f73cab
+Cyan: #30fcf1
+light pink: #ffe2f7
 */
 
 .home-container {
@@ -19,7 +12,7 @@ yellow: rgb(245, 225, 92);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #1e1e1e;
 }
 
 .login-buttons {
@@ -39,27 +32,27 @@ yellow: rgb(245, 225, 92);
   width: 80vw;
   margin: 0 auto;
   text-decoration: none;
-  font-size: x-large;
+  font-size: large;
   border-style: none;
   padding: 0px 10px;
 }
 
 .green-btn {
   margin: 5px auto;
-  background-color: rgb(67, 162, 168);
-  border: 1px solid rgb(245, 225, 92);
-  color: white;
+  background-color: #30fcf1;
+  /* border: 1px solid rgb(245, 225, 92); */
+  color: #1e1e1e;
 }
 
 .wht-btn {
   background-color: white;
-  color: rgb(67, 162, 168);
-  border: 1px solid rgb(67, 162, 168);
+  color: #1e1e1e;
+  border: 1px solid #30fcf1;
 }
 
 .logo {
   width: 80%;
   height: auto;
 
-  filter: drop-shadow(3px 3px 3px rgb(177, 85, 157));
+  filter: drop-shadow(3px 3px 3px #30fcf1);
 }

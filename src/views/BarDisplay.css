@@ -1,3 +1,9 @@
+/* dark purple: #1e1e1e
+light red 2: #f73cab
+Cyan: #30fcf1
+light pink: #ffe2f7
+*/
+
 .bar-display-container {
   border: 3px solid yellow;
   width: 100%;
@@ -26,7 +32,7 @@
 }
 
 .bar-right-item {
-  border: 2px solid black;
+  border: 2px solid #1a1b1e;
   height: 25%;
   width: 66%;
   margin: 1% 0;

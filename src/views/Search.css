@@ -1,41 +1,35 @@
-/* 
-green: #AEEDBF  
-light-grey: #f6f6f6
-medium-grey: #e8e8e8
-font-size: large; input boxes
-font-size: x-large; buttons
-hot pink: rgb(210,34,71);
-pink: rgb(177,85,157);
-teal: rgb(67,162,168);
-blue: rgb(5, 55, 159);
-yellow: rgb(245, 225, 92); 
+/* dark purple: #1e1e1e
+light red 2: #f73cab
+Cyan: #30fcf1
+light pink: #ffe2f7
 */
 
 .search-container {
-  /* border: 2px solid black; */
+  /* border: 2px solid #1A1B1E; */
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #1e1e1e;
 }
 
 .heading {
   /* border: 2px solid yellow; */
-  background-color: rgb(177, 85, 157);
+  background-color: #30fcf1;
   width: 100%;
   height: 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #1e1e1e;
   position: fixed;
   padding-top: 1vh;
   top: 0;
 }
 
 .heading img {
-  border: 2px solid rgb(67, 162, 168);
+  border: 1px solid #1e1e1e;
   object-fit: cover;
   height: 5vh;
   width: 5vh;
@@ -63,15 +57,15 @@ yellow: rgb(245, 225, 92);
 .search-btn {
   /* border: 3px solid orange; */
   height: 4vh;
-  border-radius: 30px;
+  border-radius: 3px;
   width: 40vw;
   margin: 0 auto;
   text-decoration: none;
   font-size: large;
-  border-style: none;
   padding: 0px 10px;
-  background-color: rgb(67, 162, 168);
-  border: 1px solid rgb(245, 225, 92);
+  background-color: #1e1e1e;
+  border: 1px solid #f73cab;
+  color: white;
 }
 
 .search {
@@ -82,16 +76,17 @@ yellow: rgb(245, 225, 92);
 
 .search-bar {
   /* border: 1px solid blue; */
-  background-color: white;
   /* margin-top: 10vh; */
   width: 100vw;
   position: fixed;
   top: 9vh;
+  background-color: #1e1e1e;
 }
 
 h3,
 h5 {
   margin: 15px auto;
+  color: white;
 }
 
 h4 {
@@ -109,15 +104,16 @@ p {
   align-items: center;
   margin: 26vh 20px 11vh 20px;
   justify-content: space-between;
+  color: white;
 }
 
 .song-container {
-  /* border-bottom: 1px solid rgb(67, 162, 168); */
+  /* border-bottom: 1px solid #FF3D90; */
   display: flex;
   align-items: center;
   width: 90vw;
   justify-content: space-between;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #f73cab;
   padding: 6px 4px;
 }
 
@@ -128,11 +124,15 @@ p {
 }
 
 .signup-btn {
-  /* border: 1px solid blue; */
-  border: none;
-  background-color: white;
-  height: 50%;
+  /* border: none; */
+  background-color: #f73cab;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
   padding: 3px;
+  border-radius: 50%;
 }
 
 .icon {
@@ -145,5 +145,5 @@ p {
   margin-top: 50%;
   width: 60%;
   height: auto;
-  filter: drop-shadow(3px 3px 3px rgb(177, 85, 157));
+  filter: drop-shadow(3px 3px 3px #30fcf1);
 }

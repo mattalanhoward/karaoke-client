@@ -103,7 +103,7 @@ export default class Search extends Component {
         </section>
         <section className="search">
           <div className="search-bar">
-            <h3>Noda 101 Song List</h3>
+            {/* <h3>NODA 101 Song List</h3> */}
             <form onSubmit={this.handleSubmit}>
               <input
                 name="searchParams"
@@ -111,10 +111,10 @@ export default class Search extends Component {
                 onChange={this.handleChange}
                 type="text"
               />
-              <button className="search-btn" type="submit">
+              {/* <button className="search-btn" type="submit">
                 {" "}
                 Search{" "}
-              </button>
+              </button> */}
             </form>
             <h5>Search Results: {this.state.searchResults.length}</h5>
           </div>

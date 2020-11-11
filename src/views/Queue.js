@@ -48,7 +48,7 @@ class Queue extends Component {
 
   //Update details when song sung is clicked
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.songSung !== this.state.songSung) {
+    if (prevState.queueDetails !== this.state.queueDetails) {
       this.fetchData();
       this.handleQueueDetails();
     }
@@ -119,7 +119,9 @@ class Queue extends Component {
         {
           songSung: response,
         },
-        () => {}
+        () => {
+          console.log(`SONG COMPLETE RESPONSE`, response);
+        }
       );
     } catch (error) {
       this.setState({

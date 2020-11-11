@@ -1,23 +1,12 @@
-/* 
-green: #AEEDBF  
-light-grey: #f6f6f6
-medium-grey: #e8e8e8
-font-size: large; input boxes
-font-size: x-large; buttons
-hot pink: rgb(210,34,71);
-pink: rgb(177,85,157);
-teal: rgb(67,162,168);
-blue: rgb(5, 55, 159);
-yellow: rgb(245, 225, 92); 
+/* dark purple: #1e1e1e
+light red 2: #f73cab
+Cyan: #30fcf1
+light pink: #ffe2f7
 */
 
-/* 
-ultraviolet #D33ER5
-Candy Pink #FF3D90
-Eerie Black #1A1B1E */
-
 .profile {
-  /* border: 2px solid black; */
+  /* border: 2px solid #1A1B1E; */
+  background-color: #1e1e1e;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -27,7 +16,7 @@ Eerie Black #1A1B1E */
 .profile-heading-container {
   /* border: 2px solid blue; */
   height: 35%;
-  background: linear-gradient(180deg, rgb(177, 85, 157) 60%, white 0%);
+  background: linear-gradient(180deg, #30fcf1 60%, #1e1e1e 0%);
 }
 
 .profile-heading {
@@ -56,7 +45,7 @@ Eerie Black #1A1B1E */
 }
 
 .profile-image {
-  border: 4px solid rgb(67, 162, 168);
+  border: 2px solid white;
   object-fit: cover;
   width: 20vh;
   height: 20vh;
@@ -65,12 +54,16 @@ Eerie Black #1A1B1E */
 
 body {
   text-align: center;
+  color: white;
 }
 
+h1 {
+  color: #1e1e1e;
+}
 h2 {
   /* border: 1px solid orange; */
   text-align: center;
-  color: black;
+  color: #1a1b1e;
 }
 
 tbody {
@@ -80,6 +73,9 @@ tbody {
   justify-content: center;
 }
 
+tbody p {
+  color: white;
+}
 tbody tr {
   /* border: 2px solid green; */
   display: flex;
@@ -88,7 +84,7 @@ tbody tr {
 }
 
 tbody tr td {
-  /* border: 2px solid red; */
+  border-bottom: 1px solid #f73cab;
   width: 50%;
   text-align: left;
 }
@@ -112,10 +108,10 @@ tbody tr td {
 }
 
 .profile-btn {
-  border: 1px solid rgb(67, 162, 168);
+  border: 1px solid #30fcf1;
   padding: 5px;
-  width: 50%;
-  border-radius: 30px;
+  width: 40%;
+  border-radius: 3px;
   margin: 0 auto;
 }
 
@@ -132,7 +128,8 @@ input[type="file"] {
 }
 
 .form-item input {
-  /* border: 2px solid blue; */
+  /* border: 1px solid #f73cab; */
   width: 60%;
+  height: 100%;
   margin: 0;
 }

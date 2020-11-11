@@ -1,14 +1,7 @@
-/* 
-green: #AEEDBF  
-light-grey: #f6f6f6
-medium-grey: #e8e8e8
-font-size: large; input boxes
-font-size: x-large; buttons
-hot pink: rgb(210,34,71);
-pink: rgb(177,85,157);
-teal: rgb(67,162,168);
-blue: rgb(5, 55, 159);
-yellow: rgb(245, 225, 92); 
+/* dark purple: #1e1e1e
+light red 2: #f73cab
+Cyan: #30fcf1
+light pink: #ffe2f7
 */
 
 .complete,
@@ -20,30 +13,26 @@ yellow: rgb(245, 225, 92);
 }
 
 .complete {
-  background-color: #e8e8e8;
+  background-color: #ffe2f7;
   opacity: 0.5;
-  color: black;
+  color: #1a1b1e;
 }
 
 .current {
-  background-color: rgb(67, 162, 168);
+  background-color: #30fcf1;
 }
 
 .up-next {
-  background-color: #f6f6f6;
+  background-color: #f73cab;
 }
 
 .in-line {
-  background-color: #f6f6f6;
+  background-color: #ffe2f7;
 }
 
 .stage-name-container h3,
 .stage-name-container h5 {
   margin: 5px auto;
-}
-
-.heading-container {
-  background-color: blue;
 }
 
 .heading {
@@ -62,6 +51,7 @@ yellow: rgb(245, 225, 92);
   position: fixed;
   top: 9%;
   z-index: 1;
+  background-color: #1e1e1e;
 }
 
 h3,
@@ -70,11 +60,12 @@ h4 {
 }
 
 .queue-container {
-  /* border: 2px solid black; */
+  /* border: 2px solid #1A1B1E; */
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #1e1e1e;
 }
 
 .queue-song-container {
@@ -82,17 +73,25 @@ h4 {
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-color: #1e1e1e;
   /* border-bottom: 1px solid #e8e8e8; */
 }
 
 .queue-item {
   /* border: 1px solid green; */
-  /* border-bottom: 1px solid black; */
+  /* border-bottom: 1px solid #1A1B1E; */
   margin: 0 auto;
   width: 90%;
   text-align: left;
   display: flex;
   justify-content: space-between;
+  /* background-color: #ffd0df; */
+}
+
+.queue-item h3,
+.queue-item h4,
+.queue-item h5 {
+  color: #1e1e1e;
 }
 
 .stage-name-container {
@@ -135,8 +134,8 @@ h4 {
 
 .logo-queue {
   /* border: 3px solid red; */
-  margin-top: 50%;
+
   width: 60%;
   height: auto;
-  filter: drop-shadow(3px 3px 3px rgb(177, 85, 157));
+  filter: drop-shadow(3px 3px 3px #d33ef5);
 }

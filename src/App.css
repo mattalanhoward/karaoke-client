@@ -1,9 +1,7 @@
-/* 
-green: #AEEDBF  
-light-grey: #f6f6f6
-medium-grey: #e8e8e8
-font-size: large; input boxes
-font-size: x-large; buttons
+/* dark purple: #1e1e1e
+light red 2: #f73cab
+Cyan: #30fcf1
+light pink: #ffe2f7
 */
 
 .App {
@@ -13,6 +11,11 @@ font-size: x-large; buttons
   align-items: center;
   width: 100vw;
   height: 100vh;
+  background-color: #1e1e1e;
+}
+
+html {
+  background-color: #1e1e1e;
 }
 
 form {
@@ -29,7 +32,7 @@ a {
 input {
   border: 2px solid #e8e8e8;
   height: 5vh;
-  border-radius: 10px;
+  border-radius: 3px;
   width: 80vw;
   margin: 6px auto;
   text-decoration: none;
