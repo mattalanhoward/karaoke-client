@@ -149,7 +149,7 @@ class Profile extends React.Component {
                 </td>
               </tr>
             )}
-            {user.totalSongs !== undefined && (
+            {/* {user.totalSongs !== undefined && (
               <tr>
                 <td>
                   <p>Noda 101 Street Cred: </p>
@@ -161,7 +161,7 @@ class Profile extends React.Component {
                   </h3>
                 </td>
               </tr>
-            )}
+            )} */}
             <tr>
               <td>
                 <p>Rockstar Since: </p>

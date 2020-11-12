@@ -120,7 +120,7 @@ class Queue extends Component {
           songSung: response,
         },
         () => {
-          console.log(`SONG COMPLETE RESPONSE`, response);
+          console.log(`SONG COMPLETE RESPONSE`, this.state);
         }
       );
     } catch (error) {
