@@ -272,39 +272,36 @@ class Queue extends Component {
                                 )}
 
                               <div className="mark-container">
-                                {user.isAdmin &&
-                                  nextUp(array, index) !== "in-line" && (
-                                    <button
-                                      className="song-btn-container"
-                                      onClick={() => {
-                                        {
-                                          this.handleSongComplete(
-                                            signupItem._id
-                                          );
-                                        }
-                                      }}
-                                    >
-                                      {signupItem.wasSung ? (
-                                        <img
-                                          className="cancel-song-btn"
-                                          src={undo}
-                                          alt="undo"
-                                        />
-                                      ) : nextUp(array, index) !== "in-line" ? (
-                                        <img
-                                          className="cancel-song-btn"
-                                          src={check}
-                                          alt="check"
-                                        />
-                                      ) : (
-                                        <img
-                                          className="hidden-cancel-song-btn"
-                                          src={whiteCheck}
-                                          alt="check"
-                                        />
-                                      )}
-                                    </button>
-                                  )}
+                                {user.isAdmin && (
+                                  <button
+                                    className="song-btn-container"
+                                    onClick={() => {
+                                      {
+                                        this.handleSongComplete(signupItem._id);
+                                      }
+                                    }}
+                                  >
+                                    {!signupItem.wasSung ? (
+                                      <img
+                                        className="cancel-song-btn"
+                                        src={check}
+                                        alt="check"
+                                      />
+                                    ) : nextUp(array, index) === "in-line" ? (
+                                      <img
+                                        className="cancel-song-btn"
+                                        src={whiteCheck}
+                                        alt="check"
+                                      />
+                                    ) : (
+                                      <img
+                                        className="cancel-song-btn"
+                                        src={undo}
+                                        alt="undo"
+                                      />
+                                    )}
+                                  </button>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -330,3 +327,43 @@ class Queue extends Component {
 }
 
 export default Queue;
+
+//error when no one has been marked sung.  Impossible to get buttons for dj to mark things sung.
+//Need to account for that.  Otherwise this is good code for lots of conditional buttons
+{
+  /* <div className="mark-container">
+{user.isAdmin &&
+  nextUp(array, index) !== "in-line" && (
+    <button
+      className="song-btn-container"
+      onClick={() => {
+        {
+          this.handleSongComplete(
+            signupItem._id
+          );
+        }
+      }}
+    >
+      {signupItem.wasSung ? (
+        <img
+          className="cancel-song-btn"
+          src={undo}
+          alt="undo"
+        />
+      ) : nextUp(array, index) !== "in-line" ? (
+        <img
+          className="cancel-song-btn"
+          src={check}
+          alt="check"
+        />
+      ) : (
+        <img
+          className="hidden-cancel-song-btn"
+          src={whiteCheck}
+          alt="check"
+        />
+      )}
+    </button>
+  )}
+</div> */
+}
