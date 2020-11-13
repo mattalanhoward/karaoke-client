@@ -17,18 +17,22 @@ light pink: #ffe2f7
   /* background-color: #ffe2f7; */
   opacity: 0.3;
   color: #1a1b1e;
-  zoom: 1;
+  transition: background-color 0.75s ease;
+  background-color: #1a1b1e;
 }
 
 .current {
   border: 1px solid #30fcf1;
   color: #1e1e1e;
+  transition: background-color 0.75s ease;
   background-color: #30fcf1;
   opacity: 0.9;
 }
 
 .up-next {
   border: 1px solid #f73cab;
+  transition: background-color 0.75s ease;
+
   background-color: #f73cab;
   opacity: 0.9;
 }
@@ -149,12 +153,18 @@ h4 {
   outline: none;
 }
 
-.cancel-song-btn {
+.cancel-song-btn,
+.hidden-cancel-song-btn {
   width: 25px;
   height: 25px;
   padding: 3px;
   border: none;
   background-color: none;
+}
+
+.hidden-cancel-song-btn {
+  visibility: hidden;
+  display: none;
 }
 
 .mark-container {

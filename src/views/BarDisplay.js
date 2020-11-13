@@ -9,7 +9,7 @@ import BottomNav from "./BottomNav";
 import logout from "../images/logout.png";
 import cancel from "../images/cancel.png";
 import check from "../images/check-mark.png";
-import undo from "../images/undo.png";
+import undo from "../images/undo-white.png";
 import Queue from "./Queue";
 import "./BarDisplay.css";
 

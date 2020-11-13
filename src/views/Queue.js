@@ -13,8 +13,10 @@ import "./Queue.css";
 import BottomNav from "./BottomNav";
 import logout from "../images/logout.png";
 import cancel from "../images/cancel.png";
+import whiteCancel from "../images/white-cancel.png";
+import whiteCheck from "../images/white-check-mark.png";
 import check from "../images/check-mark.png";
-import undo from "../images/undo.png";
+import undo from "../images/undo-white.png";
 import logo from "../images/Noda_101_Logo_Cropped.png";
 import ProgressBar from "react-scroll-progress-bar";
 import Zoom from "react-reveal/Zoom";
@@ -231,9 +233,9 @@ class Queue extends Component {
               <TransitionGroup {...this.groupProps}>
                 {queueDetails.map((signupItem, index, array) => (
                   //Container for each item.  Place effects here.
-                  <Fade duration={1500} key={signupItem._id} collapse>
+                  <Fade duration={1000} key={signupItem._id} collapse right>
                     <div key={signupItem._id} className="queue-song-container">
-                      <Fade duration={1500} key={signupItem._id}>
+                      <Fade duration={1000} key={signupItem._id}>
                         <div className={nextUp(array, index)}>
                           <div className="queue-item">
                             {/* <div>{index + 1}</div> */}
@@ -252,39 +254,57 @@ class Queue extends Component {
                                       this.handleDeleteSignup(signupItem._id);
                                     }}
                                   >
-                                    <img
-                                      className="cancel-song-btn"
-                                      src={cancel}
-                                      alt="cancel"
-                                    />
-                                  </button>
-                                )}
-
-                              <div className="mark-container">
-                                {user.isAdmin && (
-                                  <button
-                                    className="song-btn-container"
-                                    onClick={() => {
-                                      {
-                                        this.handleSongComplete(signupItem._id);
-                                      }
-                                    }}
-                                  >
-                                    {signupItem.wasSung ? (
+                                    {/* Toggle icon color based on in-line status */}
+                                    {nextUp(array, index) === "in-line" ? (
                                       <img
                                         className="cancel-song-btn"
-                                        src={undo}
-                                        alt="undo"
+                                        src={whiteCancel}
+                                        alt="white-cancel"
                                       />
                                     ) : (
                                       <img
                                         className="cancel-song-btn"
-                                        src={check}
-                                        alt="check"
+                                        src={cancel}
+                                        alt="cancel"
                                       />
                                     )}
                                   </button>
                                 )}
+
+                              <div className="mark-container">
+                                {user.isAdmin &&
+                                  nextUp(array, index) !== "in-line" && (
+                                    <button
+                                      className="song-btn-container"
+                                      onClick={() => {
+                                        {
+                                          this.handleSongComplete(
+                                            signupItem._id
+                                          );
+                                        }
+                                      }}
+                                    >
+                                      {signupItem.wasSung ? (
+                                        <img
+                                          className="cancel-song-btn"
+                                          src={undo}
+                                          alt="undo"
+                                        />
+                                      ) : nextUp(array, index) !== "in-line" ? (
+                                        <img
+                                          className="cancel-song-btn"
+                                          src={check}
+                                          alt="check"
+                                        />
+                                      ) : (
+                                        <img
+                                          className="hidden-cancel-song-btn"
+                                          src={whiteCheck}
+                                          alt="check"
+                                        />
+                                      )}
+                                    </button>
+                                  )}
                               </div>
                             </div>
                           </div>
