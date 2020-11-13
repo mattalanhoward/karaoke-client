@@ -51,7 +51,7 @@ class Login extends React.Component {
         />
 
         {errorMessage !== "" && (
-          <span className="signup-errors">{errorMessage}</span>
+          <div className="signup-errors">{errorMessage}</div>
         )}
 
         <form onSubmit={this.handleSubmit}>

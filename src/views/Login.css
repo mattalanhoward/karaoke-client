@@ -13,3 +13,8 @@ light pink: #ffe2f7
   justify-content: space-evenly;
   align-items: center;
 }
+
+.signup-errors {
+  background-color: #1e1e1e;
+  color: black;
+}
