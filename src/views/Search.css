@@ -5,7 +5,7 @@ light pink: #ffe2f7
 */
 
 .search-container {
-  /* border: 2px solid #1A1B1E; */
+  /* border: 2px solid #1a1b1e; */
   height: 100%;
   width: 100%;
   display: flex;
@@ -70,8 +70,8 @@ light pink: #ffe2f7
 
 .search {
   /* border: 1px solid red; */
-  height: 84vh;
-  margin-top: 6vh;
+  height: 100%;
+  margin-top: -8%;
 }
 
 .search-bar {
@@ -81,6 +81,7 @@ light pink: #ffe2f7
   position: fixed;
   top: 9vh;
   background-color: #1e1e1e;
+  z-index: 1;
 }
 
 h3,
@@ -102,7 +103,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 26vh 20px 11vh 20px;
+  margin: 26vh 10px 11vh 10px;
   justify-content: space-between;
   color: white;
 }
@@ -119,7 +120,7 @@ p {
 
 .results {
   /* border: 1px solid green; */
-  width: 90vw;
+  width: 90%;
   text-align: left;
 }
 
@@ -142,7 +143,7 @@ p {
 
 .logo-search {
   /* border: 3px solid red; */
-  margin-top: 50%;
+  margin: auto;
   width: 60%;
   height: auto;
   filter: drop-shadow(3px 3px 3px #30fcf1);

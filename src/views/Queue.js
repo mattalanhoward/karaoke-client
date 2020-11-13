@@ -16,8 +16,17 @@ import cancel from "../images/cancel.png";
 import check from "../images/check-mark.png";
 import undo from "../images/undo.png";
 import logo from "../images/Noda_101_Logo_Cropped.png";
+import ProgressBar from "react-scroll-progress-bar";
+import Zoom from "react-reveal/Zoom";
+import Fade from "react-reveal/Fade";
+import TransitionGroup from "react-transition-group/TransitionGroup";
 
 class Queue extends Component {
+  groupProps = {
+    appear: false,
+    enter: true,
+    exit: true,
+  };
   state = {
     //this will be the item to iterate through and post name / song.
     queueId: "",
@@ -186,6 +195,7 @@ class Queue extends Component {
     });
 
     console.log(filteredSung);
+
     return (
       <div className="queue-container">
         <section className="heading">
@@ -205,10 +215,12 @@ class Queue extends Component {
           <h3>Queue</h3>
           <h4>Total Signups: {filteredSung.length}</h4>
           {errorMessage !== "" && errorMessage}
+          <ProgressBar height="3px" bgcolor="#f73cab" duration="0.2" />{" "}
         </div>
+
         <section className="queue">
           {queueDetails.length > 0 ? (
-            <div>
+            <div className="queue-list-container">
               {console.log(queueDetails)}
               {/* {
                 const filteredSung = 
@@ -216,76 +228,73 @@ class Queue extends Component {
                   sung.wasSung;
                 })
               } */}
+              <TransitionGroup {...this.groupProps}>
+                {queueDetails.map((signupItem, index, array) => (
+                  //Container for each item.  Place effects here.
+                  <Fade duration={1500} key={signupItem._id} collapse>
+                    <div key={signupItem._id} className="queue-song-container">
+                      <Fade duration={1500} key={signupItem._id}>
+                        <div className={nextUp(array, index)}>
+                          <div className="queue-item">
+                            {/* <div>{index + 1}</div> */}
+                            <div className="stage-name-container">
+                              <h3>{signupItem.singer.stageName}</h3>
+                              <h4>{signupItem.song.Title}</h4>
+                              <h5>{signupItem.song.Artist}</h5>
+                            </div>
+                            <div className="btn-container">
+                              {/* {console.log(signupItem.wasSung)} */}
+                              {signupItem.singer._id === user._id &&
+                                !signupItem.wasSung && (
+                                  <button
+                                    className="song-btn-container"
+                                    onClick={() => {
+                                      this.handleDeleteSignup(signupItem._id);
+                                    }}
+                                  >
+                                    <img
+                                      className="cancel-song-btn"
+                                      src={cancel}
+                                      alt="cancel"
+                                    />
+                                  </button>
+                                )}
 
-              {queueDetails.map((signupItem, index, array) => (
-                <div key={signupItem._id} className="queue-song-container">
-                  <div className={nextUp(array, index)}>
-                    <div className="queue-item">
-                      {/* <div>{index + 1}</div> */}
-                      <div className="stage-name-container">
-                        <h3>{signupItem.singer.stageName}</h3>
-                        <h4>{signupItem.song.Title}</h4>
-                        <h5>{signupItem.song.Artist}</h5>
-                      </div>
-                      <div className="btn-container">
-                        {console.log(signupItem.wasSung)}
-                        {signupItem.singer._id === user._id &&
-                          !signupItem.wasSung && (
-                            <button
-                              className="song-btn-container"
-                              onClick={() => {
-                                if (
-                                  window.confirm(
-                                    `Are you sure you want to delete your signup ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
-                                  )
-                                ) {
-                                  this.handleDeleteSignup(signupItem._id);
-                                }
-                              }}
-                            >
-                              <img
-                                className="cancel-song-btn"
-                                src={cancel}
-                                alt="cancel"
-                              />
-                            </button>
-                          )}
-
-                        <div className="mark-container">
-                          {user.isAdmin && (
-                            <button
-                              className="song-btn-container"
-                              onClick={() => {
-                                if (
-                                  window.confirm(
-                                    `Are you sure you want to change the status of ${signupItem.singer.stageName}, ${signupItem.song.Title}, by ${signupItem.song.Artist}?`
-                                  )
-                                ) {
-                                  this.handleSongComplete(signupItem._id);
-                                }
-                              }}
-                            >
-                              {signupItem.wasSung ? (
-                                <img
-                                  className="cancel-song-btn"
-                                  src={undo}
-                                  alt="undo"
-                                />
-                              ) : (
-                                <img
-                                  className="cancel-song-btn"
-                                  src={check}
-                                  alt="check"
-                                />
-                              )}
-                            </button>
-                          )}
+                              <div className="mark-container">
+                                {user.isAdmin && (
+                                  <button
+                                    className="song-btn-container"
+                                    onClick={() => {
+                                      {
+                                        this.handleSongComplete(signupItem._id);
+                                      }
+                                    }}
+                                  >
+                                    {signupItem.wasSung ? (
+                                      <img
+                                        className="cancel-song-btn"
+                                        src={undo}
+                                        alt="undo"
+                                      />
+                                    ) : (
+                                      <img
+                                        className="cancel-song-btn"
+                                        src={check}
+                                        alt="check"
+                                      />
+                                    )}
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                      </Fade>
+                    </div>{" "}
+                  </Fade>
+                  // closing div for queue-song-container
+                ))}
+              </TransitionGroup>
             </div>
           ) : (
             <div>
