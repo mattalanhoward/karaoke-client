@@ -179,7 +179,7 @@ export default class Search extends Component {
             </Fade>
           ) : (
             <div className="search-container">
-              <Pulse duration={2000}>
+              <Pulse duration={2000} forever={true}>
                 <img className="logo-search" src={logo} alt="logo" />
               </Pulse>
             </div>
