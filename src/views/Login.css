@@ -6,14 +6,18 @@ light pink: #ffe2f7
 
 .login-container {
   /* border: 2px solid red; */
-  height: auto;
+  height: 50%;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 
+.login-container a {
+  position: fixed;
+  bottom: 20px;
+}
 .signup-errors {
   background-color: #1e1e1e;
   color: black;

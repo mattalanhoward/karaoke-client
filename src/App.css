@@ -21,6 +21,9 @@ html {
 form {
   display: flex;
   flex-direction: column;
+  min-height: 40%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* remove all style from links */
