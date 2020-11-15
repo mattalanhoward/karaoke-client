@@ -119,10 +119,10 @@ export default class Search extends Component {
                 onChange={this.handleChange}
                 type="text"
               />
-              {/* <button className="search-btn" type="submit">
+              <button className="search-btn" type="submit">
                 {" "}
                 Search{" "}
-              </button> */}
+              </button>
             </form>
             <h5>Search Results: {this.state.searchResults.length}</h5>
           </div>
@@ -179,9 +179,9 @@ export default class Search extends Component {
             </Fade>
           ) : (
             <div className="search-container">
-              <Pulse duration={2000} forever={true}>
-                <img className="logo-search" src={logo} alt="logo" />
-              </Pulse>
+              {/* <Pulse duration={2000} forever={true}> */}
+              <img className="logo-search" src={logo} alt="logo" />
+              {/* </Pulse> */}
             </div>
           )}
         </section>
