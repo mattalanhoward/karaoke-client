@@ -6,8 +6,6 @@ import {
   markSongComplete,
   deleteSignup,
 } from "../services/queueService";
-// import "../App.css";
-import { getProfile } from "../services/profileService";
 import "./Search.css";
 import "./Queue.css";
 import BottomNav from "./BottomNav";
@@ -17,9 +15,8 @@ import whiteCancel from "../images/white-cancel.png";
 import whiteCheck from "../images/white-check-mark.png";
 import check from "../images/check-mark.png";
 import undo from "../images/undo-white.png";
-import logo from "../images/Noda_101_Logo_Cropped.png";
+// import logo from "../images/Noda_101_Logo_Cropped.png";
 import ProgressBar from "react-scroll-progress-bar";
-import Zoom from "react-reveal/Zoom";
 import Fade from "react-reveal/Fade";
 import TransitionGroup from "react-transition-group/TransitionGroup";
 
@@ -47,7 +44,6 @@ class Queue extends Component {
   //get queue then get queuedetails
   componentDidMount = async () => {
     try {
-      await this.fetchData();
       await this.handleGetQueue();
       await this.handleQueueDetails();
     } catch (error) {
@@ -60,43 +56,17 @@ class Queue extends Component {
   //Update details when song sung is clicked
   componentDidUpdate(prevProps, prevState) {
     if (prevState.songSung !== this.state.songSung) {
-      this.fetchData();
       this.handleQueueDetails();
     }
   }
-
-  //Get current users info
-  fetchData = async () => {
-    try {
-      const updatedUser = await getProfile({
-        userId: this.props.user._id,
-      });
-      this.setState({
-        firstName: updatedUser.firstName,
-        lastName: updatedUser.lastName,
-        stageName: updatedUser.stageName,
-        email: updatedUser.email,
-        password: updatedUser.password,
-        photoUrl: updatedUser.photoUrl,
-        errorMessage: "",
-      });
-    } catch (error) {
-      this.setState({
-        errorMessage: error,
-      });
-    }
-  };
 
   //Get today's Queue from Db
   handleGetQueue = async () => {
     try {
       const response = await getQueue();
-      this.setState(
-        {
-          queueId: response.queueFromDb[0]._id,
-        }
-        // () => console.log(this.state.queueId)
-      );
+      this.setState({
+        queueId: response.queueFromDb[0]._id,
+      });
     } catch (error) {
       this.setState({
         errorMessage: error,
@@ -206,7 +176,7 @@ class Queue extends Component {
               <img className="icon" src={logout} alt="logout"></img>
             </Link>
           </div>
-          <img src={this.state.photoUrl} alt="profile" />
+          <img src={user.photoUrl} alt="profile" />
           <div className="logout">
             <Link to={"/"} onClick={this.props.logout()}>
               <img className="icon" src={logout} alt="logout"></img>
@@ -276,9 +246,7 @@ class Queue extends Component {
                                   <button
                                     className="song-btn-container"
                                     onClick={() => {
-                                      {
-                                        this.handleSongComplete(signupItem._id);
-                                      }
+                                      this.handleSongComplete(signupItem._id);
                                     }}
                                   >
                                     {!signupItem.wasSung ? (
@@ -330,8 +298,8 @@ export default Queue;
 
 //error when no one has been marked sung.  Impossible to get buttons for dj to mark things sung.
 //Need to account for that.  Otherwise this is good code for lots of conditional buttons
-{
-  /* <div className="mark-container">
+
+/* <div className="mark-container">
 {user.isAdmin &&
   nextUp(array, index) !== "in-line" && (
     <button
@@ -366,4 +334,3 @@ export default Queue;
     </button>
   )}
 </div> */
-}

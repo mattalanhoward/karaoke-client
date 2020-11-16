@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { updateProfile, handleUpload } from "../services/profileService";
 // import { Redirect } from "react-router-dom"
-import { getProfile } from "../services/profileService";
 import BottomNav from "./BottomNav";
 import logout from "../images/logout.png";
 
@@ -17,51 +16,12 @@ class EditProfile extends React.Component {
     errorMessage: "",
   };
 
-  //get queue then get queuedetails
-  componentDidMount = async () => {
-    try {
-      await this.fetchData();
-    } catch (error) {
-      this.setState({
-        errorMessage: error,
-      });
-    }
-  };
-
   // Handles input change and changes the state.
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
-  };
-
-  //Get current users info
-  fetchData = async () => {
-    try {
-      const updatedUser = await getProfile({
-        userId: this.props.user._id,
-      });
-      this.setState(
-        {
-          firstName: updatedUser.firstName,
-          lastName: updatedUser.lastName,
-          stageName: updatedUser.stageName,
-          favoriteArtist: updatedUser.favoriteArtist,
-          email: updatedUser.email,
-          password: updatedUser.password,
-          photoUrl: updatedUser.photoUrl,
-          errorMessage: "",
-        },
-        () => {
-          console.log(`response from get profile`, updatedUser);
-        }
-      );
-    } catch (error) {
-      this.setState({
-        errorMessage: error,
-      });
-    }
   };
 
   // Profile photo upload
@@ -88,7 +48,6 @@ class EditProfile extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.redirectToTarget("profile");
     updateProfile({
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -98,6 +57,8 @@ class EditProfile extends React.Component {
       userId: this.props.user._id,
       photoUrl: this.state.photoUrl,
     });
+    this.props.updateUser();
+    this.redirectToTarget("profile");
     this.setState({
       firstName: "",
       lastName: "",
@@ -115,8 +76,8 @@ class EditProfile extends React.Component {
 
   render() {
     //These placeholders are being set to the user who logs in.
-    const { email, errorMessage } = this.state;
-    const user = this.state;
+    const { errorMessage } = this.state;
+    const user = this.props.user;
 
     return (
       <div className="profile">
@@ -191,7 +152,7 @@ class EditProfile extends React.Component {
             <label>Email: </label>
             <input
               name="email"
-              placeholder={email}
+              placeholder={user.email}
               onChange={this.handleChange}
               type="email"
             />

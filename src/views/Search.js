@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 import BottomNav from "./BottomNav";
 import "./Search.css";
 import "../App.css";
-import { getProfile } from "../services/profileService";
 import signupImage from "../images/signup.png";
 import logout from "../images/logout.png";
 import logo from "../images/Noda_101_Logo_Cropped.png";
 import ProgressBar from "react-scroll-progress-bar";
-import Pulse from "react-reveal/Pulse";
 import Fade from "react-reveal/Fade";
 
 export default class Search extends Component {
@@ -25,39 +23,6 @@ export default class Search extends Component {
     email: "",
     password: "",
     photoUrl: "",
-  };
-
-  //get updated user info
-  componentDidMount = async () => {
-    try {
-      await this.fetchData();
-    } catch (error) {
-      this.setState({
-        errorMessage: error,
-      });
-    }
-  };
-
-  //Get current users info
-  fetchData = async () => {
-    try {
-      const updatedUser = await getProfile({
-        userId: this.props.user._id,
-      });
-      this.setState({
-        firstName: updatedUser.firstName,
-        lastName: updatedUser.lastName,
-        stageName: updatedUser.stageName,
-        email: updatedUser.email,
-        password: updatedUser.password,
-        photoUrl: updatedUser.photoUrl,
-        errorMessage: "",
-      });
-    } catch (error) {
-      this.setState({
-        errorMessage: error,
-      });
-    }
   };
 
   //Handles input change
@@ -88,7 +53,8 @@ export default class Search extends Component {
   };
 
   render() {
-    const { errorMessage } = this.props.user;
+    const { errorMessage } = this.state.errorMessage;
+    const user = this.props.user;
 
     return (
       <div className="search-container">
@@ -99,7 +65,7 @@ export default class Search extends Component {
               <img className="icon" src={logout} alt="logout"></img>
             </Link>
           </div>
-          <img src={this.state.photoUrl} alt="profile" />
+          <img src={user.photoUrl} alt="profile" />
           <div className="logout">
             <Link to={"/"} onClick={this.props.logout()}>
               <img className="icon" src={logout} alt="logout"></img>
@@ -109,7 +75,6 @@ export default class Search extends Component {
         </section>
         <section className="search">
           <div className="search-bar">
-            {/* <h3>NODA 101 Song List</h3> */}
             <form onSubmit={this.handleSubmit}>
               <input
                 className="search-params"
@@ -139,10 +104,8 @@ export default class Search extends Component {
                     <button
                       className="signup-btn"
                       onClick={async () => {
-                        {
-                          await this.props.signUp(song._id);
-                          this.redirectToTarget();
-                        }
+                        await this.props.signUp(song._id);
+                        this.redirectToTarget();
                       }}
                     >
                       <img
