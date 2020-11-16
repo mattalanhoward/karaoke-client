@@ -42,16 +42,21 @@ class EditProfile extends React.Component {
       const updatedUser = await getProfile({
         userId: this.props.user._id,
       });
-      this.setState({
-        firstName: updatedUser.firstName,
-        lastName: updatedUser.lastName,
-        stageName: updatedUser.stageName,
-        favoriteArtist: updatedUser.favoriteArtist,
-        email: updatedUser.email,
-        password: updatedUser.password,
-        photoUrl: updatedUser.photoUrl,
-        errorMessage: "",
-      });
+      this.setState(
+        {
+          firstName: updatedUser.firstName,
+          lastName: updatedUser.lastName,
+          stageName: updatedUser.stageName,
+          favoriteArtist: updatedUser.favoriteArtist,
+          email: updatedUser.email,
+          password: updatedUser.password,
+          photoUrl: updatedUser.photoUrl,
+          errorMessage: "",
+        },
+        () => {
+          console.log(`response from get profile`, updatedUser);
+        }
+      );
     } catch (error) {
       this.setState({
         errorMessage: error,
