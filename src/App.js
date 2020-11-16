@@ -35,7 +35,7 @@ class App extends React.Component {
     }
   };
 
-  //when SIGNUP button is Clicked....
+  //when song SIGNUP button is clicked....
   handleSignup = async (songId) => {
     const userId = this.state.user._id;
 

@@ -24,8 +24,7 @@ export default class Search extends Component {
     stageName: "",
     email: "",
     password: "",
-    photoUrl:
-      "https://res.cloudinary.com/dcod1zxnl/image/upload/v1603130425/Noda_101_Logo_l72snm.png",
+    photoUrl: "",
   };
 
   //get updated user info

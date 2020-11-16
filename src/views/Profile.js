@@ -60,6 +60,7 @@ class Profile extends React.Component {
 
   render() {
     const user = this.state;
+
     //Get written out date for users first signup.
     const startDate = new Date(user.createdAt);
     const months = [
