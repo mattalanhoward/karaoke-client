@@ -76,6 +76,7 @@ tbody {
 tbody p {
   color: white;
 }
+
 tbody tr {
   /* border: 2px solid green; */
   display: flex;
@@ -132,4 +133,30 @@ input[type="file"] {
   width: 60%;
   height: 100%;
   margin: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  tbody {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .profile-btn {
+    width: 200px;
+  }
+  .profile-heading {
+    /* border: 2px solid red; */
+    margin-top: 0;
+  }
+  .logout {
+    margin: 0 auto;
+  }
+
+  .logout-duplicate {
+    /* border: 1px solid red; */
+    visibility: hidden;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
 }

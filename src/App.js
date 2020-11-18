@@ -44,7 +44,7 @@ class App extends React.Component {
     }
   }
 
-  //when song SIGNUP button is clicked....
+  //lift state for song sign up
   handleSignup = async (songId) => {
     const userId = this.state.user._id;
 
@@ -60,6 +60,7 @@ class App extends React.Component {
     );
   };
 
+  //lift state for updated user to reduce db calls
   handleUpdatedUser = async () => {
     try {
       const updatedUser = await getProfile({

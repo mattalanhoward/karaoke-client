@@ -19,6 +19,7 @@ html {
 }
 
 form {
+  border: 3px solid red;
   display: flex;
   flex-direction: column;
   min-height: 40%;
@@ -43,4 +44,32 @@ input {
   padding: 0px 10px;
   background-color: #f6f6f6;
   /* border-style: none; */
+}
+
+@media only screen and (min-width: 768px) {
+  form {
+    border: 3px solid red;
+    min-height: 30%;
+    width: 30%;
+    margin-bottom: 10%;
+    margin: 0 auto;
+  }
+
+  input {
+    border: 2px solid #e8e8e8;
+    width: 80%;
+    /* margin: 6px auto; */
+
+    /* border-style: none; */
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .logo {
+    width: 30%;
+  }
+
+  .nav-btns {
+    width: 10%;
+  }
 }

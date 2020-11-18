@@ -56,3 +56,37 @@ light pink: #ffe2f7
 
   filter: drop-shadow(3px 3px 3px #30fcf1);
 }
+
+/* Extra small devices (phones, 600px and down)
+@media only screen and (max-width: 600px) {...}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {...} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {...} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {...} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {...} */
+
+@media only screen and (min-width: 768px) {
+  .logo {
+    width: 50%;
+  }
+  .nav-btns {
+    width: 200px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .logo {
+    width: 30%;
+  }
+
+  .nav-btns {
+    width: 250px;
+  }
+}
