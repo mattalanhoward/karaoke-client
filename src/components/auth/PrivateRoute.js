@@ -6,6 +6,7 @@ const PrivateRoute = ({
   signups,
   newSignup,
   signUp,
+  updateUser,
   logout,
   authenticated,
   user,
@@ -21,6 +22,7 @@ const PrivateRoute = ({
             signups={signups}
             newSignup={newSignup}
             signUp={signUp}
+            updateUser={updateUser}
             logout={logout}
           />
         ) : (

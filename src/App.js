@@ -14,6 +14,7 @@ import Queue from "./views/Queue";
 import { singerSong, addSongToQueue } from "./services/searchService";
 import BottomNav from "./views/BottomNav";
 import BarDisplay from "./views/BarDisplay";
+import { getProfile } from "./services/profileService";
 
 class App extends React.Component {
   state = {
@@ -35,7 +36,15 @@ class App extends React.Component {
     }
   };
 
-  //when song SIGNUP button is clicked....
+  componentDidUpdate(previousProps, previousState) {
+    const userProfileChanged =
+      previousState.user.stageName !== this.state.user.stageName;
+    if (userProfileChanged) {
+      this.handleUpdatedUser();
+    }
+  }
+
+  //lift state for song sign up
   handleSignup = async (songId) => {
     const userId = this.state.user._id;
 
@@ -49,6 +58,28 @@ class App extends React.Component {
       },
       () => console.log(`CURRENT SIGNUPS STATE`, this.state.signups)
     );
+  };
+
+  //lift state for updated user to reduce db calls
+  handleUpdatedUser = async () => {
+    try {
+      const updatedUser = await getProfile({
+        userId: this.state.user._id,
+      });
+      this.setState(
+        {
+          user: updatedUser,
+          errorMessage: "",
+        },
+        () => {
+          console.log(`CURRENT USER STATE`, this.state.user);
+        }
+      );
+    } catch (error) {
+      this.setState({
+        errorMessage: error,
+      });
+    }
   };
 
   authenticate = (user) => {
@@ -107,6 +138,7 @@ class App extends React.Component {
               path="/editprofile"
               user={this.state.user}
               authenticated={authenticated}
+              updateUser={this.handleUpdatedUser}
               logout={() => this.handleLogout}
               component={EditProfile}
             />
