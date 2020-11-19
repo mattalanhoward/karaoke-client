@@ -34,7 +34,11 @@ light pink: #ffe2f7
 }
 
 /* @media only screen and (min-width: 768px) {
+  .signup-container a {
+    position: fixed;
+    bottom: 20px;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
-} */
+}  */

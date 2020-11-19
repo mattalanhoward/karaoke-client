@@ -36,13 +36,12 @@ class App extends React.Component {
     }
   };
 
-  componentDidUpdate(previousProps, previousState) {
-    const userProfileChanged =
-      previousState.user.stageName !== this.state.user.stageName;
-    if (userProfileChanged) {
-      this.handleUpdatedUser();
-    }
-  }
+  // componentDidUpdate(previousProps, previousState) {
+  //   const userProfileChanged = previousState.user !== this.state.user;
+  //   if (userProfileChanged) {
+  //     this.handleUpdatedUser();
+  //   }
+  // }
 
   //lift state for song sign up
   handleSignup = async (songId) => {

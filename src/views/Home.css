@@ -74,7 +74,7 @@ light pink: #ffe2f7
 
 @media only screen and (min-width: 768px) {
   .logo {
-    width: 50%;
+    max-width: 400px;
   }
   .nav-btns {
     width: 200px;
@@ -82,9 +82,11 @@ light pink: #ffe2f7
 }
 
 @media only screen and (min-width: 1200px) {
-  .logo {
-    width: 30%;
-  }
+  /* .logo {
+    border: 2px solid red;
+    width: 20%;
+    max-width: 500px;
+  } */
 
   .nav-btns {
     width: 250px;

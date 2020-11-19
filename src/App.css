@@ -19,7 +19,7 @@ html {
 }
 
 form {
-  border: 3px solid red;
+  /* border: 3px solid red; */
   display: flex;
   flex-direction: column;
   min-height: 40%;
@@ -48,7 +48,7 @@ input {
 
 @media only screen and (min-width: 768px) {
   form {
-    border: 3px solid red;
+    /* border: 3px solid red; */
     min-height: 30%;
     width: 30%;
     margin-bottom: 10%;
