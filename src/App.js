@@ -141,7 +141,7 @@ class App extends React.Component {
               logout={() => this.handleLogout}
               component={EditProfile}
             />
-            <PrivateRoute
+            <AnonRoute
               exact
               path="/search"
               user={this.state.user}

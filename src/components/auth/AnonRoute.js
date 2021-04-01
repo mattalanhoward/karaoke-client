@@ -5,13 +5,17 @@ const AnonRoute = ({
   component: Component,
   authenticated,
   authenticate,
+  logout,
   ...rest
 }) => {
   return (
     <Route
       render={(props) =>
         authenticated === false ? (
-          ((<Home />), (<Component {...props} authenticate={authenticate} />))
+          ((<Home />),
+          (
+            <Component {...props} authenticate={authenticate} logout={logout} />
+          ))
         ) : (
           <Redirect to="/search" />
         )

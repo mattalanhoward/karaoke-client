@@ -65,7 +65,7 @@ export default class Search extends Component {
               <img className="icon" src={logout} alt="logout"></img>
             </Link>
           </div>
-          <img src={user.photoUrl} alt="profile" />
+          {/* <img src={user.photoUrl} alt="profile" /> */}
           <div className="logout-duplicate">
             <Link to={"/"} onClick={this.props.logout()}>
               <img className="icon" src={logout} alt="logout"></img>
