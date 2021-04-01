@@ -101,7 +101,7 @@ export default class Search extends Component {
                       <h4>{song.Title}</h4>
                       <p>{song.Artist}</p>
                     </div>
-                    <button
+                    {/* <button
                       className="signup-btn"
                       onClick={async () => {
                         await this.props.signUp(song._id);
@@ -113,7 +113,7 @@ export default class Search extends Component {
                         src={signupImage}
                         alt="signup icon"
                       />
-                    </button>
+                    </button> */}
 
                     {/* <button
                       className="signup-btn"
