@@ -8,18 +8,18 @@ import usericon from "../images/user.png";
 const BottomNav = () => {
   return (
     <div className="bottom-nav">
-      {/* <Link to="/profile">
+      <Link to="/profile">
         {" "}
         <img src={usericon} alt="profile-icon" />{" "}
-      </Link> */}
+      </Link>
       <Link to="/search">
         {" "}
         <img src={loupe} alt="search-icon" />{" "}
       </Link>
-      {/* <Link to="/queue">
+      <Link to="/queue">
         {" "}
         <img src={list} alt="queue-icon" />{" "}
-      </Link> */}
+      </Link>
     </div>
   );
 };

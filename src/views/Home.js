@@ -16,15 +16,15 @@ const Home = (props) => {
         />
       </Pulse>
       <div className="login-buttons">
-        {/* <button className="nav-btns green-btn">
+        <button className="nav-btns green-btn">
           <Link to="/login"> Login </Link>
         </button>
         <button className="nav-btns wht-btn">
           <Link to="/signup"> Signup </Link>
-        </button> */}
-        <button className="nav-btns wht-btn">
-          <Link to="/search"> Song List </Link>
         </button>
+        {/* <button className="nav-btns wht-btn">
+          <Link to="/search"> Song List </Link>
+        </button> */}
       </div>
     </div>
   );
